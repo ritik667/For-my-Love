@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Chat Archive</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f0f0, #c4e0e5);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #6a89cc;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em; /* Responsive font size */
+            font-weight: bold;
+        }
+        header p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .chat-container {
+            width: 90%;
+            max-width: 700px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .chat-container h2 {
+            text-align: center;
+            color: #6a89cc;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        a {
+            display: block;
+            padding: 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-bottom: 1px solid #ddd;
+            transition: all 0.3s;
+        }
+        footer {
+            background-color: #6a89cc;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+        #visitorCounter {
+            font-weight: bold;
+        }
+        /* Buttons */
+        .scroll-button {
+            background-color: #6a89cc;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 80px; /* Adjust for spacing */
+            right: 20px;  /* Position at bottom-right */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .scroll-button:hover {
+            background-color: #4a7fba;
+            transform: scale(1.1);
+        }
+        /* Media Queries for responsiveness */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em; /* Smaller header on small screens */
+            }
+            header p {
+                font-size: 1em; /* Adjust subtitle font size */
+            }
+            .chat-container h2 {
+                font-size: 1.5em; /* Adjust h2 size for mobile */
+            }
+            a {
+                font-size: 1em; /* Adjust link size for mobile */
+            }
+            .scroll-button {
+                padding: 8px 10px; /* Smaller button on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Telegram Chat Archive</h1>
+        <p>Dedicated to Ayesha, with Love ❤️</p>
+    </header>
+
+    <!-- Chat List -->
+    <main>
+        <div class="chat-container">
+            <h2>Our Memories</h2>
+            <ul id="chatList"></ul>
+        </div>
+    </main>
+
+    <!-- Footer with Visitor Counter -->
+    <footer>
+        <p>Thank you for visiting ❤️</p>
+        <p>Visitor Count: <span id="visitorCounter">0</span></p>
+    </footer>
+
+    <!-- Visitor Counter Script -->
+    <script>
+        // Populate chat list
+        const chatList = document.getElementById("chatList");
+        for (let i = 1; i <= 35; i++) {
+            const listItem = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = `messages${i}.html`;
+            link.textContent = `Chat ${i}`;
+            listItem.appendChild(link);
+            chatList.appendChild(listItem);
+        }
+
+        // Visitor Counter logic
+        const visitorCounterElement = document.getElementById("visitorCounter");
+        let visitorCount = localStorage.getItem("visitorCount") || 0;
+        visitorCount++;
+        localStorage.setItem("visitorCount", visitorCount);
+        visitorCounterElement.innerText = visitorCount;
+    </script>
+
+    <!-- Scroll to Top/Bottom Buttons -->
+    <button class="scroll-button" id="scrollToTop" onclick="scrollToTop()">↑</button>
+    <button class="scroll-button" id="scrollToBottom" onclick="scrollToBottom()">↓</button>
+
+    <script>
+        // Scroll to Top function
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll to Bottom function
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
