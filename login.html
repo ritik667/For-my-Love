@@ -3,179 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Our Archives, Sweet Memories</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Our Love Archive - Login</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f0f0f0, #c4e0e5);
-            color: #333;
-            display: flex;
-            flex-direction: column;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
             min-height: 100vh;
-        }
-        header {
-            background-color: #6a89cc;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2em; /* Responsive font size */
-            font-weight: bold;
-        }
-        header p {
-            margin: 5px 0;
-            font-size: 1.2em;
-        }
-        main {
-            flex-grow: 1;
             display: flex;
             justify-content: center;
-            padding: 20px;
+            align-items: center;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 1s ease;
         }
-        .chat-container {
+
+        .modal {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             width: 90%;
-            max-width: 700px;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-        .chat-container h2 {
+            max-width: 400px;
             text-align: center;
-            color: #6a89cc;
-            font-size: 1.8em;
-            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, background 0.5s ease;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+
+        .modal.show {
+            opacity: 1;
+            transform: translateY(0);
         }
-        a {
-            display: block;
-            padding: 15px;
-            color: #333;
-            text-decoration: none;
-            font-size: 1.1em;
-            border-bottom: 1px solid #ddd;
-            transition: all 0.3s;
+
+        .sparkles {
+            font-size: 24px;
+            margin-bottom: 1rem;
         }
-        footer {
-            background-color: #6a89cc;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
+
+        h1 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
-        footer p {
-            margin: 0;
-            font-size: 1.1em;
+
+        .input-container {
+            margin-bottom: 1rem;
         }
-        #visitorCounter {
-            font-weight: bold;
+
+        input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #000;
+            background: rgba(255, 255, 255, 0.8);
+            outline: none;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
         }
-        /* Buttons */
-        .scroll-button {
-            background-color: #6a89cc;
-            color: white;
+
+        input:focus {
+            border-color: #ff69b4;
+            background: rgba(255, 255, 255, 1);
+        }
+
+        input::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
             border: none;
-            border-radius: 50%;
-            padding: 10px 15px;
+            border-radius: 12px;
+            background: #ff69b4;
+            color: white;
+            font-size: 1rem;
             cursor: pointer;
-            position: fixed;
-            bottom: 80px; /* Adjust for spacing */
-            right: 20px;  /* Position at bottom-right */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s ease;
+            margin-bottom: 0.5rem;
         }
-        .scroll-button:hover {
-            background-color: #4a7fba;
-            transform: scale(1.1);
+
+        button:hover {
+            background: #ff4fa7;
         }
-        /* Media Queries for responsiveness */
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.8em; /* Smaller header on small screens */
-            }
-            header p {
-                font-size: 1em; /* Adjust subtitle font size */
-            }
-            .chat-container h2 {
-                font-size: 1.5em; /* Adjust h2 size for mobile */
-            }
-            a {
-                font-size: 1em; /* Adjust link size for mobile */
-            }
-            .scroll-button {
-                padding: 8px 10px; /* Smaller button on mobile */
-            }
+
+        .floating-item {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.6;
+            z-index: 1;
+            animation: float 10s ease-in-out infinite;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(15px, -15px); }
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .error-message {
+            color: #ff4fa7;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        #passwordInput {
+            display: none;
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
-    <header>
-        <h1>Our Archives, Sweet Memories</h1>
-        <p>Dedicated to Ayesha, with Love ❤️</p>
-        <p><a href="sorry.html" target="_blank">Click here(21 - 11 -2024) ❤️</a></p>
-    </header>
-
-    <!-- Chat List -->
-    <main>
-        <div class="chat-container">
-            <h2>Our Memories</h2>
-            <ul id="chatList"></ul>
+    <div class="modal" id="loginModal">
+        <div class="sparkles">✨ ✨</div>
+        <h1 id="modalTitle">Welcome to Our Love Archive</h1>
+        <div class="input-container">
+            <input type="text" id="nameInput" placeholder="Who's here?" />
+            <input type="password" id="passwordInput" placeholder="Enter your love key..." />
         </div>
-    </main>
-
-    <!-- Footer with Visitor Counter -->
-    <footer>
-        <p>Hope to see you again my love ❤️</p>
-        <p>Visitor Count: <span id="visitorCounter">0</span></p>
-    </footer>
-
-    <!-- Visitor Counter Script -->
-    <script>
-    
-        const chatList = document.getElementById("chatList");
-        for (let i = 1; i <= 35; i++) {
-            const listItem = document.createElement("li");
-            const link = document.createElement("a");
-            link.href = `messages${i}.html`;
-            link.textContent = `Chat ${i}`;
-            listItem.appendChild(link);
-            chatList.appendChild(listItem);
-        }
-
-        // Visitor Counter logic
-        const visitorCounterElement = document.getElementById("visitorCounter");
-        let visitorCount = localStorage.getItem("visitorCount") || 0;
-        visitorCount++;
-        localStorage.setItem("visitorCount", visitorCount);
-        visitorCounterElement.innerText = visitorCount;
-    </script>
-
-    <!-- Scroll to Top/Bottom Buttons -->
-    <button class="scroll-button" id="scrollToTop" onclick="scrollToTop()">↑</button>
-    <button class="scroll-button" id="scrollToBottom" onclick="scrollToBottom()">↓</button>
+        <button onclick="checkName()" id="nameButton">Enter</button>
+        <button onclick="checkPassword()" id="passwordButton" style="display: none;">Unlock Our World 🔐</button>
+        <p class="error-message" id="errorMessage"></p>
+    </div>
 
     <script>
-        // Scroll to Top function
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        const AYESHA_PASSWORD = 'iloveyouritikesh'; // Replace with Ayesha's actual password
+        const RITIKESH_PASSWORD = 'iloveyouayesha'; // Replace with Ritikesh's actual password
+
+        let currentUser = '';
+
+        const floatingItems = ['❤️', '💖', '💕', '💓', '💗', '💘', '💝', '🌹', '🌸', '🌺', '🌷', '🥰', '😍', '💑'];
+        const colors = ['#ff69b4', '#ff1493', '#ff6347', '#ff4500', '#ffa500', '#ff8c00', '#ff7f50', '#ff6b6b'];
+
+        function createFloatingItems() {
+            for (let i = 0; i < 30; i++) {
+                const item = document.createElement('div');
+                item.className = 'floating-item';
+                item.innerHTML = floatingItems[Math.floor(Math.random() * floatingItems.length)];
+                item.style.left = `${Math.random() * 100}vw`;
+                item.style.top = `${Math.random() * 100}vh`;
+                item.style.animationDuration = `${10 + Math.random() * 10}s`;
+                item.style.animationDelay = `${Math.random() * 5}s`;
+                item.style.color = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(item);
+            }
         }
 
-        // Scroll to Bottom function
-        function scrollToBottom() {
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        function showModal() {
+            const modal = document.getElementById('loginModal');
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 100);
         }
+
+        function logEntry(name) {
+            const entry = {
+                name: name,
+                time: new Date().toISOString()
+            };
+            let entries = JSON.parse(localStorage.getItem('entries') || '[]');
+            entries.push(entry);
+            localStorage.setItem('entries', JSON.stringify(entries));
+        }
+
+        function checkName() {
+            const name = document.getElementById('nameInput').value.trim().toLowerCase();
+            currentUser = name;
+
+            if (name === 'ayesha' || name === 'ritikesh') {
+                document.body.style.backgroundColor = name === 'ayesha' ? '#ffe6ea' : '#e6f7ff';
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('passwordInput').style.display = 'block';
+                document.getElementById('nameButton').style.display = 'none';
+                document.getElementById('passwordButton').style.display = 'block';
+                document.getElementById('modalTitle').textContent = 'Enter your love key to unlock our memories';
+            } else {
+                showError('Sorry, you are not allowed to access this archive.');
+            }
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const modal = document.getElementById('loginModal');
+
+            let correctPassword = currentUser === 'ayesha' ? AYESHA_PASSWORD : RITIKESH_PASSWORD;
+
+            if (password === correctPassword) {
+                logEntry(currentUser);
+                modal.style.opacity = '0';
+                modal.style.transform = 'scale(1.1)';
+                modal.style.transition = 'all 0.5s ease-in-out';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500);
+            } else {
+                showError('Oops, wrong key. Try again, my love!');
+            }
+        }
+
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            document.getElementById('loginModal').classList.add('shake');
+            setTimeout(() => {
+                document.getElementById('loginModal').classList.remove('shake');
+            }, 500);
+        }
+
+        function displayLogs() {
+            const entries = JSON.parse(localStorage.getItem('entries') || '[]');
+            console.log('Access Log:');
+            entries.forEach((entry, index) => {
+                console.log(`${index + 1}. Name: ${entry.name}, Time: ${new Date(entry.time).toLocaleString()}`);
+            });
+        }
+
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                if (document.getElementById('nameInput').style.display !== 'none') {
+                    checkName();
+                } else if (document.getElementById('passwordInput').style.display !== 'none') {
+                    checkPassword();
+                }
+            }
+        });
+
+        createFloatingItems();
+        showModal();
     </script>
-
 </body>
 </html>
