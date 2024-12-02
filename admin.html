@@ -3,24 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Access Logs</title>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #FFC0CB, #ADD8E6);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        h1 {
+            color: #FF69B4;
+        }
+        .log-entry {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0;
+        }
+        button {
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: #FF69B4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Access Logs</h1>
-    <ul id="logList"></ul>
+    <h1>Admin Panel</h1>
+    <div id="log-container"></div>
+    <button onclick="logout()">Logout</button>
 
     <script>
-        function displayLogs() {
-            const entries = JSON.parse(localStorage.getItem('entries') || '[]');
-            const logList = document.getElementById('logList');
-            entries.forEach((entry, index) => {
-                const li = document.createElement('li');
-                li.textContent = `${index + 1}. Name: ${entry.name}, Time: ${new Date(entry.time).toLocaleString()}`;
-                logList.appendChild(li);
-            });
+        // Ensure user is logged in
+        if (!localStorage.getItem("loggedIn")) {
+            window.location.href = "index.html"; // Redirect if not logged in
         }
 
-        displayLogs();
+        // Simulated logs
+        const logs = JSON.parse(localStorage.getItem("logs")) || [];
+        const logContainer = document.getElementById("log-container");
+
+        // Display logs
+        logs.forEach(log => {
+            const logEntry = document.createElement("div");
+            logEntry.classList.add("log-entry");
+            logEntry.textContent = `Name: ${log.name}, IP: ${log.ip}, Time: ${log.time}`;
+            logContainer.appendChild(logEntry);
+        });
+
+        function logout() {
+            localStorage.removeItem("loggedIn"); // Clear login state
+            window.location.href = "index.html"; // Redirect to login page
+        }
     </script>
 </body>
 </html>

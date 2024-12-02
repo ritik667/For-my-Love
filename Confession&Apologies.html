@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Archive - A Heartfelt Apology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global styles */
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(to bottom right, #FFC0CB, #ADD8E6);
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        /* Header styles */
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #FF69B4;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            color: #808080;
+        }
+
+        /* Main content styles */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #FF69B4;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            color: #606060;
+            line-height: 1.6;
+        }
+
+        /* Floating hearts and flowers */
+        .floating-item {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.6;
+            animation: float 10s ease-in-out infinite;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+
+            .header h1 {
+                font-size: 3rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Apology Letter and  Confession</h1>
+        </header>
+    
+        <main>
+            <!-- Opening Section -->
+            <section class="section">
+                <h2>Ayeshu, My Love</h2>
+                <p>
+                    I don’t even know where to begin, but I need to tell you how sorry I am. I know I’ve hurt you, and the weight of not knowing what I did is crushing me. You are my heart, my safe space, and the thought of upsetting you feels unbearable.
+                </p>
+            </section>
+    
+            <!-- Acknowledging Mistakes -->
+            <section class="section">
+                <h2>A Sincere Apology</h2>
+                <p>
+                    I’ve been replaying everything in my mind, trying to uncover where I might have gone wrong, but it feels like searching for a missing piece in the dark. The truth is, I’m lost, babu. I’m not perfect, but my love for you is, and I’d never intentionally do anything to hurt you.
+                </p>
+                <p>
+                Your happiness matters to me more than anything, and the thought of causing you pain breaks me. I understand that you’re waiting for me to realize my mistake, and I promise I’m trying. But I need your help to truly understand. If you can find it in your heart to talk to me, I’ll listen without interruption. I want to make things right, not just for me, but for us.</p>
+            </section>
+    
+            <!-- Commitment to Change -->
+            <section class="section">
+                <h2>A Promise to Do Better</h2>
+                <p>
+                    I know you want me to realize my mistake, and I wish I could see it as clearly as you do. But sometimes, understanding another’s pain requires their voice to guide the way. Please help me, not because I’m giving up on figuring it out, but because I want to make it right in the way that you deserve.                </p>
+                <p>
+                    Until you call i hope you'll hold on to the fact that I LOVE YOU and i'll keep trying because you are worth every effort.
+                </p>
+                <p>
+                    
+                </p>
+            </section>
+      
+            <section class="section">
+                <h2>A Gift for You</h2>
+            </section>
+        </main>
+
+        <footer>
+            <p>I Love You</p>
+        </footer>
+    </div>
+
+    <script>
+        const giftBox = document.querySelector('.gift-box');
+        const giftBoxTop = document.querySelector('.gift-box-top');
+        const giftBoxBottom = document.querySelector('.gift-box-bottom');
+        const giftContent = document.querySelector('.gift-box-content');
+        const unwrapButton = document.createElement('button');
+        unwrapButton.textContent = 'Unwrap the Gift';
+        unwrapButton.classList.add('unwrap-button');
+        giftBox.appendChild(unwrapButton);
+
+        let isGiftUnwrapped = false;
+
+        unwrapButton.addEventListener('click', () => {
+            if (!isGiftUnwrapped) {
+                giftBoxTop.style.transform = 'translateY(-100%)';
+                giftBoxBottom.style.transform = 'translateY(0)';
+                giftBoxBottom.style.opacity = '1';
+                giftContent.style.transform = 'translateY(0)';
+                isGiftUnwrapped = true;
+                unwrapButton.style.display = 'none';
+                startWatchAnimation();
+            }
+        });
+
+        function startWatchAnimation() {
+            const watchHands = document.querySelectorAll('.watch-hands, .watch-hour-hand, .watch-minute-hand, .watch-second-hand');
+            watchHands.forEach(hand => {
+                hand.style.animation = 'watch-animation 60s linear infinite';
+            });
+        }
+
+        // Floating hearts and flowers
+        for (let i = 0; i < 20; i++) {
+            const item = document.createElement('div');
+            item.classList.add('floating-item');
+            item.textContent = ['❤️', '💖', '💕', '💓', '💗', '💘', '💝', '🌹', '🌸', '🌺', '🌷'][Math.floor(Math.random() * 11)];
+            item.style.left = `${Math.random() * 100}vw`;
+            item.style.top = `${Math.random() * 100}vh`;
+            item.style.animationDuration = `${10 + Math.random() * 10}s`;
+            item.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(item);
+        }
+    </script>
+</body>
+</html>
