@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Surprise - Advanced</title>
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(180deg, #2c3e50, #34495e);
+      overflow: hidden;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cloud {
+      position: absolute;
+      width: 200px;
+      height: 60px;
+      background: white;
+      border-radius: 50%;
+      animation: moveClouds 15s linear infinite;
+    }
+    .cloud::before, .cloud::after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 80px;
+      background: white;
+      border-radius: 50%;
+    }
+    .cloud::before {
+      top: -40px;
+      left: 30px;
+    }
+    .cloud::after {
+      top: -10px;
+      left: 120px;
+    }
+    @keyframes moveClouds {
+      0% { transform: translateX(-200px); }
+      100% { transform: translateX(100vw); }
+    }
+    .gift-box-container, #romantic-note, .fireworks {
+      margin-top: 30px;
+    }
+    #gift-box {
+      width: 120px;
+      height: 120px;
+      background: gold;
+      border-radius: 20%;
+      box-shadow: 0 0 15px rgba(255, 223, 0, 0.8);
+      cursor: pointer;
+      text-align: center;
+      line-height: 120px;
+      font-size: 2rem;
+    }
+    #romantic-note {
+      font-size: 1.5rem;
+      color: #f39c12;
+      cursor: pointer;
+      text-shadow: 0px 0px 10px rgba(255, 105, 180, 0.8);
+    }
+    .hidden { display: none; }
+    .fireworks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cloud Background -->
+  <div class="cloud" style="top: 10%; animation-duration: 18s;"></div>
+  <div class="cloud" style="top: 20%; animation-duration: 20s;"></div>
+  <div class="cloud" style="top: 30%; animation-duration: 22s;"></div>
+
+  <!-- Gift Box Section -->
+  <div class="gift-box-container">
+    <div id="gift-box">🎁</div>
+    <p id="hint" class="hidden">Keep trying, love is the key.</p>
+    <p id="romantic-note" class="hidden">If you say yes, forever begins now.</p>
+  </div>
+
+  <!-- Fireworks Container -->
+  <div class="fireworks hidden"></div>
+
+  <audio id="background-music" loop>
+    <source src="romantic_instrumental.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Background Music
+    const backgroundMusic = document.getElementById('background-music');
+    backgroundMusic.volume = 0.4;
+    window.addEventListener('load', () => backgroundMusic.play());
+
+    // Gift Box Logic
+    const giftBox = document.getElementById('gift-box');
+    const romanticNote = document.getElementById('romantic-note');
+    const hint = document.getElementById('hint');
+    let attempts = 0;
+
+    giftBox.addEventListener('click', () => {
+      attempts++;
+      if (attempts < 3) {
+        hint.classList.remove('hidden');
+        setTimeout(() => hint.classList.add('hidden'), 2000);
+      } else {
+        giftBox.classList.add('hidden');
+        romanticNote.classList.remove('hidden');
+      }
+    });
+
+    // Fireworks Integration
+    const fireworksContainer = document.querySelector('.fireworks');
+    const fireworks = new Fireworks.default(fireworksContainer, {
+      speed: 3,
+      particles: 100,
+      brightness: { min: 60, max: 90 },
+      colors: ['#ff4d4d', '#f39c12', '#8e44ad', '#3498db'],
+    });
+
+    romanticNote.addEventListener('click', () => {
+      fireworksContainer.classList.remove('hidden');
+      fireworks.start();
+      setTimeout(() => fireworks.stop(), 5000);
+    });
+  </script>
+</body>
+</html>
