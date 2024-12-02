@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Surprise - Enchanted</title>
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle, #0d0d0d, #1a1a1a, #262626);
+      overflow: hidden;
+      font-family: 'Dancing Script', cursive;
+      color: white;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+    .gift-box-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #gift-box {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(45deg, gold, #f39c12);
+      border-radius: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 0px 30px rgba(255, 223, 0, 0.8);
+      cursor: pointer;
+      font-size: 3rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #gift-box:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 0px 50px rgba(255, 223, 0, 1);
+    }
+    #hint, #romantic-note {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    #romantic-note {
+      color: #e74c3c;
+      text-shadow: 0 0 15px #e74c3c;
+      animation: pulse 1.5s infinite;
+      cursor: pointer;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    .hidden { display: none; }
+    .fireworks, .final-heart {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      pointer-events: none;
+    }
+    .final-heart {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .final-heart p {
+      font-size: 2.5rem;
+      color: #ff6b6b;
+      text-shadow: 0 0 20px #ff6b6b;
+    }
+  </style>
+</head>
+<body>
+  <div id="star-container"></div>
 
+  <!-- Gift Box Section -->
+  <div class="gift-box-container">
+    <div id="gift-box">🎁</div>
+    <p id="hint" class="hidden">Love takes patience...</p>
+    <p id="romantic-note" class="hidden">If you say yes, forever begins now.</p>
+  </div>
+
+  <!-- Fireworks -->
+  <div class="fireworks hidden"></div>
+
+  <!-- Final Surprise -->
+  <div class="final-heart hidden">
+    <p>You are my forever.</p>
+  </div>
+
+  <audio id="background-music" loop>
+    <source src="romantic_instrumental.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Background Music
+    const backgroundMusic = document.getElementById('background-music');
+    backgroundMusic.volume = 0.5;
+    window.addEventListener('load', () => backgroundMusic.play());
+
+    // Twinkling Stars
+    const starContainer = document.getElementById('star-container');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.top = `${Math.random() * 100}vh`;
+      star.style.animationDelay = `${Math.random() * 2}s`;
+      starContainer.appendChild(star);
+    }
+
+    // Gift Box Logic
+    const giftBox = document.getElementById('gift-box');
+    const romanticNote = document.getElementById('romantic-note');
+    const hint = document.getElementById('hint');
+    const fireworksContainer = document.querySelector('.fireworks');
+    const finalHeart = document.querySelector('.final-heart');
+    let attempts = 0;
+
+    const fireworks = new Fireworks.default(fireworksContainer, {
+      speed: 3,
+      particles: 80,
+      brightness: { min: 50, max: 80 },
+      colors: ['#ff4d4d', '#ff69b4', '#ffd700', '#ffffff'],
+    });
+
+    giftBox.addEventListener('click', () => {
+      attempts++;
+      if (attempts < 3) {
+        hint.classList.remove('hidden');
+        setTimeout(() => hint.classList.add('hidden'), 2000);
+      } else {
+        giftBox.classList.add('hidden');
+        romanticNote.classList.remove('hidden');
+      }
+    });
+
+    romanticNote.addEventListener('click', () => {
+      romanticNote.classList.add('hidden');
+      fireworksContainer.classList.remove('hidden');
+      fireworks.start();
+      setTimeout(() => {
+        fireworks.stop();
+        fireworksContainer.classList.add('hidden');
+        finalHeart.classList.remove('hidden');
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
