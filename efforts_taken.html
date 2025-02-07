@@ -7,20 +7,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
     <style>
         /* Full-screen animated gradient background */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Quicksand', sans-serif;
-            height: 100vh;
-            background: linear-gradient(45deg, #ff69b4, #ffe6ea, #ff1493, #ff69b4);
-            background-size: 400% 400%;
-            animation: gradientAnimation 12s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
+       body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    height: 100vh;
+    background: linear-gradient(45deg, #ff69b4, #ffe6ea, #ff1493, #ff69b4);
+    background-size: 400% 400%;
+    animation: gradientAnimation 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; /* Keep horizontal overflow hidden */
+    overflow-y: auto;   /* Allow vertical scrolling */
+    position: relative;
+}
+
 
         @keyframes gradientAnimation {
             0% {
@@ -204,7 +206,7 @@
             <a href="chats.html" class="section-link">Baato ka khajana 💞</a>
             <a href="sorry.html" class="section-link">Curated some lines for you 💌</a> 
             <a href="happyROSEday.html" class="section-link">Valentine's Week (Rose Day) 🌹❤️  💌</a> 
-            <a href="/Propose Day/propose.html" class="section-link">Valentine's Week (Propose Day) 💍🌹❤️  💌</a><!-- Add more links here -->
+            <a href="/Propose Day/propose.html" class="section-link">Valentine's Week (Propose Day) 💍🌹❤️💌</a><!-- Add more links here -->
         </div>
 
         <footer>
