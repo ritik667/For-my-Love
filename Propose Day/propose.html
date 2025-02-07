@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Propose Day Mera baccha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- CSS Styles -->
+    <style>
+        /* Fonts */
+        body {
+            margin: 0;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #000;
+        }
+
+        /* Ensure symmetry */
+        .welcome-section, .photo-gallery, .love-letter, .proposal-section, .response-section, .final-message {
+            background: transparent;
+            padding: 100px 20px;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        /* General Button Styles */
+        .button {
+            background-color: #e84393;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1em;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 20px 10px 0 0;
+        }
+
+        .button:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        /* Proposal Buttons Specific Styling */
+        .response-buttons .button {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+            padding: 10px 25px;
+            margin: 10px;
+        }
+
+        .response-buttons .button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .typing-animation {
+            font-family: 'Dancing Script', cursive;
+            color: #fff;
+            font-size: 2em;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .15em solid #fff;
+            margin: 0 auto 20px;
+            width: 0;
+            animation: typing 5s steps(60, end) forwards, blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #fff; }
+        }
+
+        .heart-animation {
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+            background: url('heart.png') no-repeat center center / contain;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); }
+            70% { transform: scale(1); }
+            100% { transform: scale(0.95); }
+        }
+
+        /* Photo Gallery */
+        .photo-gallery h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .gallery-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+            justify-content: center;
+        }
+
+        .slide {
+            position: relative;
+            flex: none;
+            width: 300px;
+            height: 400px;
+            margin-right: 20px;
+            scroll-snap-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(70%);
+            transition: filter 0.3s;
+        }
+
+        .slide:hover img {
+            filter: brightness(100%);
+        }
+
+        .slide::after {
+            content: attr(data-hover);
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            color: #fff;
+        }
+
+        /* Love Letter */
+        .paper-effect {
+            background-color: rgba(255, 255, 255, 0.95);
+            display: inline-block;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .paper-effect p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
+            line-height: 1.5em;
+            color: #000;
+        }
+
+        /* Proposal Section */
+        .proposal-section .gift-box {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .proposal-section .gift-box:hover {
+            transform: scale(1.05);
+        }
+
+        .proposal-section .gift-box img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .proposal-section .instruction-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2em;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .proposal-message {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: visibility 0s linear 0.5s, opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .proposal-message.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0s;
+        }
+
+        .proposal-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .response-section p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: #fff;
+        }
+
+        .response-section .button {
+            margin-top: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+        }
+
+        /* Final Message */
+        .final-message p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        /* Twinkling Stars */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('21_agustus_2.jpg');
+            background-size: cover;
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Falling Petals */
+        .petal {
+            position: absolute;
+            top: -50px;
+            width: 20px;
+            height: 20px;
+            background-image: url('petal.png');
+            background-size: cover;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Accessibility Focus Outline */
+        .button:focus,
+        .response-buttons .button:focus,
+        .gift-box:focus {
+            outline: 2px dashed #fff;
+            outline-offset: 4px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .typing-animation {
+                font-size: 1.5em;
+            }
+            .photo-gallery h2, .final-message p, .proposal-message h2, .response-section p {
+                font-size: 2em;
+            }
+            .paper-effect p {
+                font-size: 1.5em;
+            }
+            .slide {
+                width: 80%;
+                height: auto;
+                margin: 0 auto;
+            }
+            .gallery-slider {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="background-music" src="bgmusic.mp3" loop></audio>
+
+    <!-- Sound Effects -->
+    <audio id="gift-open-sound" src="cardboard-box-open-182560.mp3"></audio>
+    <audio id="button-click-sound" src="den.mp3"></audio>
+    <audio id="happy-message" src="accept.mp3"></audio>
+
+    <!-- Falling Petals Animation -->
+    <div id="petals-container"></div>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section" id="welcome">
+        <h1 class="typing-animation">
+            Ayeshu, You are the love of my life! I love you.
+        </h1>
+        <div class="heart-animation" aria-hidden="true">
+            <!-- Decorative heart animation -->
+        </div>
+        <button class="button" onclick="scrollToSection('gallery')">Click to Begin</button>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="photo-gallery" id="gallery">
+        <h2 data-aos="fade-up">Our Beautiful Memories Together</h2>
+        <div class="gallery-slider">
+            <!-- Slide 1 -->
+            <div class="slide" data-hover="Our first auto date ❤ and holding hands.">
+                <img src="photo1.jpg" alt="Hands in Hands" loading="lazy">
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide" data-hover="The most beautiful day of my life ! That day we had our first kiss 😘">
+                <img src="photo2.jpg" alt="Waiting together at the station" loading="lazy">
+            </div>
+            <!-- Add more slides as needed -->
+        </div>
+        <button class="button" onclick="scrollToSection('love-letter')">Next</button>
+    </section>
+
+    <!-- Love Letter Section -->
+    <section class="love-letter" id="love-letter">
+        <div class="paper-effect" data-aos="fade-up">
+            <p>
+                From the moment I met you, you became the most beautiful part of my world.
+                Every moment with you is special, and today, I just want to say...
+                Will you stay mine forever?
+            </p>
+            <button class="button" onclick="playVoiceMessage()">Press to Hear</button>
+        </div>
+        <button class="button" onclick="scrollToSection('proposal')">Next</button>
+    </section>
+
+    <!-- Proposal Section -->
+    <section class="proposal-section" id="proposal">
+        <div class="gift-box" onclick="revealProposal()" tabindex="0">
+            <img src="gift.png" alt="Gift Box">
+            <p class="instruction-text">Tap the gift to open</p>
+        </div>
+        <div class="proposal-message" id="proposal-message">
+            <h2>I love you a lot, i'm proposing you with a 🌹🌹🌹🌹rose🌹🌹🌹🌹, Will You Be Mine Forever? 💍</h2>
+            <div class="response-buttons">
+                <button class="button" onclick="yesForever()" aria-label="Yes, Forever!">Yes, Forever!</button>
+                <button class="button" onclick="thinkAboutIt()" aria-label="Okay! Let Me Think About It">Okay! Let Me Think About It</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Response Section -->
+    <section class="response-section" id="response-section" style="display: none;">
+        <p id="response-message"></p>
+        <button class="button" onclick="reverseProposal()">Okay! Maine soch liya hai</button>
+    </section>
+
+    <!-- Final Message -->
+    <section class="final-message" id="final-message" style="display: none;">
+        <p>You made me the happiest person today, my love! ❤</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>"In your eyes, I found my home. In your heart, I found my forever."</p>
+        <p>Made with infinite love by Ritikesh for Ayeshu bccha ❤</p>
+    </footer>
+
+    <!-- Voice Message -->
+    <audio id="voice-message" src="presstohear.mp3"></audio>
+
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Include Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <script>
+        // Initialize AOS library
+        AOS.init({
+            duration: 1000,
+        });
+
+        // Background Music Control
+        const backgroundMusic = document.getElementById('background-music');
+
+        // Attempt to play background music on page load
+        window.addEventListener('load', () => {
+            // Try to play the music
+            backgroundMusic.volume = 0.1;
+            backgroundMusic.play().catch((error) => {
+                // Autoplay was prevented
+                console.log('Autoplay was prevented. Showing play button.');
+                // Show a play button
+                const playButton = document.createElement('button');
+                playButton.textContent = '🔊 Play Music';
+                playButton.className = 'button';
+                playButton.style.position = 'fixed';
+                playButton.style.bottom = '20px';
+                playButton.style.right = '20px';
+                playButton.style.zIndex = '1000';
+                document.body.appendChild(playButton);
+
+                playButton.addEventListener('click', () => {
+                    backgroundMusic.play();
+                    playButton.style.display = 'none';
+                });
+            });
+        });
+
+        // Voice Message Control
+        function playVoiceMessage() {
+            const voiceMessage = document.getElementById('voice-message');
+            voiceMessage.play();
+        }
+
+        // Smooth Scroll Function
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Reveal Proposal Function
+        function revealProposal() {
+            const giftBox = document.querySelector('.gift-box');
+            const proposalMessage = document.getElementById('proposal-message');
+            giftBox.style.display = 'none';
+            proposalMessage.classList.add('show');
+
+            // Play gift opening sound
+            const giftOpenSound = document.getElementById('gift-open-sound');
+            giftOpenSound.play();
+        }
+
+        // Response Button Functions
+        function yesForever() {
+            // Play button click sound
+            playButtonClickSound();
+            // Play happy message audio
+            const happyMessage = document.getElementById('happy-message');
+            happyMessage.play();
+
+            // Hide proposal message
+            document.getElementById('proposal-message').style.display = 'none';
+            // Show final message
+            showFinalMessage();
+
+            // Trigger confetti
+            launchConfetti();
+        }
+
+        function thinkAboutIt() {
+            // Play button click sound
+            playButtonClickSound();
+            // Hide proposal message
+            document.getElementById('proposal-message').style.display = 'none';
+            // Show response section with message
+            const responseSection = document.getElementById('response-section');
+            const responseMessage = document.getElementById('response-message');
+            responseMessage.textContent = "Take your time, I'll wait forever... ❤";
+            responseSection.style.display = 'block';
+            responseSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Reverse Proposal Process
+        function reverseProposal() {
+            // Hide response section
+            const responseSection = document.getElementById('response-section');
+            responseSection.style.display = 'none';
+            // Show proposal message again
+            const proposalMessage = document.getElementById('proposal-message');
+            proposalMessage.style.display = 'block';
+            proposalMessage.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function playButtonClickSound() {
+            const buttonClickSound = document.getElementById('button-click-sound');
+            buttonClickSound.play();
+        }
+
+        // Show Final Message
+        function showFinalMessage() {
+            const finalMessage = document.getElementById('final-message');
+            finalMessage.style.display = 'block';
+            finalMessage.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Falling Petals Animation
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            petal.style.left = Math.random() * window.innerWidth + 'px';
+            petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+            petal.style.opacity = Math.random();
+            document.getElementById('petals-container').appendChild(petal);
+            setTimeout(() => { petal.remove(); }, 10000);
+        }
+
+        setInterval(createPetal, 500);
+
+        // Confetti Animation
+        function launchConfetti() {
+            // Confetti settings
+            var duration = 5 * 1000; // 5 seconds
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 2000 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                // since particles fall down, start a bit higher than random
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0, 1), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
