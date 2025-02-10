@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meri Jaan Ayeshu ke Naam – Mere Kuch Waade</title>
+
+    <!-- Meta Tags for Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #ffefd5;
+            overflow-x: hidden;
+            color: #333;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            color: #CC0000;
+            margin: 20px 0;
+        }
+        p {
+            color: #333;
+            font-size: 1.1em;
+            margin: 10px 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        /* Glow Text Class */
+        .glow-text {
+            color: #ffe6f2;
+            text-shadow: 0 0 5px #FF69B4, 0 0 10px #FF69B4, 0 0 15px #FF69B4;
+        }
+        /* Container Styles */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 15px;
+        }
+        /* Parallax Background */
+        .parallax {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom right, #FFCCCC, #FFB6C1);
+        }
+        .parallax::before {
+            content: '';
+            position: absolute;
+            background-image: url('erose.jpeg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            z-index: -2;
+        }
+        /* Floating Hearts Animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .heart-emoji {
+            position: absolute;
+            color: #FF69B4;
+            animation: floatUp 10s infinite;
+            opacity: 0;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+        /* Sections */
+        section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Landing Page */
+        #landing {
+            position: relative;
+            padding: 100px 0 50px;
+            text-align: center;
+            background: transparent;
+        }
+        .welcome-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #CC0000;
+            padding: 0 20px;
+        }
+        .couple-image {
+            display: block;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 600px;
+            border: 5px solid #FFD700;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* Promises Section */
+        #promises {
+            padding: 50px 0;
+            background-color: #FFF8DC;
+        }
+        .promises-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            perspective: 1000px;
+        }
+        .promise-card {
+            position: relative;
+            width: 200px;
+            /* Remove fixed height */
+            margin: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FFD1DC 0%, #FFEFD5 100%);
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4em;
+            color: #CC0000;
+            transition: transform 0.3s;
+            transform-style: preserve-3d;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+        .promise-card:hover {
+            transform: translateY(-10px) rotateY(10deg);
+            box-shadow: 0 15px 25px rgba(255, 105, 180, 0.5);
+        }
+        /* Interactive Heart */
+        .interactive-heart {
+            text-align: center;
+            margin: 40px 0;
+        }
+        #heart-icon {
+            width: 100px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            background: rgba(0,0,0,0.7);
+        }
+        .modal-content {
+            background-color: #FFF;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        #close-button {
+            color: #aaa;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #surprise-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: #CC0000;
+            margin-top: 20px;
+        }
+        /* Counter Section */
+        #counter {
+            padding: 50px 0;
+            background-color: #F0FFF0;
+        }
+        #days-counter, #future-counter {
+            font-size: 1.5em;
+            color: #FF4500;
+            margin-bottom: 30px;
+        }
+        /* Love Letter Section */
+        #love-letter {
+            padding: 50px 0;
+            background-color: #FFE4E1;
+        }
+        #letter-content {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            margin: 20px;
+            white-space: pre-wrap;
+            color: #CC0000;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        /* Final Surprise */
+        #final-surprise {
+            padding: 50px 0;
+            text-align: center;
+            position: relative;
+        }
+        .romantic-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2em;
+            color: #CC0000;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+        .couple-animation {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* Rose Petals Animation */
+        .petal {
+            position: fixed;
+            top: -10%;
+            width: 30px;
+            height: 30px;
+            background-image: url('petal.png'); /* Replace with your rose petal image */
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            animation: fall 10s infinite;
+            z-index: 9;
+        }
+        @keyframes fall {
+            0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateX(100vw) translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        /* Music Control Button */
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        #music-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #FF69B4;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+            transition: transform 0.3s;
+        }
+        #music-icon::before,
+        #music-icon::after {
+            content: '';
+            position: absolute;
+            background-color: #fff;
+            top: 15px;
+            transition: all 0.3s;
+        }
+        #music-icon.play::before {
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid #fff;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+        #music-icon.pause::before,
+        #music-icon.pause::after {
+            width: 8px;
+            height: 20px;
+        }
+        #music-icon.pause::before {
+            left: 15px;
+        }
+        #music-icon.pause::after {
+            left: 27px;
+        }
+        #music-icon:hover {
+            transform: scale(1.1);
+        }
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #FF69B4;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+            transition: transform 0.3s;
+            z-index: 1000;
+        }
+        #back-to-top:hover {
+            transform: scale(1.1);
+        }
+        /* Extra Styles */
+        audio {
+            display: none;
+        }
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1024px) {
+            .promise-card {
+                width: calc(50% - 30px);
+            }
+        }
+        @media (max-width: 768px) {
+            .promise-card {
+                width: calc(100% - 30px);
+            }
+            #letter-content {
+                font-size: 1.6em;
+            }
+            #landing .welcome-message {
+                font-size: 1.8em;
+            }
+            .romantic-message {
+                font-size: 1.8em;
+            }
+        }
+        @media (max-width: 480px) {
+            h1, h2 {
+                font-size: 1.5em;
+            }
+            #landing .welcome-message {
+                font-size: 1.4em;
+                padding: 0 15px;
+            }
+            #letter-content {
+                font-size: 1.4em;
+                padding: 0 15px;
+            }
+            .romantic-message {
+                font-size: 1.5em;
+                padding: 0 15px;
+            }
+            #surprise-button {
+                width: 80px;
+                height: 80px;
+                font-size: 1em;
+            }
+            #music-icon {
+                width: 40px;
+                height: 40px;
+            }
+            #back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" src="bgmusic.mp3" type="audio/mpeg" loop></audio>
+    <!-- Replace 'your-song.mp3' with the path to your background music file -->
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <!-- Music Control Button -->
+    <button id="music-control" aria-label="Toggle Music">
+        <div id="music-icon" class="play"></div>
+    </button>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to Top">&#8679;</button>
+
+    <!-- Parallax Background -->
+    <div class="parallax">
+
+        <div class="container">
+            <!-- Landing Page -->
+            <section id="landing">
+                <h1 class="glow-text">Meri Jaan Ayeshu ke Naam – Mere Kuch Waade</h1>
+                <p class="welcome-message glow-text">
+                    Meri Jaan, aaj Promise Day par main tumse woh saare waade kar raha hoon jo meri har dhadkan ke saath sach honge. Yeh vaade sirf aaj ke liye nahi, balki hamesha ke liye hain. Har din, har pal, sirf tumhara rahunga!
+                </p>
+                <img src="photo2.jpg" alt="A photo of us together" class="couple-image">
+                <!-- Replace 'couple.jpg' with your own image -->
+            </section>
+
+            <!-- Promises Section -->
+            <section id="promises">
+                <h2 class="glow-text">Dil Se Vaade ❤️</h2>
+                <div class="promises-container" id="promises-container">
+                    <!-- Promise cards will be injected here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Interactive Heart -->
+            <div class="interactive-heart">
+                <img src="heart.png" alt="Click me!" id="heart-icon">
+                <!-- Replace 'glowing-heart.png' with your own image -->
+            </div>
+
+            <!-- Modal for Surprise Messages -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span id="close-button">&times;</span>
+                    <p id="surprise-message"></p>
+                </div>
+            </div>
+
+            <!-- Our Forever Counter -->
+            <section id="counter">
+                <h2 class="glow-text">Hamari Dosti ko Kitne Din Ho Gaye ⏳</h2>
+                <p id="days-counter"></p>
+                <!-- Additional Counter for Relationship Date -->
+                <h2 class="glow-text">Hamari Relationship ko Kitne Din Ho Gaye ❤️</h2>
+                <p id="future-counter"></p>
+            </section>
+
+            <!-- Love Letter Section -->
+            <section id="love-letter">
+                <h2 class="glow-text">💌</h2>
+                <p id="letter-content"></p>
+            </section>
+
+            <!-- Final Surprise -->
+            <section id="final-surprise">
+                <button id="surprise-button">Click for a Surprise!</button>
+                <div id="final-message" style="display: none;">
+                    <p class="romantic-message">
+                        My Love❤️, tum meri sabse badi prayer ho jo bhagwaan ne qubool kar li. Main tumse hamesha pyaar karta rahunga, chahe duniya badal jaye, chahe waqt tham jaye. Happy Promise Day, meri jaan!😘
+                    </p>
+                    <img src="couple-animation.gif" alt="An animation of us" class="couple-animation">
+                    <!-- Replace 'couple-animation.gif' with your own image or animation -->
+                </div>
+            </section>
+
+            <!-- Rose Petals Container -->
+            <div id="petals-container"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Wait for the DOM to fully load
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Elements Selection
+            var bgMusic = document.getElementById('bgMusic');
+            var floatingHearts = document.getElementById('floating-hearts');
+            var promisesContainer = document.getElementById('promises-container');
+            var heartIcon = document.getElementById('heart-icon');
+            var modal = document.getElementById('modal');
+            var closeButton = document.getElementById('close-button');
+            var surpriseMessage = document.getElementById('surprise-message');
+            var daysCounter = document.getElementById('days-counter');
+            var futureCounter = document.getElementById('future-counter');
+            var letterContent = document.getElementById('letter-content');
+            var surpriseButton = document.getElementById('surprise-button');
+            var finalMessage = document.getElementById('final-message');
+            var petalsContainer = document.getElementById('petals-container');
+            var musicControl = document.getElementById('music-control');
+            var musicIcon = document.getElementById('music-icon');
+            var backToTopButton = document.getElementById('back-to-top');
+
+            // Play Background Music on User Interaction
+            bgMusic.pause();
+            musicIcon.classList.add('play');
+
+            musicControl.addEventListener('click', function() {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    musicIcon.classList.remove('play');
+                    musicIcon.classList.add('pause');
+                } else {
+                    bgMusic.pause();
+                    musicIcon.classList.remove('pause');
+                    musicIcon.classList.add('play');
+                }
+            });
+
+            // Floating Heart Emojis
+            function createFloatingHearts() {
+                var emojis = ['❤️', '💕', '💖', '💗', '💘', '💝'];
+                for (var i = 0; i < 15; i++) { // Adjust number for performance
+                    var heart = document.createElement('div');
+                    heart.className = 'heart-emoji';
+                    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 5 + 's';
+                    heart.style.fontSize = Math.random() * 24 + 16 + 'px';
+                    heart.style.animationDuration = 10 + Math.random() * 10 + 's';
+                    floatingHearts.appendChild(heart);
+                }
+            }
+            createFloatingHearts();
+
+            // Promises Data
+            var promises = [
+                "Main wada karta hoon ki har din tumse aur zyada pyaar karunga, aaj se bhi zyada, kal se bhi zyada!",
+                "Main hamesha tumhari hasi ki wajah banne ki koshish karunga, chahe duniya kitni bhi mushkil kyon na ho.",
+                "Main tumhe hamesha waise hi pyaar karunga jaise ek chhota baccha apni fav chocolate se karta hai – bina kisi shart ke!",
+                "Main wada karta hoon ki tumhare har \"mujhe kuch nahi hua\" ke peeche chhupi pareshaani ko samajhne ki koshish karunga.",
+                "Jab tum thak jaogi, main tumhara sahara banoonga. Jab tum rogi, main tumhare aansu pochunga.",
+                "Main tumhare bina ek din bhi nahi jee sakta, aur yeh sirf baat nahi, dil ki gehraiyon se aata ehsaas hai.",
+                "Main tumhare saare nakhre uthane ka wada karta hoon, chahe woh chocolate ki demand ho ya late night talks ki!",
+                "Main har jagah tumhara haath thamne ka wada karta hoon, taaki tumhe kabhi bhi akela mehsoos na ho.",
+                "Main tumse sirf tab tak pyaar nahi karunga jab tak hum saath hain, balki uske bhi baad, har janam, har kahaani mein.",
+                "Main tumse har roz naye tareeke se pyaar karne ka wada karta hoon, taaki kabhi bhi humara pyaar puraana na lage!",
+                // Add more promises as you wish
+            ];
+
+            // Render Promises
+            for (var i = 0; i < promises.length; i++) {
+                var card = document.createElement('div');
+                card.className = 'promise-card';
+                var promiseText = document.createElement('p');
+                promiseText.textContent = promises[i];
+                card.appendChild(promiseText);
+                promisesContainer.appendChild(card);
+            }
+
+            // Interactive Heart - Surprise Messages
+            var messages = [
+                "Tum meri sabkuch ho, aur main sirf tumhara hoon!",
+                "Tumhare bina zindagi, mujhe sochna bhi nhi h , meri jaan!",
+                "Pata hai? Har din tumse aur zyada pyaar ho jaata hai!",
+                // Add more messages if desired
+            ];
+
+            heartIcon.addEventListener('click', function() {
+                var randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                surpriseMessage.textContent = randomMessage;
+                modal.style.display = 'block';
+            });
+
+            closeButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside of it
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Our Forever Counter - Since We Know Each Other
+            var startDate = new Date('2023-08-10T00:00:00Z'); // 10 August 2023 UTC
+            function updateDaysCounter() {
+                var now = new Date();
+                var timeDifference = now - startDate;
+
+                var totalSeconds = Math.floor(timeDifference / 1000);
+                var daysDifference = Math.floor(totalSeconds / 86400);
+                var remainingSeconds = totalSeconds % 86400;
+                var hours = Math.floor(remainingSeconds / 3600);
+                remainingSeconds %= 3600;
+                var minutes = Math.floor(remainingSeconds / 60);
+                var seconds = remainingSeconds % 60;
+
+                daysCounter.textContent = "Hum ek dusre ko " + daysDifference + " din " + hours + " ghante " + minutes + " minute aur " + seconds + " second se jaante hain ❤️";
+            }
+            updateDaysCounter();
+            setInterval(updateDaysCounter, 1000); // Update every second
+
+            // Future Counter - Counting Down to Relationship Date
+            var futureDate = new Date('2024-06-07T00:00:00Z'); // 7 June 2024 UTC
+            function updateFutureCounter() {
+                var now = new Date();
+                var timeDifference = futureDate - now;
+
+                var totalSeconds = Math.floor(timeDifference / 1000);
+                var daysDifference = Math.floor(totalSeconds / 86400);
+                var remainingSeconds = totalSeconds % 86400;
+                var hours = Math.floor(remainingSeconds / 3600);
+                remainingSeconds %= 3600;
+                var minutes = Math.floor(remainingSeconds / 60);
+                var seconds = remainingSeconds % 60;
+
+                if (timeDifference >= 0) {
+                    futureCounter.textContent = "Sirf " + daysDifference + " din " + hours + " ghante " + minutes + " minute aur " + seconds + " second baaki hain jab hum officially ek saath honge! 💕";
+                } else {
+                    var pastTotalSeconds = -totalSeconds;
+                    var pastDays = Math.floor(pastTotalSeconds / 86400);
+                    futureCounter.textContent = "Hamari relationship ko " + pastDays + " din se zyada ho chuke hain! 💖";
+                }
+            }
+            updateFutureCounter();
+            setInterval(updateFutureCounter, 1000); // Update every second
+
+            // Love Letter Typing Animation
+            var letterText = "Meri jaan, Main tumse bepanah mohabbat karta hoon, aur yeh mohabbat sirf badhti rahegi...";
+            var index = 0;
+
+            function typeLetter() {
+                if (index < letterText.length) {
+                    letterContent.textContent += letterText.charAt(index);
+                    index++;
+                    setTimeout(typeLetter, 100); // Adjust speed as needed
+                }
+            }
+            typeLetter();
+
+            // Final Surprise - Rose Petals Animation
+            surpriseButton.addEventListener('click', function() {
+                surpriseButton.style.display = 'none';
+                finalMessage.style.display = 'block';
+                startRosePetalsAnimation();
+                // Optional: Stop Background Music
+                bgMusic.pause();
+            });
+
+            function startRosePetalsAnimation() {
+                for (var i = 0; i < 20; i++) { // Adjust number for performance
+                    var petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.style.left = Math.random() * 100 + '%';
+                    petal.style.animationDelay = Math.random() * 5 + 's';
+                    petal.style.animationDuration = 10 + Math.random() * 5 + 's';
+                    petalsContainer.appendChild(petal);
+                }
+            }
+
+            // Back to Top Button Functionality
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Fade-in Sections on Scroll
+            function checkSections() {
+                var sections = document.querySelectorAll('section');
+                for (var i = 0; i < sections.length; i++) {
+                    var section = sections[i];
+                    var rect = section.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        section.classList.add('in-view');
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', checkSections);
+            checkSections(); // Run on load
+
+        });
+    </script>
+
+</body>
+</html>
