@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday Ayesha! 🎂💖</title>
+  <!-- Using Montserrat from Google Fonts for a modern, clean look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
+      background-size: 600% 600%;
+      animation: gradientAnimation 30s ease infinite;
+      text-align: center;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* Dreamy Fog Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 70%);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -2;
+      filter: blur(30px);
+    }
+    /* Fireworks Canvas */
+    #fireworksCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    /* Falling Hearts */
+    .falling-hearts {
+      position: fixed;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      top: 0; left: 0;
+      z-index: 0;
+    }
+    .heart-shape {
+      position: absolute;
+      color: #ffcccb;
+      font-size: 20px;
+      opacity: 0.9;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      from { transform: translateY(-10vh); }
+      to { transform: translateY(100vh); }
+    }
+    /* Main Container */
+    .container {
+      position: relative;
+      z-index: 1;
+      margin: 50px auto 40px auto;
+      max-width: 600px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      /* Subtle, attractive heading color */
+      color: #d8a87d;
+    }
+    .heart {
+      font-size: 50px;
+      animation: heartbeat 1.5s infinite;
+    }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+    /* Glowing Message Box */
+    .message-box {
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 20px;
+      font-size: 18px;
+      animation: glow 2s infinite alternate;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+      to { box-shadow: 0 0 20px rgba(255,255,255,0.9); }
+    }
+    /* Gift Section */
+    .gift-box {
+      margin: 30px auto;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      color: #d6336c;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      display: inline-block;
+    }
+    .gift-box:hover { transform: scale(1.2); }
+    #giftPhotoContainer {
+      display: none;
+      margin: 20px auto;
+    }
+    #giftPhotoContainer img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      animation: popIn 1s ease;
+    }
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    #giftMessage {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #ffeb3b;
+      font-weight: 600;
+      animation: fadeInText 1s ease;
+    }
+    @keyframes fadeInText {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Carousel of Memories */
+    .carousel {
+      margin: 30px auto;
+      max-width: 100%;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-item {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    }
+    .carousel-item img {
+      width: 100%;
+      border-radius: 20px;
+    }
+    .carousel-caption {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    .carousel-button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: rgba(255,255,255,0.8);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .carousel-button:hover { background: rgba(255,255,255,1); }
+    /* Hug Meter */
+    .hug-meter {
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 20px;
+      font-size: 18px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+    .hug-button {
+      margin: 10px;
+      padding: 10px 20px;
+      background: #fff;
+      color: #d6336c;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .hug-button:hover { transform: scale(1.2); }
+    .hug-meter-progress {
+      margin-top: 10px;
+      width: 80%;
+      height: 20px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hug-meter-fill {
+      height: 100%;
+      width: 0%;
+      background: #ffeb3b;
+      transition: width 0.3s;
+    }
+    /* Compliment Section */
+    .compliment-section {
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 20px;
+      display: inline-block;
+      font-size: 18px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+    .compliment-button {
+      padding: 10px 20px;
+      background: #fff;
+      color: #d6336c;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .compliment-button:hover { transform: scale(1.2); }
+    .compliment-display {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #ffeb3b;
+      font-weight: 600;
+    }
+    /* Scrolling Love Note */
+    .love-note {
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 20px;
+      font-size: 20px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+    .love-note p {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scrollText 15s linear infinite;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    /* Background Music Button */
+    .music-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.8);
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .music-button:hover { background: rgba(255,255,255,1); }
+    /* Button Click Animation */
+    .button-animate {
+      animation: buttonClick 0.3s ease;
+    }
+    @keyframes buttonClick {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    /* Confession & Apologies Container */
+    .confession-container {
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 20px;
+      font-size: 18px;
+      color: #ffeb3b;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      display: none;
+    }
+    /* Personal Voice Message */
+    .voice-message-container {
+      margin: 20px auto;
+      padding: 10px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 10px;
+      max-width: 300px;
+      display: none;
+    }
+    .voice-message-container button {
+      padding: 10px 20px;
+      background: #fff;
+      color: #d6336c;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .voice-message-container button:hover { transform: scale(1.1); }
+    .voice-message-container audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+    /* Interactive Timeline Gallery */
+    .timeline-section {
+      margin: 40px auto;
+      max-width: 800px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      text-align: left;
+      margin-bottom: 40px;
+    }
+    .timeline-section h2 {
+      font-size: 2em;
+      color: #d8a87d;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .timeline {
+      position: relative;
+      margin-left: 40px;
+      border-left: 3px solid #ffeb3b;
+      padding-left: 20px;
+    }
+    .timeline-item {
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .timeline-item:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .timeline-marker {
+      position: absolute;
+      left: -31px;
+      top: 10px;
+      background: #ffeb3b;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #d8a87d;
+    }
+    .timeline-content h3 {
+      font-size: 1.2em;
+      color: #ffeb3b;
+      margin-bottom: 5px;
+    }
+    .timeline-date {
+      font-size: 0.9em;
+      color: #fbc2eb;
+      margin-bottom: 5px;
+    }
+    .timeline-detail {
+      font-size: 1em;
+      color: #ffffff;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .timeline-item.expanded .timeline-detail {
+      display: block;
+      opacity: 1;
+    }
+    /* Mini Puzzle */
+    .puzzle-container {
+      margin: 20px auto;
+      padding: 10px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 10px;
+      max-width: 300px;
+      display: none;
+    }
+    .puzzle-letter {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px;
+      background: #fff;
+      color: #d6336c;
+      border: 2px solid #d6336c;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 40px;
+      text-align: center;
+    }
+    .puzzle-result {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #ffeb3b;
+      font-weight: 600;
+    }
+    /* Extra Interactive Elements Container */
+    .extra-container {
+      margin: 40px auto;
+      max-width: 600px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease-in-out;
+    }
+    .extra-container h2 { margin-bottom: 20px; }
+    .interactive-button {
+      padding: 10px 20px;
+      margin: 10px;
+      background: #fff;
+      color: #d6336c;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .interactive-button:hover { transform: scale(1.1); }
+    /* Floating Stars */
+    .star {
+      position: absolute;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 10; 
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 80%;
+      text-align: center;
+      color: #d6336c;
+      font-size: 20px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #000;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    /* Flip Card */
+    .flip-card {
+      background-color: transparent;
+      width: 200px;
+      height: 150px;
+      perspective: 1000px;
+      margin: 20px auto;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.8);
+      color: #d6336c;
+      font-weight: 600;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+    /* Sticky Notes */
+    .sticky-notes {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    .sticky-note {
+      background: #ffeb3b;
+      color: #333;
+      padding: 10px;
+      width: 80px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .sticky-note:hover { transform: scale(1.1); }
+    /* Butterflies */
+    .butterfly-container {
+      position: relative;
+      height: 80px;
+      margin: 20px 0;
+    }
+    .butterfly {
+      font-size: 30px;
+      position: absolute;
+      animation: flutter 5s linear infinite;
+    }
+    @keyframes flutter {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(20px) translateY(-20px); }
+      100% { transform: translateX(0) translateY(0); }
+    }
+    /* Chat Bubble */
+    .chat-bubble {
+      background: #fff;
+      color: #d6336c;
+      padding: 15px;
+      border-radius: 20px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    /* Love Calculator Result */
+    .love-result {
+      margin: 10px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #ffeb3b;
+    }
+    /* Kiss Animation */
+    .kiss-animation {
+      font-size: 50px;
+      animation: pop 1s ease-out;
+    }
+    @keyframes pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    /* Thank You Note */
+    .thank-you-note {
+      margin: 20px auto;
+      padding: 10px;
+      background: #fff;
+      color: #d6336c;
+      width: 150px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    /* Bubble Pop Container */
+    .bubble-pop-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .bubble {
+      background: rgba(255,255,255,0.8);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .bubble:hover { transform: scale(1.2); }
+  </style>
+</head>
+<body>
+  <!-- Canvas for Fireworks -->
+  <canvas id="fireworksCanvas"></canvas>
+  <!-- Falling Hearts -->
+  <div class="falling-hearts"></div>
+  
+  <div class="container">
+    <h1>Happy Birthday, Ayesha! 🎂💖</h1>
+    <p class="heart">💖💖💖</p>
+    <p id="greetingText">Meri pyaari Ayeshu bccha, tum meri duniya ho! Tum jitni khoobsurat ho, utni hi special bhi ho! 🌸💘</p>
+    
+    <div class="message-box">
+      <p id="messageBoxText"></p>
+    </div>
+    
+    <!-- Gift Section -->
+    <div class="gift-box" onclick="showGift()">Meri Maharani aapke liye ek tohfa 🎁 kripya qubool kare 😊</div>
+    <div id="giftPhotoContainer">
+      <!-- Replace the src with your actual photo URL -->
+      <img src="gift.jpg" alt="Your Gift Photo" />
+      <div id="giftMessage">Aapko kya lga kya hoga isme, Obvsiously Mai 😊🎉</div>
+    </div>
+    
+    <!-- Carousel of Memories -->
+    <div class="carousel">
+      <div class="carousel-inner" id="carouselInner">
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/600x400/ff758c/ffffff?text=Memory+1" alt="Memory 1">
+          <div class="carousel-caption">Yaad hai, pehli journey? Unforgettable moments! 😊</div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/600x400/ff7eb3/ffffff?text=Memory+2" alt="Memory 2">
+          <div class="carousel-caption">jab Tum hasti ho tab mera pura sansaar hasta hai! 😊</div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/600x400/ff758c/ffffff?text=Memory+3" alt="Memory 3">
+          <div class="carousel-caption">Every conversation with you fills me with hope and love. 😊</div>
+        </div>
+      </div>
+      <button class="carousel-button" onclick="prevSlide()">Prev</button>
+      <button class="carousel-button" onclick="nextSlide()">Next</button>
+    </div>
+    
+    <!-- Hug Meter -->
+    <div class="hug-meter">
+      <p>Ek hug?👉👈🤗</p>
+      <button class="hug-button" onclick="increaseHug()">Give hug 🤗</button>
+      <div class="hug-meter-progress">
+        <div class="hug-meter-fill" id="hugMeterFill"></div>
+      </div>
+    </div>
+    
+    <!-- Compliment Section -->
+    <div class="compliment-section">
+      <button class="compliment-button" onclick="showCompliment()">Kuch tarife aapki 💕</button>
+      <div id="complimentDisplay" class="compliment-display"></div>
+    </div>
+    
+    <!-- Scrolling Love Note -->
+    <div class="love-note">
+      <p id="loveNoteText"></p>
+    </div>
+    
+    <!-- Background Music Button -->
+    <button class="music-button" onclick="toggleMusic()">🎶</button>
+    <audio id="bgMusic" loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+  
+  <!-- Extra Interactive Elements -->
+  <div class="extra-container">
+    <h2>Extra Surprises, meri jaan! 😊💖</h2>
+    <button class="interactive-button" onclick="showFloatingStarMessage()">1 message ⭐</button>
+    <button class="interactive-button" onclick="showBouquet()">💐</button>
+    <button class="interactive-button" onclick="openModal()">🔒</button>
+    <div id="secretModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="secretMessageText"></p>
+      </div>
+    </div>
+    <div class="flip-card" onclick="flipCard(this)">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" id="flipCardFrontText">🤫</div>
+        <div class="flip-card-back" id="flipCardBackText">You are my forever love, meri jaan! 💖💖I love you so much 💖</div>
+      </div>
+    </div>
+    <button class="interactive-button" onclick="launchConfetti()">Push 🎊</button>
+    <div class="sticky-notes">
+      <div class="sticky-note" onclick="alert('Tum meri jaan, you are the best! 😊')">1</div>
+      <div class="sticky-note" onclick="alert('I cherish every moment with you, meri jaan! 😊 thankyou so much staying in my life as my evergreen choice and most favourite person 💕')">2</div>
+      <div class="sticky-note" onclick="alert('My love, tumhare wajah se hi khush rehta hu 🌟')">3</div>
+    </div>
+    <div class="butterfly-container">
+      <div class="butterfly" style="left:10%;">🦋</div>
+      <div class="butterfly" style="left:40%;">🦋</div>
+      <div class="butterfly" style="left:70%;">🦋</div>
+    </div>
+    <button class="interactive-button" onclick="toggleChatBubble()">Open Chat Bubble 💬</button>
+    <div id="chatBubble" class="chat-bubble" style="display:none;">You're amazing, meri jaan! 😊</div>
+    <button class="interactive-button" onclick="calculateLove()">Love % ❤️</button>
+    <div id="loveResult" class="love-result"></div>
+    <button class="interactive-button" onclick="sendKiss()">Ek kiss bhi chahiye tha👉👈😁 😘</button>
+    <div id="kissAnimation" class="kiss-animation" style="display:none;">😘</div>
+    <div id="thankYouNote" class="thank-you-note" onclick="toggleThankYou()">Thank You being the most beautiful ✨and sweet🌟 part of my life🙏</div>
+    
+    <!-- Dynamic Balloon Pop Section (7 Balloons) -->
+    <div class="bubble-pop-container" id="bubblePopContainer"></div>
+    
+    <!-- Confession & Apologies Section -->
+    <button class="interactive-button" onclick="showConfession()">Confession & Apologies 💌</button>
+    <div class="confession-container" id="confessionContainer">
+      <p id="confessionText"></p>
+    </div>
+    
+    <!-- Personal Voice Message Section -->
+    <button class="interactive-button" onclick="toggleVoiceMessage()">Kuch sabd 🎤</button>
+    <div class="voice-message-container" id="voiceMessageContainer">
+      <!-- Replace "your-voice-message.mp3" with your actual audio file -->
+      <audio controls>
+        <source src="your-voice-message.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    
+    <!-- Mini Puzzle Section -->
+    <button class="interactive-button" onclick="togglePuzzle()">Dimag lagaiye jara Madam!! 🔍</button>
+    <div class="puzzle-container" id="puzzleContainer">
+      <p>Arrange these letters to form the word "LOVE"</p>
+      <div id="puzzleLetters"></div>
+      <div class="puzzle-result" id="puzzleResult"></div>
+    </div>
+  </div>
+  
+  <!-- New Section: Interactive Timeline Gallery -->
+  <section class="timeline-section">
+    <h2>Our Beautiful Journey</h2>
+    <div class="timeline">
+      <div class="timeline-item" onclick="toggleTimelineDetail(this)">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>👨💖👩</h3>
+          <p class="timeline-date">June 7, 2023</p>
+          <p class="timeline-detail">Wo meri sabse acchi raat thi life ki jis din tum mujhe mil gyi.💖😘</p>
+        </div>
+      </div>
+      <div class="timeline-item" onclick="toggleTimelineDetail(this)">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>💌</h3>
+          <p class="timeline-date">Aug 10, 2022</p>
+          <p class="timeline-detail">Pehli baar jab maine tumhara text dekha tha jab maine really baat ki thi us time meri khushi ka thikana nhi tha.😁😁</p>
+        </div>
+      </div>
+      <div class="timeline-item" onclick="toggleTimelineDetail(this)">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>🚌</h3>
+          <p class="timeline-date">22 August, 2024</p>
+          <p class="timeline-detail">heaven for me.</p>
+        </div>
+      </div>
+      <div class="timeline-item" onclick="toggleTimelineDetail(this)">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Special Memory</h3>
+          <p class="timeline-date">♾️</p>
+          <p class="timeline-detail">I'll love you until my last breath💖.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    /* --- Dynamic Content Initialization --- */
+    window.onload = function() {
+      // Randomize Greeting Text (Hinglish & English)
+      const greetings = [
+        "Meri pyaari Ayeshu bccha, tum meri sabkuch ho!",
+        "My love, your beauty brightens my life!",
+        "Meri jaan, tumhari smile se mera har din ban jata hai!"
+      ];
+      document.getElementById("greetingText").innerText = greetings[Math.floor(Math.random()*greetings.length)] + " Tum jitni khoobsurat ho, utni hi special bhi ho! 🌸💘";
+      
+      // Randomize Message Box Text
+      const messageBoxMessages = [
+        "Tumhari hasi mera favorite music hai, tumhari awaaz meri zindagi ki sabse pyari melody hai. Har pal tumse milne ka intezaar rehta hai, meri jaan! 🎶",
+        "Your smile is my favorite song, and your voice is the sweetest melody. 😊",
+        "Meri jaan, every moment with you is a blessing from the god himself, my love! 💖"
+      ];
+      document.getElementById("messageBoxText").innerText = messageBoxMessages[Math.floor(Math.random()*messageBoxMessages.length)];
+      
+      // Randomize Love Note Text
+      const loveNotes = [
+        "Ayeshu baby, tum meri zindagi ka wo roshni ho jise main hamesha dil se mehsoos karta hoon. 🌟",
+        "My love, you are the light of my life and every day with you is magical! ✨",
+        "Meri jaan, tumhari har ek ada ke bad aapko gale se lagane ka dil karta h. 💕"
+      ];
+      document.getElementById("loveNoteText").innerText = loveNotes[Math.floor(Math.random()*loveNotes.length)];
+      
+      // Randomize Secret Modal Message
+      const secretMessages = [
+        "Meri jaan, aap mere liye sabse kimti ho! 💖",
+        "My love, your happiness is has always been my top priority! 😊",
+        "Aap meri jaan, your smile touches my heart! 🌟"
+      ];
+      document.getElementById("secretMessageText").innerText = secretMessages[Math.floor(Math.random()*secretMessages.length)];
+      
+      // Randomize Flip Card Texts
+      const flipCardFrontMessages = ["Wanna reveal 🤫", "Kuch to secret hai...hmmm🤔", "Click karna jara, meri jaan!"];
+      const flipCardBackMessages = ["😗😘Suprise Kiss"];
+      document.getElementById("flipCardFrontText").innerText = flipCardFrontMessages[Math.floor(Math.random()*flipCardFrontMessages.length)];
+      document.getElementById("flipCardBackText").innerText = flipCardBackMessages[Math.floor(Math.random()*flipCardBackMessages.length)];
+      
+      // Initialize Puzzle
+      generatePuzzle();
+    };
+
+    /* --- Button Click Animation for All Buttons --- */
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.classList.add('button-animate');
+        setTimeout(() => { this.classList.remove('button-animate'); }, 300);
+      });
+    });
+
+    /* --- Existing JS Functions --- */
+    // Falling Hearts
+    function createHearts() {
+      const heartContainer = document.querySelector('.falling-hearts');
+      for (let i = 0; i < 30; i++) {
+        let heart = document.createElement('div');
+        heart.classList.add('heart-shape');
+        heart.innerHTML = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        heartContainer.appendChild(heart);
+      }
+    }
+    createHearts();
+
+    // Gift Section: Show Gift Photo and Celebration Animation
+    function showGift() {
+      launchConfetti(); // Trigger celebration animation
+      document.getElementById('giftPhotoContainer').style.display = 'block';
+      document.querySelector('.gift-box').style.display = 'none';
+    }
+
+    // Carousel Functionality
+    let currentSlide = 0;
+    function showSlide(index) {
+      const slides = document.querySelectorAll('.carousel-item');
+      if (index >= slides.length) { currentSlide = 0; }
+      if (index < 0) { currentSlide = slides.length - 1; }
+      const carouselInner = document.getElementById('carouselInner');
+      carouselInner.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+    }
+    function nextSlide() { currentSlide++; showSlide(currentSlide); }
+    function prevSlide() { currentSlide--; showSlide(currentSlide); }
+
+    // Hug Meter Functionality
+    let hugCount = 0;
+    function increaseHug() {
+      hugCount++;
+      let fill = document.getElementById('hugMeterFill');
+      let percentage = Math.min(hugCount * 10, 100);
+      fill.style.width = percentage + '%';
+      if (percentage >= 100) {
+        alert("I love you much, aap mere dil ka armaan ho! 💖😊");
+        hugCount = 0;
+        fill.style.width = "0%";
+      }
+    }
+
+    // Compliment Generator
+    function showCompliment() {
+      const compliments = [
+        "Meri jaan, tum meri zindagi ho! 💕",
+        "My love, you are the heartbeat of my life! ❤️",
+        "Tumhari muskaan se hi mera din ban jata hai, meri jaan! 😊",
+        "I love you much, meri jaan, you're the light of my life! 🌟",
+        "My love, aap meri zindagi mein roshni bhar dete ho! ✨"
+      ];
+      const randomIndex = Math.floor(Math.random() * compliments.length);
+      document.getElementById('complimentDisplay').innerText = compliments[randomIndex];
+    }
+
+    // Background Music Toggle
+    let musicPlaying = false;
+    function toggleMusic() {
+      const bgMusic = document.getElementById('bgMusic');
+      if (musicPlaying) { bgMusic.pause(); musicPlaying = false; }
+      else { bgMusic.play(); musicPlaying = true; }
+    }
+
+    // Fireworks Simulation using Canvas
+    const canvas = document.getElementById('fireworksCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const fireworks = [];
+    const particles = [];
+    function random(min, max) { return Math.random() * (max - min) + min; }
+    class Firework {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.radius = 2;
+        this.speedY = random(-7, -10);
+        this.alpha = 1;
+      }
+      update() { this.y += this.speedY; this.alpha -= 0.02; }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+    class Particle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.radius = random(1, 3);
+        this.speedX = random(-5, 5);
+        this.speedY = random(-5, 5);
+        this.alpha = 1;
+        this.color = 'hsl(' + random(0, 360) + ', 100%, 50%)';
+      }
+      update() { this.x += this.speedX; this.y += this.speedY; this.alpha -= 0.02; }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+    function createFirework() {
+      let x = random(100, canvas.width - 100);
+      let y = canvas.height;
+      let fw = new Firework(x, y);
+      fireworks.push(fw);
+    }
+    function explode(x, y) {
+      for (let i = 0; i < 50; i++) {
+        let p = new Particle(x, y);
+        particles.push(p);
+      }
+    }
+    function animateFireworks() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = fireworks.length - 1; i >= 0; i--) {
+        let fw = fireworks[i];
+        fw.update(); fw.draw();
+        if (fw.alpha <= 0.1) { explode(fw.x, fw.y); fireworks.splice(i, 1); }
+      }
+      for (let i = particles.length - 1; i >= 0; i--) {
+        let p = particles[i];
+        p.update(); p.draw();
+        if (p.alpha <= 0) { particles.splice(i, 1); }
+      }
+      requestAnimationFrame(animateFireworks);
+    }
+    animateFireworks();
+    setInterval(createFirework, 1000);
+    window.addEventListener('resize', function(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+    /* --- Extra Interactive Elements --- */
+    // 1. Floating Stars
+    function createStars() {
+      const starContainer = document.getElementById('floatingStars');
+      for (let i = 0; i < 10; i++) {
+        let star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 90 + '%';
+        star.style.top = Math.random() * 50 + '%';
+        star.innerText = '⭐';
+        star.onclick = function() { alert("My shining star! - Ayeshu Farhaz ✨"); }
+        starContainer.appendChild(star);
+      }
+    }
+    createStars();
+    function showFloatingStarMessage() {
+      alert("Meri jaan, you shine brighter than any star in the sky! 🌟");
+    }
+
+    // 2. Virtual Bouquet
+    function showBouquet() {
+      alert("Meri jaan, aap meri khilti hui flower ho, love! 🌸💐");
+    }
+
+    // 3. Secret Message Modal
+    function openModal() { document.getElementById('secretModal').style.display = 'block'; }
+    function closeModal() { document.getElementById('secretModal').style.display = 'none'; }
+
+    // 4. Flip Card
+    function flipCard(card) { card.classList.toggle('flipped'); }
+
+    // 5. Confetti Explosion
+    function launchConfetti() {
+      for (let i = 0; i < 30; i++) {
+        let confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = Math.random() * 100 + 'vh';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.background = 'hsl(' + random(0, 360) + ', 100%, 50%)';
+        confetti.style.opacity = Math.random();
+        confetti.style.borderRadius = '50%';
+        confetti.style.zIndex = 100;
+        document.body.appendChild(confetti);
+        setTimeout(() => { confetti.remove(); }, 2000);
+      }
+    }
+
+    // 6. (Sticky Notes handled inline)
+
+    // 7. Butterflies (CSS animation)
+
+    // 8. Floating Chat Bubble
+    function toggleChatBubble() {
+      const bubble = document.getElementById('chatBubble');
+      bubble.style.display = (bubble.style.display === 'none' || bubble.style.display === '') ? 'block' : 'none';
+    }
+
+    // 9. Love Calculator
+    function calculateLove() {
+      let lovePercent = Math.floor(random(90, 100));
+      document.getElementById('loveResult').innerText = "Love Percentage: " + lovePercent + "%, meri jaan! ❤️";
+    }
+
+    // 10. Virtual Kiss Button
+    function sendKiss() {
+      const kiss = document.getElementById('kissAnimation');
+      kiss.style.display = 'block';
+      setTimeout(() => { kiss.style.display = 'none'; }, 1500);
+    }
+
+    // 11. Interactive Thank You Note
+    function toggleThankYou() {
+      const note = document.getElementById('thankYouNote');
+      note.innerText = (note.innerText === "Thank You 🙏") ? "Thank you for being my love, meri jaan! 😊" : "Thank You 🙏";
+    }
+
+    // 12. Dynamic Balloon Pop Section (7 Balloons)
+    function createBalloons() {
+      const container = document.getElementById('bubblePopContainer');
+      const balloonMessages = [
+        "वाह! Aap meri jaan, aapki muskaan dil ko chhoo jati hai 😊🎈",
+        "शानदार! My love, aapki hansi se meri duniya roshan ho jati hai 🌟🎈",
+        "कमाल हो! Aap meri jaan, aapki aankhon mein bas pyaar hai 💖🎈",
+        "मस्त! My love, aap mere dil ka armaan ho 😊🎈",
+        "सुंदर! Aap meri jaan, aapki har baat mere dil ko chhoo jati hai 💕🎈",
+        "Tumne mere dil ki dhadkan tez kar di! 💓🎈",
+        "Tumne mere dil ko choo liya, meri jaan! 😍🎈"
+      ];
+      for (let i = 0; i < 7; i++){
+        let balloon = document.createElement('div');
+        balloon.className = 'bubble';
+        balloon.innerText = '🎈';
+        balloon.onclick = function() {
+          balloon.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+          balloon.style.transform = "scale(0)";
+          balloon.style.opacity = "0";
+          setTimeout(() => {
+            const rect = balloon.getBoundingClientRect();
+            const messageOverlay = document.createElement('div');
+            messageOverlay.style.position = "absolute";
+            messageOverlay.style.left = (rect.left + rect.width/2) + "px";
+            messageOverlay.style.top = (rect.top + rect.height/2) + "px";
+            messageOverlay.style.transform = "translate(-50%, -50%)";
+            messageOverlay.style.background = "rgba(0,0,0,0.6)";
+            messageOverlay.style.color = "#ffeb3b";
+            messageOverlay.style.padding = "10px 15px";
+            messageOverlay.style.borderRadius = "10px";
+            messageOverlay.style.fontSize = "16px";
+            messageOverlay.style.fontWeight = "600";
+            messageOverlay.style.opacity = "0";
+            messageOverlay.style.transition = "opacity 0.5s ease";
+            const randomIndex = Math.floor(Math.random() * balloonMessages.length);
+            typeWriter(balloonMessages[randomIndex], messageOverlay, 50);
+            document.body.appendChild(messageOverlay);
+            setTimeout(() => { messageOverlay.style.opacity = "1"; }, 50);
+            setTimeout(() => { 
+              messageOverlay.style.opacity = "0";
+              setTimeout(() => { messageOverlay.remove(); }, 1000);
+            }, 3000);
+            balloon.remove();
+          }, 300);
+        }
+        container.appendChild(balloon);
+      }
+    }
+    createBalloons();
+
+    // 13. Confession & Apologies Section (Integrated Feature)
+    function showConfession() {
+      const container = document.getElementById('confessionContainer');
+      container.style.display = 'block';
+      const confessionMessage = "Meri jaan, main apni galtiyon ke liye dil se maafi chahta hoon. Main hamesha aapke liye behtar banne ki koshish karunga. Aap meri zindagi hain, aur main aapse beintehaa pyaar karta hoon. 💖🙏";
+      typeWriter(confessionMessage, document.getElementById('confessionText'), 50);
+    }
+    function typeWriter(text, element, speed) {
+      let i = 0;
+      element.innerHTML = "";
+      let timer = setInterval(() => {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(timer);
+        }
+      }, speed);
+    }
+
+    // 14. Personal Voice Message Section Toggle
+    function toggleVoiceMessage() {
+      const container = document.getElementById('voiceMessageContainer');
+      container.style.display = (container.style.display === 'none' || container.style.display === '') ? 'block' : 'none';
+    }
+
+    // 15. Mini Puzzle Section
+    function togglePuzzle() {
+      const container = document.getElementById('puzzleContainer');
+      container.style.display = (container.style.display === 'none' || container.style.display === '') ? 'block' : 'none';
+      resetPuzzle();
+    }
+    function generatePuzzle() {
+      const letters = ["V", "O", "E", "L"];
+      letters.sort(() => Math.random() - 0.5);
+      const puzzleLettersDiv = document.getElementById('puzzleLetters');
+      puzzleLettersDiv.innerHTML = "";
+      letters.forEach(letter => {
+        const span = document.createElement('span');
+        span.className = 'puzzle-letter';
+        span.innerText = letter;
+        span.onclick = function() {
+          if (span.getAttribute("data-clicked") === "true") return;
+          span.style.opacity = "0.5";
+          span.setAttribute("data-clicked", "true");
+          userAnswer += letter;
+          if (userAnswer.length === 4) {
+            if (userAnswer === "LOVE") {
+              typeWriter("Yeh sahi hai! Tum mere liye sabse khaas ho, meri jaan! 💖", document.getElementById('puzzleResult'), 50);
+            } else {
+              document.getElementById('puzzleResult').innerText = "Galat! Dubara koshish karo.";
+              setTimeout(resetPuzzle, 1500);
+            }
+          }
+        }
+        puzzleLettersDiv.appendChild(span);
+      });
+    }
+    let userAnswer = "";
+    function resetPuzzle() {
+      userAnswer = "";
+      document.getElementById('puzzleResult').innerText = "";
+      generatePuzzle();
+    }
+
+    // 16. Interactive Timeline Detail Toggle
+    function toggleTimelineDetail(item) {
+      item.classList.toggle('expanded');
+    }
+  </script>
+  
+  <!-- New Section: Interactive Timeline Gallery -->
+  <!-- <section class="timeline-section">
+    <h2>Our Beautiful Journey</h2>
+    <div class="timeline">
+      <div class="timeline-item" onclick="toggleTimelineDetail(this)">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>First Call</h3>
+          <p class="timeline-date">January 1, 2021</p>
+          <p class="timeline-detail">Our very first call filled my heart with hope and excitement—a magical start to our journey.</p>
+        </div>
+      </div>
+      <div class="timeline-item" onclick="toggleTimelineDetail(this)">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>First Message</h3>
+          <p class="timeline-date">February 14, 2021</p>
+          <p class="timeline-detail">Your first message made me smile like never before and sparked a connection that grew with every word.</p>
+        </div>
+      </div>
+      <div class="timeline-item" onclick="toggleTimelineDetail(this)">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Our First Laugh</h3>
+          <p class="timeline-date">March 10, 2021</p>
+          <p class="timeline-detail">We shared our first laugh together—a moment when our souls truly connected in joy.</p>
+        </div>
+      </div>
+      <div class="timeline-item" onclick="toggleTimelineDetail(this)">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Special Memory</h3>
+          <p class="timeline-date">April 22, 2021</p>
+          <p class="timeline-detail">That unforgettable day deepened our bond and made our love grow even stronger.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  
+</body>
+</html>
