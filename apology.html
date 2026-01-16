@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💕 From My Heart to Yours 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        :root {
+            --rose-dawn: #c9989e;
+            --blush-cream: #d4c4c0;
+            --dusty-mauve: #a8907e;
+            --soft-sage: #a8bfad;
+            --powder-blue: #a8c5c0;
+            --warm-ivory: #2a2523;
+            --deep-rose: #9a7a7a;
+            --champagne: #c9b8a0;
+            --antique-gold: #b08a5a;
+            --soft-plum: #a08898;
+            --text-romantic: #e8ddd8;
+            --text-muted: #b0a5a0;
+            --accent-blush: #c08080;
+            --card-bg: #3a3230;
+            --card-bg-light: #453e3c;
+            --highlight-glow: #ff9e9e;
+            --highlight-text: #ffb8b8
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: var(--warm-ivory);
+            position: relative;
+            color: var(--text-romantic)
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #2a2523 0%, #1f1b19 100%);
+            transition: opacity 0.8s ease, visibility 0.8s ease
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+
+        .loading-heart {
+            font-size: 60px;
+            animation: loadingPulse 1s ease-in-out infinite
+        }
+
+        @keyframes loadingPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.7
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1
+            }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            animation: fadeInOut 1.5s ease-in-out infinite
+        }
+
+        @keyframes fadeInOut {
+
+            0%,
+            100% {
+                opacity: 0.5
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        .loading-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px
+        }
+
+        .loading-dots span {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-blush);
+            border-radius: 50%;
+            animation: dotBounce 1.2s ease-in-out infinite
+        }
+
+        .loading-dots span:nth-child(2) {
+            animation-delay: 0.2s
+        }
+
+        .loading-dots span:nth-child(3) {
+            animation-delay: 0.4s
+        }
+
+        @keyframes dotBounce {
+
+            0%,
+            80%,
+            100% {
+                transform: translateY(0)
+            }
+
+            40% {
+                transform: translateY(-10px)
+            }
+        }
+
+        /* Song Items & Play Buttons */
+        .song-item {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(58, 50, 48, 0.4);
+            border-radius: 12px;
+            transition: all 0.3s ease
+        }
+
+        .song-item:hover {
+            background: rgba(58, 50, 48, 0.6)
+        }
+
+        .song-name {
+            color: var(--rose-dawn);
+            font-size: 1.1rem;
+            margin-bottom: 12px
+        }
+
+        .song-lyrics {
+            font-style: italic;
+            margin-top: 12px;
+            line-height: 1.8
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-blush);
+            background: rgba(192, 128, 128, 0.15);
+            color: var(--text-romantic);
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        .play-btn:hover,
+        .play-btn:active {
+            background: var(--accent-blush);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(192, 128, 128, 0.4)
+        }
+
+        .play-btn.playing {
+            background: var(--highlight-glow);
+            border-color: var(--highlight-glow);
+            animation: pulseBtn 1s ease-in-out infinite
+        }
+
+        @keyframes pulseBtn {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(255, 158, 158, 0.4)
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(255, 158, 158, 0.6)
+            }
+        }
+
+        /* Scroll Progress Heart */
+        .scroll-progress {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease
+        }
+
+        .scroll-progress.visible {
+            opacity: 1
+        }
+
+        .progress-heart {
+            position: relative;
+            width: 35px;
+            height: 35px;
+            font-size: 35px;
+            color: rgba(192, 128, 128, 0.3)
+        }
+
+        .progress-heart-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 35px;
+            height: 35px;
+            font-size: 35px;
+            color: var(--highlight-glow);
+            clip-path: inset(100% 0 0 0);
+            transition: clip-path 0.1s ease
+        }
+
+        /* ============================================
+           ENVELOPE OVERLAY - Tap to Open Animation
+           ============================================ */
+        .envelope-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #2a2523 0%, #1f1b19 100%);
+            transition: opacity 0.8s ease, visibility 0.8s ease
+        }
+
+        .envelope-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+
+        /* Main Envelope Container */
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            animation: envelopeFloat 3s ease-in-out infinite
+        }
+
+        @keyframes envelopeFloat {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        /* Envelope Body */
+        .envelope-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #4a4240 0%, #3a3230 100%);
+            border-radius: 10px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(192, 128, 128, 0.1);
+            border: 2px solid rgba(192, 128, 128, 0.2);
+            overflow: hidden
+        }
+
+        /* Envelope pattern decoration */
+        .envelope-body::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(192, 128, 128, 0.05) 10px, rgba(192, 128, 128, 0.05) 20px)
+        }
+
+        /* Heart Seal on Envelope */
+        .envelope-seal {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, var(--highlight-glow) 0%, var(--deep-rose) 50%, #7a5555 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.2);
+            z-index: 5;
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.9)
+        }
+
+        /* Envelope Flap (Top Triangle) */
+        .envelope-flap-anim {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            background: linear-gradient(180deg, var(--rose-dawn) 0%, var(--deep-rose) 100%);
+            border-radius: 10px 10px 0 0;
+            transform-origin: top center;
+            transform-style: preserve-3d;
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3)
+        }
+
+        .envelope-flap-anim.open {
+            transform: rotateX(-180deg)
+        }
+
+        .envelope-flap-anim::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #4a4240 0%, #3a3230 100%);
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            backface-visibility: hidden;
+            transform: rotateX(180deg)
+        }
+
+        /* Letter Inside Envelope */
+        .envelope-letter {
+            position: absolute;
+            top: 25%;
+            left: 10%;
+            width: 80%;
+            height: 65%;
+            background: linear-gradient(145deg, var(--text-romantic) 0%, #d8ccc8 100%);
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(0);
+            opacity: 0.95;
+            transition: transform 1s ease-out 0.3s, opacity 1s ease-out 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2)
+        }
+
+        .envelope-letter.rise {
+            transform: translateY(-130px);
+            opacity: 0
+        }
+
+        .envelope-letter::before {
+            content: '♡';
+            font-size: 35px;
+            color: var(--accent-blush)
+        }
+
+        .envelope-letter::after {
+            content: 'For You';
+            font-family: 'Dancing Script', cursive;
+            font-size: 16px;
+            color: var(--deep-rose);
+            margin-top: 5px
+        }
+
+        /* Tap Hint Text */
+        .tap-hint {
+            margin-top: 30px;
+            color: var(--text-muted);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            font-style: italic;
+            animation: pulse 2s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .tap-hint::before,
+        .tap-hint::after {
+            content: '✧';
+            font-size: 12px;
+            color: var(--accent-blush)
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        .envelope-letter {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 80%;
+            height: 70%;
+            background: var(--text-romantic);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(0);
+            opacity: 0.9;
+            transition: transform 0.8s ease-out 0.5s, opacity 0.8s ease-out 0.5s
+        }
+
+        .envelope-letter.rise {
+            transform: translateY(-120px);
+            opacity: 0
+        }
+
+        .envelope-letter::before {
+            content: '♡';
+            font-size: 40px;
+            color: var(--accent-blush)
+        }
+
+        @keyframes riseUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0.9
+            }
+
+            100% {
+                transform: translateY(-120px);
+                opacity: 0
+            }
+        }
+
+        .tap-hint {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-style: italic;
+            animation: pulse 2s ease-in-out infinite;
+            white-space: nowrap
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        /* Watercolor Background */
+        .watercolor-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none
+        }
+
+        .watercolor-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.35;
+            will-change: transform;
+            transition: transform 0.1s ease-out
+        }
+
+        .blob-1 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(ellipse, var(--rose-dawn) 0%, transparent 70%);
+            top: -80px;
+            left: -80px
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(ellipse, var(--soft-sage) 0%, transparent 70%);
+            top: 50%;
+            right: -150px
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(ellipse, var(--powder-blue) 0%, transparent 70%);
+            bottom: -80px;
+            left: 20%
+        }
+
+        .blob-4 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(ellipse, var(--champagne) 0%, transparent 70%);
+            top: 70%;
+            left: -80px
+        }
+
+        .blob-5 {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(ellipse, var(--soft-plum) 0%, transparent 70%);
+            top: 25%;
+            right: 10%
+        }
+
+        /* Petals */
+        .petals-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden
+        }
+
+        .petal {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: petalFall linear infinite;
+            will-change: transform
+        }
+
+        .petal::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--rose-dawn) 0%, var(--blush-cream) 100%);
+            border-radius: 50% 0 50% 50%;
+            transform: rotate(-45deg);
+            box-shadow: inset 1px 1px 3px rgba(255, 255, 255, 0.2)
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg) translateX(0);
+                opacity: 0
+            }
+
+            10% {
+                opacity: 0.6
+            }
+
+            90% {
+                opacity: 0.6
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg) translateX(80px);
+                opacity: 0
+            }
+        }
+
+        .paper-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(200, 180, 160, 0.02) 2px, rgba(200, 180, 160, 0.02) 4px)
+        }
+
+        /* Main Container */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 50px 16px 70px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease
+        }
+
+        .main-container.visible {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        /* Love Letter */
+        .love-letter {
+            position: relative;
+            background: linear-gradient(175deg, rgba(58, 50, 48, 0.98) 0%, rgba(50, 44, 42, 0.98) 50%, rgba(58, 50, 48, 0.98) 100%);
+            border-radius: 8px;
+            padding: 0;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35), 0 10px 30px rgba(160, 128, 128, 0.08), 0 0 0 1px rgba(160, 128, 128, 0.1);
+            overflow: hidden
+        }
+
+        /* Wax Seal */
+        .wax-seal {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65px;
+            height: 65px;
+            background: radial-gradient(circle at 30% 30%, #c08080 0%, #9a7a7a 40%, #7a6060 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 2px 8px rgba(255, 255, 255, 0.15), inset 0 -4px 12px rgba(80, 60, 60, 0.3);
+            z-index: 100;
+            animation: sealBreathe 4s ease-in-out infinite
+        }
+
+        .wax-seal::before {
+            content: '♡';
+            font-size: 26px;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 0 2px 4px rgba(80, 60, 60, 0.4)
+        }
+
+        @keyframes sealBreathe {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1)
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.05)
+            }
+        }
+
+        .envelope-flap {
+            height: 80px;
+            background: linear-gradient(180deg, var(--rose-dawn) 0%, var(--deep-rose) 100%);
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            margin-bottom: -40px
+        }
+
+        .letter-content {
+            padding: 65px 24px 40px;
+            border-top: 2px solid rgba(201, 152, 158, 0.2);
+            position: relative
+        }
+
+        .corner-flourish {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.25
+        }
+
+        .corner-flourish.top-left {
+            top: 15px;
+            left: 15px;
+            border-top: 2px solid var(--deep-rose);
+            border-left: 2px solid var(--deep-rose)
+        }
+
+        .corner-flourish.top-right {
+            top: 15px;
+            right: 15px;
+            border-top: 2px solid var(--deep-rose);
+            border-right: 2px solid var(--deep-rose)
+        }
+
+        .corner-flourish.bottom-left {
+            bottom: 15px;
+            left: 15px;
+            border-bottom: 2px solid var(--deep-rose);
+            border-left: 2px solid var(--deep-rose)
+        }
+
+        .corner-flourish.bottom-right {
+            bottom: 15px;
+            right: 15px;
+            border-bottom: 2px solid var(--deep-rose);
+            border-right: 2px solid var(--deep-rose)
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative
+        }
+
+        /* Gradient Title */
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #ffb8b8 0%, #c9989e 50%, #e8a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
+            min-height: 1.2em
+        }
+
+        .title .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 0.9em;
+            background: var(--accent-blush);
+            margin-left: 3px;
+            animation: blink 0.8s ease-in-out infinite;
+            vertical-align: middle
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1
+            }
+
+            51%,
+            100% {
+                opacity: 0
+            }
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            opacity: 0;
+            animation: fadeIn 1s ease 3.5s forwards
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1
+            }
+        }
+
+        .elegant-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 35px 0
+        }
+
+        .divider-line {
+            height: 1px;
+            width: 60px;
+            background: linear-gradient(90deg, transparent, var(--deep-rose), transparent)
+        }
+
+        .divider-ornament {
+            font-size: 1rem;
+            color: var(--accent-blush);
+            animation: ornamentSway 3s ease-in-out infinite
+        }
+
+        @keyframes ornamentSway {
+
+            0%,
+            100% {
+                transform: rotate(-10deg)
+            }
+
+            50% {
+                transform: rotate(10deg)
+            }
+        }
+
+        /* Letter Sections */
+        .letter-section {
+            margin-bottom: 40px;
+            padding: 30px 22px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(69, 62, 60, 0.5) 0%, rgba(58, 50, 48, 0.3) 100%);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-blush);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: translateX(0);
+            overflow: visible;
+            word-wrap: break-word;
+            overflow-wrap: break-word
+        }
+
+        .letter-section.animate-in {
+            opacity: 1;
+            transform: translateX(0)
+        }
+
+        .letter-section.animate-out {
+            opacity: 1;
+            transform: translateX(0)
+        }
+
+        .letter-section:active {
+            transform: scale(0.99);
+            box-shadow: 0 5px 20px rgba(192, 128, 128, 0.15);
+            border-left-color: var(--rose-dawn)
+        }
+
+        .letter-section::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--highlight-glow), var(--accent-blush), var(--highlight-glow));
+            opacity: 0;
+            animation: borderGlow 3s ease-in-out infinite
+        }
+
+        @keyframes borderGlow {
+
+            0%,
+            100% {
+                opacity: 0
+            }
+
+            50% {
+                opacity: 0.6
+            }
+        }
+
+        .section-icon {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 26px;
+            height: 26px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: 2px solid var(--accent-blush)
+        }
+
+        /* Wavy Underline Section Title */
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--text-romantic);
+            margin-bottom: 16px;
+            margin-left: 8px;
+            position: relative;
+            display: inline-block
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 5 Q 12.5 0, 25 5 T 50 5 T 75 5 T 100 5' stroke='%23c08080' stroke-width='2' fill='none' opacity='0.6'/%3E%3C/svg%3E") repeat-x;
+            background-size: 50px 6px
+        }
+
+        .section-content {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            line-height: 2;
+            color: var(--text-romantic);
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto
+        }
+
+        .section-content p {
+            margin-bottom: 18px;
+            text-align: left;
+            text-indent: 0;
+            padding-left: 0
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0
+        }
+
+        .highlight {
+            color: var(--highlight-text);
+            font-weight: 600;
+            font-style: italic;
+            text-shadow: 0 0 12px rgba(255, 158, 158, 0.4)
+        }
+
+        /* Apology Box */
+        .apology-box {
+            position: relative;
+            margin: 50px 0;
+            padding: 50px 28px 45px;
+            background: linear-gradient(145deg, rgba(58, 50, 48, 0.95) 0%, rgba(50, 44, 42, 0.9) 50%, rgba(45, 39, 37, 0.95) 100%);
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(192, 128, 128, 0.25);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), inset 0 0 80px rgba(192, 128, 128, 0.05);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1)
+        }
+
+        .apology-box.animate-in {
+            opacity: 1;
+            transform: scale(1)
+        }
+
+        .apology-box.animate-out {
+            opacity: 0;
+            transform: scale(0.95)
+        }
+
+        .apology-box::before {
+            content: '💔';
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))
+        }
+
+        .apology-box::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--deep-rose), transparent)
+        }
+
+        .apology-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--text-romantic);
+            margin-bottom: 30px;
+            margin-top: 15px;
+            position: relative;
+            display: inline-block
+        }
+
+        .apology-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 5 Q 12.5 0, 25 5 T 50 5 T 75 5 T 100 5' stroke='%23c08080' stroke-width='2' fill='none' opacity='0.6'/%3E%3C/svg%3E") repeat-x;
+            background-size: 50px 6px
+        }
+
+        .apology-intro {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 25px;
+            line-height: 1.8
+        }
+
+        .apology-content {
+            font-family: 'Lora', serif;
+            font-size: 1.02rem;
+            line-height: 2;
+            color: var(--text-romantic);
+            text-align: left;
+            position: relative;
+            overflow-wrap: break-word;
+            word-wrap: break-word
+        }
+
+        .apology-content p {
+            margin-bottom: 20px;
+            text-indent: 0;
+            text-align: left;
+            padding-left: 0
+        }
+
+        .apology-content p:last-child {
+            margin-bottom: 0
+        }
+
+        .highlight-subtle {
+            color: var(--rose-dawn);
+            font-weight: 500;
+            font-style: italic;
+            border-bottom: 1px dotted var(--rose-dawn)
+        }
+
+        .apology-ending {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--accent-blush);
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(192, 128, 128, 0.2)
+        }
+
+        .apology-box-footer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            font-size: 1.2rem;
+            color: var(--deep-rose)
+        }
+
+        .apology-box-footer span {
+            animation: fadeInOut 2s ease-in-out infinite
+        }
+
+        .apology-box-footer span:nth-child(2) {
+            animation-delay: 0.3s
+        }
+
+        .apology-box-footer span:nth-child(3) {
+            animation-delay: 0.6s
+        }
+
+        /* Confession Box */
+        .confession-box {
+            position: relative;
+            margin: 50px 0;
+            padding: 45px 25px 40px;
+            background: linear-gradient(145deg, rgba(192, 128, 128, 0.1) 0%, rgba(168, 191, 173, 0.08) 50%, rgba(168, 197, 192, 0.1) 100%);
+            border-radius: 16px;
+            text-align: center;
+            border: 1px dashed var(--deep-rose);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1)
+        }
+
+        .confession-box.animate-in {
+            opacity: 1;
+            transform: scale(1)
+        }
+
+        .confession-box.animate-out {
+            opacity: 0;
+            transform: scale(0.95)
+        }
+
+        .confession-box::before {
+            content: '"';
+            position: absolute;
+            top: 5px;
+            left: 20px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 70px;
+            color: var(--rose-dawn);
+            opacity: 0.4;
+            line-height: 1
+        }
+
+        .confession-box::after {
+            content: '"';
+            position: absolute;
+            bottom: -25px;
+            right: 20px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 70px;
+            color: var(--rose-dawn);
+            opacity: 0.4;
+            line-height: 1
+        }
+
+        .confession-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--text-romantic);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            display: inline-block
+        }
+
+        .confession-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 5 Q 12.5 0, 25 5 T 50 5 T 75 5 T 100 5' stroke='%23c08080' stroke-width='2' fill='none' opacity='0.6'/%3E%3C/svg%3E") repeat-x;
+            background-size: 50px 6px
+        }
+
+        .confession-text {
+            font-family: 'Lora', serif;
+            font-size: 1.05rem;
+            line-height: 2.3;
+            color: var(--text-muted);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.01em
+        }
+
+        .confession-text br {
+            margin: 6px 0
+        }
+
+        .confession-finale {
+            margin-top: 25px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: var(--highlight-text);
+            text-shadow: 0 0 15px rgba(255, 158, 158, 0.4), 0 0 25px rgba(255, 158, 158, 0.2)
+        }
+
+        /* Promise Section */
+        .promise-section {
+            margin: 45px 0;
+            padding: 35px 25px;
+            background: rgba(42, 37, 35, 0.6);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1)
+        }
+
+        .promise-section.animate-in {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .promise-section.animate-out {
+            opacity: 0;
+            transform: translateY(20px)
+        }
+
+        .promise-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rose-dawn), var(--soft-sage), var(--powder-blue), var(--champagne), var(--rose-dawn));
+            background-size: 200% 100%;
+            animation: shimmer 4s linear infinite
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0
+            }
+
+            100% {
+                background-position: -200% 0
+            }
+        }
+
+        .promise-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.9rem;
+            color: var(--text-romantic);
+            text-align: center;
+            margin-bottom: 25px;
+            display: inline-block;
+            position: relative;
+            width: 100%
+        }
+
+        .promise-list {
+            list-style: none;
+            max-width: 100%;
+            margin: 0 auto
+        }
+
+        .promise-list li {
+            font-family: 'Lora', serif;
+            font-size: 0.98rem;
+            padding: 14px 0;
+            color: var(--text-romantic);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px dotted rgba(212, 196, 192, 0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+            letter-spacing: 0.01em
+        }
+
+        .promise-list li:last-child {
+            border-bottom: none
+        }
+
+        .promise-list li:active {
+            transform: translateX(8px);
+            background: rgba(192, 128, 128, 0.1);
+            border-radius: 8px
+        }
+
+        .promise-list li::before {
+            content: '♡';
+            color: var(--highlight-glow);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            text-shadow: 0 0 8px rgba(255, 158, 158, 0.5)
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px 25px;
+            position: relative
+        }
+
+        .footer-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--text-romantic);
+            margin-bottom: 20px
+        }
+
+        .signature {
+            font-family: 'Lora', serif;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            font-style: italic;
+            letter-spacing: 1px
+        }
+
+        .signature-heart {
+            display: inline-block;
+            color: var(--highlight-glow);
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin-left: 5px;
+            text-shadow: 0 0 10px rgba(255, 158, 158, 0.5)
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1)
+            }
+
+            15% {
+                transform: scale(1.15)
+            }
+
+            30% {
+                transform: scale(1)
+            }
+
+            45% {
+                transform: scale(1.1)
+            }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden
+        }
+
+        .float-heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 18px;
+            opacity: 0;
+            animation: floatUp 8s ease-in-out infinite
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0
+            }
+
+            10% {
+                opacity: 0.5
+            }
+
+            90% {
+                opacity: 0.5
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0
+            }
+        }
+
+        .touch-ripple {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--highlight-glow) 0%, transparent 70%);
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple 0.6s ease-out forwards
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0.8
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(4);
+                opacity: 0
+            }
+        }
+
+        .love-button {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(145deg, var(--highlight-glow), var(--deep-rose));
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), 0 0 20px rgba(255, 158, 158, 0.3), inset 0 2px 8px rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-tap-highlight-color: transparent
+        }
+
+        .love-button:active {
+            transform: scale(0.9)
+        }
+
+        .love-button::before {
+            content: '♡';
+            font-size: 24px;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5)
+        }
+
+        @media(max-width:420px) {
+            .main-container {
+                padding: 45px 14px 65px
+            }
+
+            .title {
+                font-size: 2.4rem
+            }
+
+            .letter-content {
+                padding: 55px 18px 35px
+            }
+
+            .section-title {
+                font-size: 1.6rem
+            }
+
+            .section-content {
+                font-size: 0.98rem;
+                line-height: 2
+            }
+
+            .apology-box {
+                padding: 45px 20px 40px
+            }
+
+            .apology-title {
+                font-size: 1.9rem
+            }
+
+            .apology-content {
+                font-size: 1rem
+            }
+
+            .confession-title {
+                font-size: 1.7rem
+            }
+
+            .confession-text {
+                font-size: 1rem
+            }
+
+            .footer-message {
+                font-size: 1.9rem
+            }
+        }
+
+        @media(max-width:360px) {
+            .title {
+                font-size: 2rem
+            }
+
+            .letter-content {
+                padding: 50px 15px 30px
+            }
+        }
+
+        @media(max-height:450px) and (orientation:landscape) {
+            .main-container {
+                padding: 30px 20px 50px
+            }
+
+            .envelope-flap {
+                height: 60px;
+                margin-bottom: -30px
+            }
+
+            .wax-seal {
+                width: 50px;
+                height: 50px;
+                top: -20px
+            }
+
+            .wax-seal::before {
+                font-size: 20px
+            }
+        }
+
+        @media print {
+
+            .watercolor-bg,
+            .petals-container,
+            .floating-hearts,
+            .love-button,
+            .envelope-overlay,
+            .loading-screen,
+            .scroll-progress {
+                display: none
+            }
+
+            body {
+                background: white;
+                color: #333
+            }
+
+            .love-letter {
+                box-shadow: none;
+                border: 1px solid #ddd
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Music (Lofi) -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_946bd498ac.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-heart">❤️</div>
+        <p class="loading-text">Loading...</p>
+        <div class="loading-dots"><span></span><span></span><span></span></div>
+    </div>
+
+    <!-- Scroll Progress Heart -->
+    <div class="scroll-progress" id="scrollProgress">
+        <div class="progress-heart">♡</div>
+        <div class="progress-heart-fill" id="progressFill">♡</div>
+    </div>
+
+    <!-- ============================================
+         ENVELOPE OPENING ANIMATION
+         Tap to reveal the letter
+         ============================================ -->
+    <div class="envelope-overlay" id="envelopeOverlay">
+        <div class="envelope">
+            <div class="envelope-body"></div>
+            <div class="envelope-seal">♡</div>
+            <div class="envelope-flap-anim"></div>
+            <div class="envelope-letter"></div>
+        </div>
+        <p class="tap-hint">Ek Tap kro jaan</p>
+    </div>
+
+    <!-- Watercolor Background -->
+    <div class="watercolor-bg" id="watercolorBg">
+        <div class="watercolor-blob blob-1" data-parallax="0.03"></div>
+        <div class="watercolor-blob blob-2" data-parallax="0.05"></div>
+        <div class="watercolor-blob blob-3" data-parallax="0.04"></div>
+        <div class="watercolor-blob blob-4" data-parallax="0.06"></div>
+        <div class="watercolor-blob blob-5" data-parallax="0.035"></div>
+    </div>
+
+    <div class="petals-container" id="petalsContainer"></div>
+    <div class="paper-texture"></div>
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Main Content -->
+    <div class="main-container" id="mainContainer">
+        <div class="love-letter">
+            <div class="wax-seal"></div>
+            <div class="envelope-flap"></div>
+            <div class="letter-content">
+                <div class="corner-flourish top-left"></div>
+                <div class="corner-flourish top-right"></div>
+                <div class="corner-flourish bottom-left"></div>
+                <div class="corner-flourish bottom-right"></div>
+
+                <header class="header">
+                    <h1 class="title" id="titleText"><span class="cursor"></span></h1>
+                    <p class="subtitle">a heartfelt confession from your boy</p>
+                </header>
+
+                <div class="elegant-divider"><span class="divider-line"></span><span
+                        class="divider-ornament">❦</span><span class="divider-line"></span></div>
+
+                <main>
+                    <section class="letter-section">
+                        <div class="section-icon">✉</div>
+                        <h2 class="section-title">Sweetheart</h2>
+                        <div class="section-content">
+                            <p>Pta nhi kaha se shuru karu, but I need to tell you how <span class="highlight">deeply
+                                    sorry</span> I am. Mujhe pta h maine apne gande behavior se tumhe bhot hurt kiya h,
+                                Jiski koi maafi bhi nhi h. Tumhara gussa rehna jaan is litreally crushing my heart from
+                                inside😣. </p>
+                            <p class="highlight-subtle">I'm very very SORRY Jaan</p>
+                        </div>
+                    </section>
+
+                    <div class="elegant-divider"><span class="divider-line"></span><span
+                            class="divider-ornament">♡</span><span class="divider-line"></span></div>
+
+                    <!-- MAIN APOLOGY BOX -->
+                    <div class="apology-box">
+                        <h3 class="apology-title">My Wifey, My Love I'M Really Sorry...</h3>
+                        <p class="apology-intro">I know I haven't been the person even a bit closest to what you
+                            deserve or expect. and this is heaviest feeling i carry everyday. I'M REALLY REALLY SORRY
+                            JAAN for being so worst in the world😔😔😓. </p>
+                        <div class="apology-content">
+                            <p>Mai jaan tumse maafi mangta hu un sab samay ke jis samay maine tumhe <span
+                                    class="highlight-subtle">pyar</span> na hone ka ehsaas dilaya h.
+                                Mere liye tum aisi person ho jiske liye mai kuch bhi kar sakta hu, but my actions are
+                                making you doubt that,
+                                I am truly, deeply sorry jaan.</p>
+
+                            <p>I'm so <span class="highlight-subtle">SORRY</span> mera bccha Maine tumpe gussa kiya.😔
+                            </p>
+                            <p>I'm so <span class="highlight-subtle">SORRY</span> meri jaan Maine tumse acche se baat
+                                nhi ki.😔</p>
+                            <p>I'm so <span class="highlight-subtle">SORRY</span> My Love Maine tumhari baat nhi suni.😔
+                            </p>
+                            <p>I'm so <span class="highlight-subtle">SORRY</span> Baby Jaha mujhe smjhna chahiye tha
+                                Maine waha samjhne ki koshish nhi ki.😔</p>
+                            <p>I'm so <span class="highlight-subtle">SORRY</span> Sweetheart for being so dumb.😔 </p>
+                            <p>I'm so <span class="highlight-subtle">SORRY</span> Babu Maine Tumhara ego hurt kiya</p>
+                            <p>I'm really very very very very <span class="highlight-subtle">SORRY</span> meri
+                                jaan for everything jo bhi maine bura kiya h😔😓😭🙏</p>
+
+                        </div>
+                        <p class="apology-ending">I know this isn't enough, pr I intend not to do it again...♡
+                        </p>
+                        <div class="apology-box-footer"><span>♡</span><span>♡</span><span>♡</span></div>
+                    </div>
+
+                    <div class="elegant-divider"><span class="divider-line"></span><span
+                            class="divider-ornament">✧</span><span class="divider-line"></span></div>
+
+                    <section class="letter-section">
+                        <div class="section-icon">🥀</div>
+                        <h2 class="section-title">I Apologise🙏</h2>
+                        <h2 class="section-title">A Note full of bakwas</h2>
+                        <div class="section-content">
+                            <p class="apology-intro"> Ye note padhne se pehle...</p>
+                            <p class="apology-intro"> Disclaimer :- </p>
+                            <p class="apology-intro">Firstly, Ye note is not a complain about anything at all to you, I
+                                have no problem with anything, It's I'm expressing myself all thoughts of mine that are
+                                inside me from a long time </p>
+                            <p class="apology-intro">Secondly, This is a very very very long note.</p>
+                            <p class="apology-intro">and Lastly, Mai request krta hu Please kuch bhi mind mt krna. it's
+                                all just thoughts.</p>
+                            <p class="apology-intro"> Ab pdhne ka man bana li ho to thik h last me milte h, Please Don't
+                                mind anything🙏</p>
+                            <br>
+
+                            <p>Mai jaan tumse maafi mangta hu mere gande behaviour ke liye 😔, us time i was litreally
+                                into
+                                something else, mujhe aisehi khud pr gussa aa jata h jab bhi tumhe meri wajah se problem
+                                hoti h jab bhi mai kuch aisa kr deta hu jis se tum hurt ho jati ho, and jab us time par
+                                mere sath nhi hoti ho mai apne control me nhi pata hu </p>
+                            <br>
+                            <p>Tum kehti ho mai pyar nhi krta hu, agar pyar kr rha hota to bar bar tumhe hurt nhi krta.
+                                Tum kehti ho frk nhi pdta h mujhe tumhari baato se, tumhari feelings se, qadar nhi unki,
+                                Tumhara ye lagna bhi thik h pr kya jaan tum janti bhi ho aakhir mera din kaise jata h
+                                😞,
+                                aakhir kitna depressed ho rkha hu, jab bhi mere saath nhi hoti ho, meri thoughts jitna
+                                tumhe maine hurt kiya h, kaha kaha tk pareshan karti h wo mujhe,</p>
+                            <br>
+                            <p>tumhe jhoot lgta h jab ye kehta hu ki mai tumhare bina hasna bhul chuka hu jaan🥺, mujhe
+                                pta
+                                nhi
+                                last time kab hasa tha, din bhar pareshan rehta hu, mujhe bas ek hi chiz hamesha chahiye
+                                hoti h aur wo hota h tumhara pyar, tum... 💕</p>
+                            <br>
+                            <p>Kaise frk nhi pdta hoga tumhari baato se, kaise fark nhi pdta hoga tumhare feelings se,
+                                nhi hota to itna pareshan kyu hota.
+                                Nhi hota to jaan tumhare pyar ke liye itna kyu tarasta, ek i love you nhi kehti ho mai
+                                kuch nhi
+                                kehta hu tumhe pr do you know even us se bhi bura lgta h, aur tum sochti ho tumhari
+                                chizo se fark nhi pdta.</p>
+                            <br>
+                            <p>Kehti ho khuda mujhe dikha rha h sab, khuda tab kaha chla jata h jab tum nhi hoti to jo
+                                baate krta hu unse, wo tab kaha chla jata h jab tumhare piche bas tumko hi mang rha hota
+                                hu, wo tab kaha chla jata h jab mai unse tumhari khushiya maang rha hota hu, wo tab kaha
+                                chla jata h jab unse tumhare kaabil, tumko khush rakhne ki kabiliyat mang rha hota hu,
+                                kya khuda ko ye sab nhi dikhta.</p>
+                            <br>
+                            <p>Tum jo feel krti ho hurt hoti ho mujhe keh deti ho, mai to apni feelings, meri dikkate,
+                                kya feel ho rha h, kya soch rha hu kabhi keh bhi nhi pata. Sach btau to mai cover up
+                                krne ki koshish nhi kr rha hu bas bhot disturbed hu bhot pareshan reh rha hu and isi
+                                wajah se bhot jaldi frustrate ho jata hu...pure din wait krta hu ko raat ko baat krenge
+                                jab raat ko jhgda ho jata us waqt kya bit ta h wo mai hi janta hu, galti meri hi hoti h
+                                and frustration ka main reason yhi hota h, mai khud se frustrate ho jata hu aakhir kyu
+                                ho rha h har baar, you wouldn't know ye padhne ke bad you wouldn't know jaan.</p>
+
+                            <p>Tum mere liye bhot special ho meri jaan 💖, kabhi maine intentionally tunhe hurt krne ka
+                                nhi
+                                socha, kabhi gussa krne ka nhi socha, kabhi ego hurt krne ke bare me nhi socha, kaise
+                                sochu koi khud ko kyu hurt krna chahega, koi khud ka ego kyu hurt krna chahega. Mai bura
+                                ldka nhi hu jaan bas khud se bhot pareshan hu 😔, khud ki harkato se bhot pareshan hu
+                                tumhari tarah</p>
+
+                            <p>Tumhe kya lagta h jin chizo se tum hurt hui kya mai janbujh kr kiya, us raat tum gussa
+                                hui aur bas wo bdhta hi chala gya, kya lagta h i don't have feelings. I don't feel
+                                anything. Pyar na hota to kuch na hota. Apne jhgde meri faltu harkte overreaction sab
+                                bas isiliye hota h kyu mai mentally thik nhi reh pa rha hu, i need you to be with me and
+                                jab dur ho jati ho mera game over ho jata h.</p>
+
+                            <p>I understand that was very very very very wrong what i did and i don't expect ki you
+                                understand also. I just want ki i want to do everything for you, keep you happy, hamesha
+                                chehre pr ek smile le aau, tumhe acche se rakhu, pr ek insaan jab usko jo chahiye hota
+                                wo nhi milta h bar bar krne pr bhi nhi mil pata h to sab frustrate hote h n.</p>
+
+                            <p>Tum Ladkio ke bare me kehti ho, are jaan raha hounga aisa ladka jo ldkio ko dekhta tha,
+                                aur bhi etc. etc. reels pr bhejti ho "no matter how much a guy loves there is always a
+                                second girl". I don't even consider looking at other girls. When all day kuch bhi karu
+                                bas tumhari khwahish hoti h how can you think there will be another girl. How can you
+                                think i'll even consider another</p>
+
+                            <p>Tumhe kya pta jaan how much I'm obsessed with you. Let me show you what obsession means -
+                                "to
+                                completely fill your mind so that you cannot think of anything else किसी बात को दिमाग़
+                                में ऐसे भर लेना कि कुछ और न सूझे" there is no one in my life except you. I can't think
+                                of anyone, I can't imagine anyone except you. </p>
+
+                            <p>Tum mere liye bhot important ho meri jaan ❤️, aur mai har baar har din tumhe ye feel
+                                karwana
+                                chahta hu bas mai hi gdha hu jo galtiya kar baithta hu 😓</p>
+
+                            <p>Itna kuch keh to diya h pr still baat krne ke liye kuch nhi h mere pas, abhi bhi dar
+                                lagta h kaise baat krunga, kya hoga, maybe i'm overthinking but ab kya hi kru <br><br>
+                                <span class="highlight">Sorry </span> jaan Sab kuch ke liye <span class="highlight">I'm
+                                    Very Sorry </span><span class="highlight">I'm
+                                    infinitely Sorry Jaan</span>
+                            </p>
+
+
+                            <p>I'm not perfect, but my <span class="highlight">love for you is</span>, and I'd never
+                                intentionally do anything to hurt you. Your happiness matters to me more than anything
+                                in this world, and the thought of causing you pain breaks me completely. <span
+                                    class="highlight">I'm SORRY JAAN, Really SORRY</span></p>
+                        </div>
+                    </section>
+
+                    <section class="letter-section">
+                        <div class="section-icon">🌙</div>
+                        <h2 class="section-title">I Really Need You Forever in my Life Jaan</h2>
+                        <div class="section-content">
+                            <p>Mere pure life me aaj tk till 16th january. I have always dreamt of my love. You are my
+                                dream come true ✨. How can i even think of hurting you. Tum mere liye Bhot special ho
+                                jaan, bhot important ho 💝. Mai apni life ka har ek second har ek lamha bas tumhare
+                                saath aur tumhare naam ka bitana chahta hu, itna pyar krta hu tumse 🥹, har raat sone se
+                                pehle <br>
+                                i pray ki life me bas itna kabil ban jau ki tumhe hasa pau, tumhe khush rakh pau, tumhe
+                                kabhi koi kami na hone du 🙏.</p>
+                            <p> <span class="highlight">Isi baat pr kuch likha h ki...</span> <br>
+                                Tujhse jyada khubsurat tasveer kaha se lau... <br>
+                                Mera har lamha tere saath bite aisi taqdeer kaha se lau... <br>
+                                Mangta to hu saato janam saath tera... <br>
+                                Tum btao na meri jaan mai apne haatho wo lakeer kaha se lau... <br>
+                                Pr tujhse jyada khubsurat tasveer hamari ho jayegi... <br>
+                                Sayad hamare pyar ke aage khuda ki likhi taqdeer bhi badal jayegi... <br>
+                                Saato janam chhodo, bas tum ek janam hi saath dena mera... <br>
+                                Saat kya 70 janam ke liye hamare haatho me wo lakeer ban jayegi...</p>
+                            <br><br><br>
+                            <p>Ek tum hi to ho jaan, <br> Jiske saath mujhe acha lagta h, <br>Jo mujhe pyar karti,<br>
+                                Jo mujhe
+                                support krti h, <br>Mera decision mujhe lene deti h, <br>Mujhe hasane ke liye mehnat
+                                karti h,
+                                <br>Mai khush rahu iske liye sabkuch krti h, <br>Ek tum hi to ho jaan, <br>Jisse mai
+                                pyar karta hu,
+                                <br>Jiske khushi ke liye sab kar sakta hu, <br>Jiski awaz sun kar sare gaane bekar lagne
+                                lgte h <br>Kaise jane du tumhe jaan <br> Kaise jane de sakta hu mai <br> Itni himmat h
+                                kya meri.
+                            </p>
+                        </div>
+                    </section>
+
+                    <div class="confession-box">
+                        <h3 class="confession-title">In The Litreally Most Selfish Way...</h3>
+                        <p class="confession-text">I want to be the only one who has your heart. <br>I want to be the
+                            one who understands it completely. <br>The one who holds it close. <br><br>I don't want
+                            anyone else to feel your touch, <br>I don't want
+                            anyone else to kiss your lips. <br>To taste the sweetness that I love. <br><br>I want to be
+                            the one who kisses you goodnight, <br>and wakes up to you each morning. <br>I want to be the
+                            reason you smile. <br>To catch the light in your eyes from the smallest things. <br><br>I
+                            want to be the one who brings you happiness. <br>Who makes you laugh until you cry. <br>I
+                            want us to be in the same book, <br>and to end in the same chapter.</p>
+
+                        <p class="confession-text"> Jaan, Mujhe tumhe gale lagana h, aur bhul jana ki tumhare alawa aur
+                            bhi koi dunia h,
+                            <br> Mujhe Tumhara hath thamana h aur bhul jaana h ki tumhare alawa aur bhi kuch jaruri h,
+                            <br> Mujhe tumhari awaz sun ni h aur bhul jana h tumhare alawa aur bhi koi Lata Mangeshkar
+                            h,
+                            <br> Mujhe tumhare aankho me dekhna h aur bhul jana h ki doobne ki koi aur bhi jagah h,
+                            <br> Jaan, Mujhe tumhe gale lagana h, aur bhul jana ki tumhare alawa aur bhi koi dunia h
+                            <br>
+                        </p>
+
+                        <p class="confession-finale">In the most selfish way possible... <br>I want all of you forever.
+                            ♡</p>
+                    </div>
+
+                    <div class="elegant-divider"><span class="divider-line"></span><span
+                            class="divider-ornament">✧</span><span class="divider-line"></span></div>
+
+                    <section class="promise-section">
+                        <h3 class="promise-title">I Promise with my whole heart</h3>
+                        <ul class="promise-list">
+                            <li>Mai hamesha jaan tumhe hasane ki koshish krunga</li>
+                            <li>Mai tumhe jo bhi ho jaye hamesha sununga</li>
+                            <li>I'll always be your safe and calm space instead of chaos</li>
+                            <li>Mai hamesha jaana tumse ijjat se baat karunga, Pkka</li>
+                            <li>I'll never take your love for granted</li>
+                            <li>Mai hamesha sikhta rahunga tumhe acche se pyar krne ke liye</li>
+                            <li>Ek acha insaan banunga</li>
+                        </ul>
+                    </section>
+
+                    <section class="letter-section">
+                        <div class="section-icon">☽</div>
+                        <h2 class="section-title">Until You Call...</h2>
+                        <div class="section-content">
+                            <p>Until you call, I hope you'll hold on to the fact that <span class="highlight">I LOVE
+                                    YOU</span> with every fiber of my being 💗. I'll keep trying because you are worth
+                                every effort, every moment, every heartbeat.</p>
+                            <p>Please forgive me, my love 🙏. I'm nothing without you 💔.</p>
+                        </div>
+                    </section>
+                </main>
+
+                <!-- Lyrics Section -->
+                <div class="confession-box" style="margin-top:50px;">
+                    <h3 class="confession-title">Kuch Gaano ke lines...</h3>
+                    <h3 class="confession-title">Meri jaan ke liye.</h3>
+                    <div class="confession-text" style="text-align:left;">
+
+                        <div class="song-item">
+                            <p class="song-name">♪ Nasamajh (My Fav.)♪</p>
+                            <button class="play-btn" data-song="nasamajh" onclick="playSong('nasamajh')">▶</button>
+                            <p class="song-lyrics">"Mai sine me utaru...<br>Teri zulfein sawaru...<br> Mai kala tika
+                                laake Teri najrein utaru...<br><br> Teri aankho ke dariya me kude... <br>Bhavariya me
+                                doobe...<br> Hn doobe to kinara na mila...<br> Tere piche hai hara dil aise... <br>
+                                Bechara
+                                dil aise...<br> Ki dhundha to dubara na mila..."</p>
+                        </div>
+
+                        <div class="song-item">
+                            <p class="song-name">♪ Standing by YOU ♪</p>
+                            <button class="play-btn" data-song="standing-by-you"
+                                onclick="playSong('standing-by-you')">▶</button>
+                            <p class="song-lyrics">"I can never be without your love
+                                You know me...<br> Your love is in my heart and blood
+                                It runs deep...<br> Whatever you want in life, you know
+                                It’s on me...<br>I’ll be standing by you till the end..."" <br>♪♪<br> So many things I
+                                do,
+                                and, girl
+                                You never wanna judge... <br>
+                                And, baby, you’re the reason
+                                That I ever fell in love..."
+                                <br>♪♪<br>
+                                Girl, I will be staring looking at you
+                                Every single night...<br>
+                                I just gotta let you know
+                                You brighten up my life..."
+                            </p>
+                        </div>
+
+                        <div class="song-item">
+                            <p class="song-name">♪ Tu Hi Haqeeqat ♪</p>
+                            <button class="play-btn" data-song="tu-hi-haqeeqat"
+                                onclick="playSong('tu-hi-haqeeqat')">▶</button>
+                            <p class="song-lyrics">"Jau mai ab jab jis jagah.... <br> Pau mai tujhko uss
+                                jagah...<br>Saath hoke na ho tu h... <br>Roobaru Roobaru...<br>Tu Hamsafar Tu Hamkadam
+                                Tu Humnava
+                                mera...<br>Tu Hamsafar Tu Hamkadam Tu Humnava
+                                mera..."</p>
+                        </div>
+
+                        <div class="song-item">
+                            <p class="song-name">♪ Zulfein ♪</p>
+                            <button class="play-btn" data-song="zulfein" onclick="playSong('zulfein')">▶</button>
+                            <p class="song-lyrics">"Tere gaalo pr bikhri h zulfein ban ke badal...<br> Tere aankho pe de
+                                rhi h pehra kaali kajal...<br>Dekh kr mera dil inhe, Ho jata h ghayal...<br>Dekh meri
+                                aankhein inhe, ho jati h paagal..."</p>
+                        </div>
+
+                        <div class="song-item">
+                            <p class="song-name">♪ Mann Mera ♪</p>
+                            <button class="play-btn" data-song="mann-mera" onclick="playSong('mann-mera')">▶</button>
+                            <p class="song-lyrics">"Aashiq dil tera purana h ye...<br> Deewana deewana samjhe
+                                naa...<br>Kabhi chup chup rahe...<br>Kabhi gaaya ye kare...<br>Bin puche teri taarifein
+                                sunaya ye kare....<br>Hai koi haqeeqat tu ya koi fasana h...<br> Kuch jaane agar to itna
+                                ki...<br>Ye tera deewana h..."
+                            </p>
+                        </div>
+
+                        <div class="song-item">
+                            <p class="song-name">♪ Blue - Instrumental ♪</p>
+                            <button class="play-btn" data-song="blue" onclick="playSong('blue')">▶</button>
+                            <p class="song-lyrics">"Accha h n ??"</p>
+                        </div>
+
+                    </div>
+                    <p class="confession-finale" style="margin-top:35px;">Ye kya hi h, Every song reminds me of you... ♡
+                    </p>
+                </div>
+
+                <!-- Song Audio Elements (Add your MP3 files to music/ folder) -->
+                <audio id="song-nasamajh" src="music/nasamajh.mp3" preload="none"></audio>
+                <audio id="song-standing-by-you" src="music/standing-by-you.mp3" preload="none"></audio>
+                <audio id="song-tu-hi-haqeeqat" src="music/tu-hi-haqeeqat.mp3" preload="none"></audio>
+                <audio id="song-zulfein" src="music/zulfein.mp3" preload="none"></audio>
+                <audio id="song-mann-mera" src="music/mann-mera.mp3" preload="none"></audio>
+                <audio id="song-blue" src="music/blue.mp3" preload="none"></audio>
+
+                <footer class="footer">
+                    <p class="footer-message">Jaan, I Love You very much Ever, Forever & Always</p>
+                    <p class="signature">With all my love,<br>Your Boy <span class="signature-heart">♡</span></p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <button class="love-button" id="loveButton" title="Send love"></button>
+
+    <script>
+        const loadingScreen = document.getElementById('loadingScreen'), envelopeOverlay = document.getElementById('envelopeOverlay'), mainContainer = document.getElementById('mainContainer'), scrollProgress = document.getElementById('scrollProgress'), progressFill = document.getElementById('progressFill'), bgMusic = document.getElementById('bgMusic');
+        let letterOpened = false;
+
+        // Set music volume low for lofi background vibe
+        bgMusic.volume = 0.18;
+
+        // Loading screen
+        setTimeout(() => { loadingScreen.classList.add('hidden') }, 2000);
+
+        function startMusic() { bgMusic.play().catch(() => { }) }
+
+        // Song Player - Low volume like lofi
+        let currentSong = null;
+        const songVolume = 0.30; // Soft volume (increased by 20%)
+
+        function playSong(songId) {
+            const audio = document.getElementById('song-' + songId);
+            const btn = document.querySelector(`[data-song="${songId}"]`);
+
+            // If this song is already playing, pause it
+            if (currentSong === audio && !audio.paused) {
+                audio.pause();
+                btn.textContent = '▶';
+                btn.classList.remove('playing');
+                bgMusic.play().catch(() => { }); // Resume background music
+                return;
+            }
+
+            // Stop any currently playing song
+            if (currentSong && currentSong !== audio) {
+                currentSong.pause();
+                currentSong.currentTime = 0;
+                document.querySelectorAll('.play-btn').forEach(b => {
+                    b.textContent = '▶';
+                    b.classList.remove('playing');
+                });
+            }
+
+            // Pause background music
+            bgMusic.pause();
+
+            // Play this song at low volume
+            audio.volume = songVolume;
+            audio.play().catch(() => { });
+            btn.textContent = '⏸';
+            btn.classList.add('playing');
+            currentSong = audio;
+
+            // When song ends, resume background music
+            audio.onended = function () {
+                btn.textContent = '▶';
+                btn.classList.remove('playing');
+                bgMusic.play().catch(() => { });
+                currentSong = null;
+            };
+        }
+
+        function openLetter() {
+            if (letterOpened) return;
+            letterOpened = true;
+            startMusic();
+            // Animate envelope
+            document.querySelector('.envelope-flap-anim').classList.add('open');
+            document.querySelector('.envelope-letter').classList.add('rise');
+            setTimeout(() => {
+                envelopeOverlay.classList.add('hidden');
+                mainContainer.classList.add('visible');
+                scrollProgress.classList.add('visible');
+                startTypewriter();
+                startSectionAnimations();
+            }, 1800);
+        }
+
+        envelopeOverlay.addEventListener('click', openLetter);
+        envelopeOverlay.addEventListener('touchend', (e) => { e.preventDefault(); openLetter(); });
+
+        // Removed auto-open - must tap to open
+
+        function startTypewriter() {
+            const titleElement = document.getElementById('titleText'), text = "Jaan, I'm So So So So Sorry🙏";
+            let index = 0;
+            titleElement.innerHTML = '<span class="cursor"></span>';
+            function type() {
+                if (index < text.length) {
+                    const textSpan = titleElement.querySelector('.text') || document.createElement('span');
+                    textSpan.className = 'text';
+                    textSpan.textContent = text.substring(0, index + 1);
+                    const cursor = titleElement.querySelector('.cursor');
+                    titleElement.innerHTML = '';
+                    titleElement.appendChild(textSpan);
+                    titleElement.appendChild(cursor);
+                    index++;
+                    setTimeout(type, 80 + Math.random() * 40);
+                } else {
+                    setTimeout(() => { const cursor = titleElement.querySelector('.cursor'); if (cursor) cursor.style.display = 'none' }, 1500);
+                }
+            }
+            setTimeout(type, 500);
+        }
+
+        function startSectionAnimations() {
+            const sections = document.querySelectorAll('.letter-section,.confession-box,.promise-section,.apology-box');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) { entry.target.classList.remove('animate-out'); entry.target.classList.add('animate-in') }
+                    else { entry.target.classList.remove('animate-in'); entry.target.classList.add('animate-out') }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+            sections.forEach((section) => { section.style.transition = 'all 0.6s cubic-bezier(0.4,0,0.2,1)'; observer.observe(section) });
+        }
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY, docHeight = document.documentElement.scrollHeight - window.innerHeight, progress = scrollTop / docHeight;
+            progressFill.style.clipPath = `inset(${(1 - progress) * 100}% 0 0 0)`;
+            // Parallax
+            document.querySelectorAll('.watercolor-blob').forEach(blob => { const speed = parseFloat(blob.dataset.parallax) || 0.03; blob.style.transform = `translateY(${scrollTop * speed}px)` });
+        }, { passive: true });
+
+        function createPetals() { const container = document.getElementById('petalsContainer'); for (let i = 0; i < 12; i++) { const petal = document.createElement('div'); petal.className = 'petal'; petal.style.left = `${Math.random() * 100}%`; petal.style.animationDuration = `${12 + Math.random() * 8}s`; petal.style.animationDelay = `${Math.random() * 12}s`; petal.style.transform = `scale(${0.5 + Math.random() * 0.7})`; container.appendChild(petal) } }
+        function createFloatingHearts() { const container = document.getElementById('floatingHearts'), hearts = ['♡', '❤', '♥']; for (let i = 0; i < 10; i++) { const heart = document.createElement('div'); heart.className = 'float-heart'; heart.textContent = hearts[Math.floor(Math.random() * hearts.length)]; heart.style.left = `${Math.random() * 100}%`; heart.style.animationDuration = `${10 + Math.random() * 8}s`; heart.style.animationDelay = `${Math.random() * 12}s`; heart.style.fontSize = `${12 + Math.random() * 10}px`; heart.style.color = `hsl(${350 + Math.random() * 20},60%,${65 + Math.random() * 15}%)`; container.appendChild(heart) } }
+
+        function createTouchRipple(x, y) { const ripple = document.createElement('div'); ripple.className = 'touch-ripple'; ripple.style.left = x + 'px'; ripple.style.top = y + 'px'; document.body.appendChild(ripple); setTimeout(() => ripple.remove(), 600) }
+        document.addEventListener('touchstart', (e) => { if (e.target.closest('.envelope-overlay') || e.target.closest('.loading-screen')) return; const touch = e.touches[0]; createTouchRipple(touch.clientX, touch.clientY) }, { passive: true });
+
+        const loveButton = document.getElementById('loveButton');
+        function createHeartBurst(x, y) { for (let i = 0; i < 10; i++) { const heart = document.createElement('div'); heart.textContent = ['♡', '❤', '♥'][Math.floor(Math.random() * 3)]; heart.style.cssText = `position:fixed;left:${x}px;top:${y}px;font-size:18px;z-index:9999;pointer-events:none;color:hsl(${350 + Math.random() * 30},60%,70%)`; document.body.appendChild(heart); const angle = (i / 10) * Math.PI * 2, distance = 50 + Math.random() * 40; heart.animate([{ transform: 'translate(-50%,-50%) scale(0.5)', opacity: 1 }, { transform: `translate(calc(-50% + ${Math.cos(angle) * distance}px),calc(-50% + ${Math.sin(angle) * distance - 25}px)) scale(1.1)`, opacity: 0 }], { duration: 700 + Math.random() * 300, easing: 'ease-out' }).onfinish = () => heart.remove() } }
+        loveButton.addEventListener('click', () => { const rect = loveButton.getBoundingClientRect(); createHeartBurst(rect.left + rect.width / 2, rect.top + rect.height / 2) });
+
+        window.addEventListener('load', () => { createPetals(); createFloatingHearts() });
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => { const now = Date.now(); if (now - lastTouchEnd <= 300) e.preventDefault(); lastTouchEnd = now }, { passive: false });
+    </script>
+</body>
+
+</html>
