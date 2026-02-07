@@ -1004,6 +1004,62 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--glow-pink)
         }
 
+        /* Subtle Apology Teaser */
+        .apology-teaser {
+            text-align: center;
+            margin-bottom: 15px
+        }
+
+        /* Apology Teaser Above Ring Icon */
+        .apology-teaser-top {
+            text-align: center;
+            padding: 15px 20px 25px;
+            position: relative;
+            z-index: 50
+        }
+
+        .apology-teaser-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px dashed rgba(232, 196, 196, 0.25);
+            border-radius: 30px;
+            color: rgba(232, 196, 196, 0.6);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.4s ease
+        }
+
+        .apology-teaser-link:hover {
+            color: var(--blush-pink);
+            border-color: rgba(232, 196, 196, 0.5);
+            background: rgba(139, 74, 90, 0.15);
+            box-shadow: 0 0 20px rgba(232, 196, 196, 0.1)
+        }
+
+        .apology-teaser-link .teaser-heart {
+            display: inline-block;
+            animation: gentlePulse 2s ease-in-out infinite;
+            margin: 0 8px
+        }
+
+        @keyframes gentlePulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1)
+            }
+        }
+
         /* Love Button */
         .love-button {
             position: fixed;
@@ -1356,6 +1412,7 @@
     <div class="main-container" id="mainContainer">
         <div class="proposal-card">
             <div class="golden-border"></div>
+
             <div class="ring-icon"></div>
 
             <div class="proposal-content">
@@ -1370,6 +1427,15 @@
                     <p class="subtitle">on this special day of valentine</p>
                     <p class="date-display">💕 Propose Day 💕</p>
                 </header>
+
+                <!-- Subtle Apology Teaser -->
+                <div class="apology-teaser">
+                    <a href="apology.html" class="apology-teaser-link">
+                        <span class="teaser-heart">🥀</span>
+                        kuch galtiyan huyi thi mujhse... maafi chahti ho?
+                        <span class="teaser-heart">🥀</span>
+                    </a>
+                </div>
 
                 <div class="divider">
                     <span class="divider-line"></span>
@@ -1495,12 +1561,8 @@
                 <footer class="footer">
                     <p class="footer-message">Aapke saath har pal, har janam ♡</p>
                     <p class="signature">Hamesha Aapka, <br>Aapka Hubby💖💖💖💖 <span class="signature-heart">💕</span>
+                    <p class="signature">Love You So Much Jaan💖💖 <span class="signature-heart">💕</span>
                     </p>
-
-                    <!-- Apology Link -->
-                    <div style="margin-top: 30px;">
-                        <a href="apology.html" class="apology-link">💔 I'm Sorry Too... 💔</a>
-                    </div>
                 </footer>
             </div>
         </div>
