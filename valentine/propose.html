@@ -798,12 +798,32 @@
             background: transparent;
             color: var(--text-light);
             border: 2px solid rgba(183, 110, 121, 0.4);
-            transition: all 0.2s ease
+            transition: all 0.3s ease
         }
 
-        /* The "No" button runs away! */
-        .response-btn.no:hover {
-            transform: translate(calc(50vw * var(--x, 1)), calc(20vh * var(--y, 1)));
+        /* The "No" button runs away - handled by JavaScript for mobile compatibility */
+        .response-btn.no.moving {
+            animation: shake 0.3s ease
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0)
+            }
+
+            25% {
+                transform: translateX(-10px) rotate(-5deg)
+            }
+
+            50% {
+                transform: translateX(10px) rotate(5deg)
+            }
+
+            75% {
+                transform: translateX(-5px) rotate(-2deg)
+            }
         }
 
         /* Proposal Poster */
@@ -1377,7 +1397,7 @@
     <div class="celebration-overlay" id="celebrationOverlay">
         <div class="celebration-content">
             <div class="celebration-emoji">💍💕💍</div>
-            <h2 class="celebration-text">Ahaaaa.....🥰🥰🥰🥰 I LOVE YOU MY WIFEY💖😘</h2>
+            <h2 class="celebration-text">Ahaaaa.....🥰🥰🥰🥰 I Love You My Wifey💖😘</h2>
             <p class="celebration-subtext">Forever & Always, Together 💕</p>
         </div>
     </div>
@@ -1518,6 +1538,7 @@
 
         // Yes button - Celebration!
         yesBtn.addEventListener('click', () => {
+            playHappySound(); // Play happy celebration sound
             celebrationOverlay.classList.add('show');
             createConfetti();
 
@@ -1526,8 +1547,10 @@
             }, 5000);
         });
 
-        // No button - runs away on hover!
+
+        // No button - fun interaction for mobile and desktop!
         let noPressCount = 0;
+        let noMoveCount = 0;
         const noMessages = {
             2: { emoji: '🙅‍♂️', text: 'Allowed nahi h jaanu! 💕' },
             4: { emoji: '🥺', text: 'Accept kr lo na jaan... please? 💝' },
@@ -1548,20 +1571,131 @@
 
             setTimeout(() => popup.classList.add('show'), 10);
 
-            // Auto-close after 4 seconds
+            // Auto-close after 3 seconds
             setTimeout(() => {
                 popup.classList.remove('show');
                 setTimeout(() => popup.remove(), 400);
-            }, 4000);
+            }, 3000);
         }
 
-        // Original CSS hover effect
-        noBtn.addEventListener('mouseover', () => {
-            noBtn.style.setProperty('--x', Math.random() > 0.5 ? 1 : -1);
-            noBtn.style.setProperty('--y', Math.random() > 0.5 ? 1 : -1);
+        // Romantic sound effect for button presses
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playRomanticChime() {
+            try {
+                // Create a soft, romantic chime sound
+                const osc1 = audioContext.createOscillator();
+                const osc2 = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+
+                osc1.connect(gain);
+                osc2.connect(gain);
+                gain.connect(audioContext.destination);
+
+                // Soft bell-like frequencies
+                osc1.frequency.value = 523.25; // C5
+                osc2.frequency.value = 659.25; // E5
+                osc1.type = 'sine';
+                osc2.type = 'sine';
+
+                gain.gain.setValueAtTime(0.15, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+
+                osc1.start(audioContext.currentTime);
+                osc2.start(audioContext.currentTime);
+                osc1.stop(audioContext.currentTime + 0.5);
+                osc2.stop(audioContext.currentTime + 0.5);
+            } catch (e) { }
+        }
+
+        // Happy celebration sound for Yes button - like excited fanfare!
+        function playHappySound() {
+            try {
+                const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 - happy ascending!
+                notes.forEach((freq, i) => {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+
+                    osc.frequency.value = freq;
+                    osc.type = 'sine';
+
+                    const startTime = audioContext.currentTime + (i * 0.1);
+                    gain.gain.setValueAtTime(0.2, startTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, startTime + 0.3);
+
+                    osc.start(startTime);
+                    osc.stop(startTime + 0.3);
+                });
+            } catch (e) { }
+        }
+
+        // Move button with fun animation - bounded within view
+        function moveNoButton() {
+            noMoveCount++;
+
+            // Get button container bounds
+            const container = noBtn.parentElement;
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            // Calculate safe movement range - increased for more fun!
+            const maxMoveX = 100;
+            const maxMoveY = 50;
+
+            // Random direction
+            const moveX = (Math.random() - 0.5) * maxMoveX * 2;
+            const moveY = (Math.random() - 0.5) * maxMoveY * 2;
+
+            // Apply transform
+            noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
+            // Add shake animation
+            noBtn.classList.add('moving');
+            setTimeout(() => noBtn.classList.remove('moving'), 300);
+        }
+
+        // Desktop: move on hover
+        noBtn.addEventListener('mouseenter', (e) => {
+            moveNoButton();
         });
 
-        noBtn.addEventListener('click', () => {
+        // Mobile: handle touch properly to avoid hitting Yes button
+        let lastTouchTime = 0;
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevent the touch from passing through
+            lastTouchTime = Date.now();
+            moveNoButton();
+        });
+
+        noBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            // Only count as a real tap if touch was recent (within 300ms)
+            if (Date.now() - lastTouchTime < 300) {
+                playRomanticChime(); // Play sound
+                noPressCount++;
+
+                if (noMessages[noPressCount]) {
+                    showCutePopup(noMessages[noPressCount].emoji, noMessages[noPressCount].text);
+                }
+
+                // After 6 presses, trigger yes!
+                if (noPressCount >= 6) {
+                    setTimeout(() => yesBtn.click(), 4500);
+                }
+
+                // Move button after tap
+                setTimeout(() => moveNoButton(), 100);
+            }
+        });
+
+        // Handle desktop click (not touch)
+        noBtn.addEventListener('click', (e) => {
+            // Skip if this was a touch event (already handled above)
+            if (e.pointerType === 'touch' || lastTouchTime > Date.now() - 500) return;
+
+            playRomanticChime(); // Play sound
             noPressCount++;
 
             if (noMessages[noPressCount]) {
@@ -1572,6 +1706,9 @@
             if (noPressCount >= 6) {
                 setTimeout(() => yesBtn.click(), 4500);
             }
+
+            // Move button after click too
+            setTimeout(() => moveNoButton(), 100);
         });
 
         // Create confetti
