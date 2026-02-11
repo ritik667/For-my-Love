@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💋 Happy Kiss Day Meri Jaan 💋</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Satisfy&family=Caveat:wght@400;500;600;700&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --crimson: #dc143c;
+            --wine: #722f37;
+            --ruby: #9b111e;
+            --deep-burgundy: #4a0012;
+            --rose-blush: #f4a0b5;
+            --soft-rose: #e8899a;
+            --gold: #d4a574;
+            --warm-gold: #c9a45c;
+            --text-light: #f0e0e5;
+            --bg-dark: #1a0008;
+            --card-bg: rgba(40, 10, 20, 0.92);
+            --glow-red: rgba(220, 20, 60, 0.4);
+            --glow-rose: rgba(244, 160, 181, 0.35);
+            --kiss-pink: #e74c70;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(180deg, #1a0008 0%, #2d0a15 25%, #1a0008 50%, #2d0a15 75%, #0d0005 100%);
+            color: var(--text-light);
+            padding: 20px;
+        }
+
+        /* Ambient Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .ambient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+            animation: blobFloat 15s ease-in-out infinite;
+        }
+
+        @keyframes blobFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            33% {
+                transform: translate(30px, -30px);
+            }
+
+            66% {
+                transform: translate(-20px, 20px);
+            }
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(ellipse, var(--crimson) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+        }
+
+        .blob-2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(ellipse, var(--ruby) 0%, transparent 70%);
+            top: 40%;
+            right: -80px;
+            animation-delay: 5s;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(ellipse, var(--kiss-pink) 0%, transparent 70%);
+            bottom: -50px;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        /* Main Container */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 20px 10px 60px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 35px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .kiss-emoji-big {
+            font-size: 5rem;
+            display: inline-block;
+            animation: kissPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(220, 20, 60, 0.6));
+        }
+
+        @keyframes kissPulse {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            25% {
+                transform: scale(1.1) rotate(-5deg);
+            }
+
+            50% {
+                transform: scale(1.15) rotate(0deg);
+            }
+
+            75% {
+                transform: scale(1.1) rotate(5deg);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Satisfy', cursive;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--rose-blush) 0%, var(--crimson) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 15px 0 10px;
+            line-height: 1.3;
+            text-shadow: none;
+        }
+
+        .hero-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: var(--soft-rose);
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* Wish Card */
+        .wish-card {
+            background: linear-gradient(175deg, rgba(74, 0, 18, 0.85) 0%, rgba(45, 10, 21, 0.95) 50%, rgba(74, 0, 18, 0.85) 100%);
+            border-radius: 24px;
+            padding: 35px 25px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 60px var(--glow-red), 0 0 0 1px rgba(220, 20, 60, 0.25);
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease 0.3s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wish-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: translateX(-30%);
+            }
+
+            50% {
+                transform: translateX(30%);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wish-content {
+            text-align: center;
+        }
+
+        .wish-text {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .wish-highlight {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: var(--gold);
+            display: block;
+            margin: 15px 0;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 15px;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+        }
+
+        .divider-icon {
+            font-size: 20px;
+            color: var(--crimson);
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Photo Gallery Section */
+        .gallery-section {
+            margin-bottom: 35px;
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        .gallery-title {
+            font-family: 'Satisfy', cursive;
+            font-size: 2.2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--rose-blush) 0%, var(--crimson) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .gallery-subtitle {
+            text-align: center;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            color: var(--rose-blush);
+            font-style: italic;
+            opacity: 0.7;
+            margin-bottom: 25px;
+        }
+
+        /* Photo Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .photo-frame {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(145deg, rgba(155, 17, 30, 0.3) 0%, rgba(45, 10, 21, 0.5) 100%);
+            border: 2px solid rgba(220, 20, 60, 0.25);
+            aspect-ratio: 9/16;
+            cursor: pointer;
+            opacity: 0;
+            animation: photoReveal 0.8s ease forwards;
+            will-change: opacity;
+        }
+
+        .photo-frame:nth-child(1) {
+            animation-delay: 0.8s;
+        }
+
+        .photo-frame:nth-child(2) {
+            animation-delay: 1.0s;
+        }
+
+        .photo-frame:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+
+        .photo-frame:nth-child(4) {
+            animation-delay: 1.4s;
+        }
+
+        @keyframes photoReveal {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .photo-frame.featured {
+            grid-column: 1 / -1;
+            aspect-ratio: 9/12;
+        }
+
+        /* Image inside frame handles the zoom effect */
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .photo-frame:active img,
+        .photo-frame:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Subtle border glow on touch/hover instead of moving the frame */
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .photo-frame:active::after,
+        .photo-frame:hover::after {
+            border-color: var(--crimson);
+            box-shadow: inset 0 0 20px rgba(220, 20, 60, 0.15), 0 8px 30px rgba(220, 20, 60, 0.25);
+        }
+
+        /* Caption overlay — always visible at bottom */
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 12px 12px;
+            background: linear-gradient(to top, rgba(26, 0, 8, 0.85) 0%, rgba(26, 0, 8, 0.3) 60%, transparent 100%);
+            z-index: 1;
+        }
+
+        .photo-caption {
+            font-family: 'Caveat', cursive;
+            font-size: 0.95rem;
+            color: var(--rose-blush);
+            text-align: center;
+        }
+
+        /* Video Section */
+        .video-section {
+            margin: 35px 0;
+            animation: fadeIn 1s ease 1s both;
+        }
+
+        .video-title {
+            font-family: 'Satisfy', cursive;
+            font-size: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--rose-blush) 0%, var(--crimson) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .video-subtitle {
+            text-align: center;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            color: var(--rose-blush);
+            font-style: italic;
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .video-frame {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #0d0005;
+            border: 3px solid rgba(220, 20, 60, 0.35);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 35px var(--glow-red);
+            animation: heartBorderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes heartBorderGlow {
+
+            0%,
+            100% {
+                border-color: rgba(220, 20, 60, 0.35);
+                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 35px var(--glow-red);
+            }
+
+            50% {
+                border-color: rgba(220, 20, 60, 0.55);
+                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 50px rgba(220, 20, 60, 0.35), 0 0 80px rgba(244, 160, 181, 0.1);
+            }
+        }
+
+        .video-frame video {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #000;
+        }
+
+        /* Video Play Button Overlay */
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 0, 8, 0.6);
+            cursor: pointer;
+            z-index: 5;
+            transition: opacity 0.4s ease;
+        }
+
+        .video-play-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .play-btn-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--crimson) 0%, var(--kiss-pink) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 25px rgba(220, 20, 60, 0.5);
+            animation: kissBtnGlow 2.5s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .video-play-overlay:active .play-btn-circle {
+            transform: scale(0.9);
+        }
+
+        .play-icon {
+            color: white;
+            font-size: 1.8rem;
+            margin-left: 4px;
+        }
+
+        .play-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            color: var(--rose-blush);
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Romantic Note below video */
+        .video-romantic-note {
+            margin-top: 16px;
+            text-align: center;
+            padding: 16px 18px;
+            background: linear-gradient(145deg, rgba(155, 17, 30, 0.2) 0%, rgba(45, 10, 21, 0.35) 100%);
+            border-radius: 14px;
+            border: 1px solid rgba(220, 20, 60, 0.15);
+        }
+
+        .video-romantic-note p {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: var(--soft-rose);
+            line-height: 1.8;
+        }
+
+        .video-heart-decor {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.4;
+            pointer-events: none;
+            animation: kissPulse 3s ease-in-out infinite;
+        }
+
+        .video-heart-decor.top-left {
+            top: 10px;
+            left: 10px;
+        }
+
+        .video-heart-decor.top-right {
+            top: 10px;
+            right: 10px;
+            animation-delay: 1s;
+        }
+
+        .video-heart-decor.bottom-left {
+            bottom: 10px;
+            left: 10px;
+            animation-delay: 0.5s;
+        }
+
+        .video-heart-decor.bottom-right {
+            bottom: 10px;
+            right: 10px;
+            animation-delay: 1.5s;
+        }
+
+        /* Kiss Message Card */
+        .kiss-message-card {
+            background: linear-gradient(145deg, rgba(155, 17, 30, 0.3) 0%, rgba(45, 10, 21, 0.5) 100%);
+            border-radius: 20px;
+            padding: 30px 22px;
+            margin: 30px 0;
+            border: 1px solid rgba(220, 20, 60, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease 1s both;
+        }
+
+        .kiss-message-card::after {
+            content: '💋';
+            position: absolute;
+            top: -5px;
+            right: 10px;
+            font-size: 2rem;
+            opacity: 0.15;
+            animation: kissPulse 3s ease-in-out infinite;
+        }
+
+        .kiss-message-title {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: var(--soft-rose);
+            margin-bottom: 15px;
+        }
+
+        .kiss-message-body {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        /* Kiss Station */
+        .kiss-station {
+            background: linear-gradient(175deg, rgba(74, 0, 18, 0.9) 0%, rgba(45, 10, 21, 0.95) 50%, rgba(74, 0, 18, 0.9) 100%);
+            border-radius: 24px;
+            padding: 35px 22px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 50px var(--glow-red), 0 0 0 1px rgba(220, 20, 60, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease 1s both;
+        }
+
+        .kiss-station::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .kiss-station-title {
+            font-family: 'Satisfy', cursive;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--rose-blush) 0%, var(--crimson) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .kiss-station-subtitle {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            color: var(--rose-blush);
+            opacity: 0.7;
+            font-style: italic;
+            margin-bottom: 22px;
+        }
+
+        .kiss-total-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .kiss-total-number {
+            font-family: 'Satisfy', cursive;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--soft-rose) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            min-width: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .kiss-total-number.bump {
+            animation: numberBump 0.4s ease;
+        }
+
+        @keyframes numberBump {
+            0% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(1.4);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .kiss-total-label {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: var(--rose-blush);
+            text-align: left;
+            line-height: 1.3;
+        }
+
+        /* Love Meter */
+        .love-meter {
+            margin: 20px auto;
+            max-width: 280px;
+        }
+
+        .love-meter-label {
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            color: var(--soft-rose);
+            margin-bottom: 8px;
+        }
+
+        .love-meter-bar {
+            width: 100%;
+            height: 14px;
+            background: rgba(74, 0, 18, 0.6);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            position: relative;
+        }
+
+        .love-meter-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--wine), var(--crimson), var(--kiss-pink), var(--gold));
+            background-size: 200% 100%;
+            animation: loveMeterShimmer 2s ease-in-out infinite;
+            width: 0%;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .love-meter-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 6px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+
+        @keyframes loveMeterShimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .love-meter-milestone {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+        }
+
+        .love-meter-milestone.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Big Kiss Button */
+        .kiss-btn-big {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--ruby) 0%, var(--crimson) 50%, var(--kiss-pink) 100%);
+            border: 3px solid rgba(244, 160, 181, 0.3);
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(220, 20, 60, 0.5), 0 0 20px rgba(220, 20, 60, 0.15);
+            margin-bottom: 12px;
+            animation: kissBtnGlow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes kissBtnGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 30px rgba(220, 20, 60, 0.5), 0 0 20px rgba(244, 160, 181, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 8px 40px rgba(220, 20, 60, 0.7), 0 0 35px rgba(244, 160, 181, 0.3);
+            }
+        }
+
+        .kiss-btn-big:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(220, 20, 60, 0.7), 0 0 40px rgba(244, 160, 181, 0.3);
+        }
+
+        .kiss-btn-big:active {
+            transform: scale(0.9);
+        }
+
+        .kiss-btn-text {
+            font-family: 'Caveat', cursive;
+            font-size: 0.95rem;
+            color: var(--rose-blush);
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        /* Lip Print Burst */
+        .lip-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 2rem;
+            animation: lipBurst 1.2s ease-out forwards;
+        }
+
+        @keyframes lipBurst {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: translate(var(--tx), var(--ty)) scale(1.3) rotate(var(--rot));
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx2), var(--ty2)) scale(0.3) rotate(var(--rot2));
+            }
+        }
+
+        /* WhatsApp Section */
+        .whatsapp-section {
+            margin-top: 5px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(220, 20, 60, 0.15);
+        }
+
+        .whatsapp-label {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85rem;
+            color: var(--rose-blush);
+            opacity: 0.6;
+            margin-bottom: 12px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Caveat', cursive;
+            font-size: 1.15rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .kiss-history {
+            margin-top: 15px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.8rem;
+            color: var(--rose-blush);
+            opacity: 0.5;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            animation: fadeIn 1s ease 1.5s both;
+        }
+
+        .footer-message {
+            font-family: 'Sacramento', cursive;
+            font-size: 1.4rem;
+            color: var(--rose-blush);
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--crimson) 0%, var(--gold) 100%);
+            border-radius: 50px;
+            color: white;
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.5);
+        }
+
+        /* Floating Emojis */
+        .emojis-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            opacity: 0;
+            animation: emojiFloat linear infinite;
+        }
+
+        @keyframes emojiFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-20px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 0, 5, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-frame {
+            position: relative;
+            padding: 8px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--crimson), var(--gold), var(--rose-blush), var(--ruby));
+            background-size: 300% 300%;
+            animation: frameBorderShift 5s ease-in-out infinite;
+            box-shadow:
+                0 0 40px rgba(220, 20, 60, 0.4),
+                0 0 80px rgba(220, 20, 60, 0.15),
+                0 25px 60px rgba(0, 0, 0, 0.6);
+            max-width: 90vw;
+            max-height: 78vh;
+        }
+
+        @keyframes frameBorderShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .lightbox-inner {
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--bg-dark);
+            position: relative;
+        }
+
+        .lightbox-inner img {
+            display: block;
+            max-width: 85vw;
+            max-height: 72vh;
+            object-fit: contain;
+            border-radius: 14px;
+            animation: lightboxZoomIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes lightboxZoomIn {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-frame::before,
+        .lightbox-frame::after {
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0.6;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .lightbox-frame::before {
+            content: '💋';
+            top: -18px;
+            left: -10px;
+            animation: kissPulse 2.5s ease-in-out infinite;
+        }
+
+        .lightbox-frame::after {
+            content: '💕';
+            bottom: -18px;
+            right: -10px;
+            animation: kissPulse 2.5s ease-in-out infinite 1s;
+        }
+
+        .lightbox-caption {
+            font-family: 'Caveat', cursive;
+            font-size: 1.25rem;
+            color: var(--rose-blush);
+            text-align: center;
+            margin-top: 16px;
+            opacity: 0;
+            animation: captionFadeUp 0.5s ease 0.3s forwards;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes captionFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(155, 17, 30, 0.5);
+            border: 1px solid rgba(244, 160, 181, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--rose-blush);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox-close:hover {
+            background: rgba(220, 20, 60, 0.7);
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(155, 17, 30, 0.4);
+            border: 1px solid rgba(244, 160, 181, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--rose-blush);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(220, 20, 60, 0.6);
+            box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
+        }
+
+        .lightbox-prev {
+            left: 12px;
+        }
+
+        .lightbox-next {
+            right: 12px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85rem;
+            color: var(--rose-blush);
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .wish-card {
+                padding: 25px 18px;
+            }
+
+            .photo-grid {
+                gap: 10px;
+            }
+
+            .gallery-title {
+                font-size: 1.8rem;
+            }
+
+            .kiss-emoji-big {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+        <div class="ambient-blob blob-3"></div>
+    </div>
+
+    <!-- Floating Emojis -->
+    <div class="emojis-container" id="emojisContainer"></div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+        <div class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</div>
+        <div class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</div>
+        <div class="lightbox-frame">
+            <div class="lightbox-inner">
+                <img id="lightboxImg" src="" alt="Photo">
+            </div>
+        </div>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+        <span class="lightbox-counter" id="lightboxCounter"></span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="kiss-emoji-big">💋</div>
+            <h1 class="hero-title">Happy Kiss Day Meri Jaan 💋<br>❤️My Love 💕</h1>
+            <p class="hero-subtitle">Every kiss with you feels like the first time 😘💖<br>❤️My Forever Partner 💋💖</p>
+        </div>
+
+        <!-- Wish Card -->
+        <div class="wish-card">
+            <div class="wish-content">
+                <p class="wish-text">
+                    Meri Jaan, aaj Kiss Day hai, aur main bas ye soch raha hu ki kaash abhi tum mere saamne hoti😩💋
+                    Har ek kiss tumhare saath ek naya ehsaas deta h, ek nayi duniya ka safar shuru ho jaata h🥰💕
+                    <br>❤️ Tumhare hotho ki har muskaan meri duniya roshni kr deti h 😘💋
+                    <br>I Love You Baby So Much that Words Can't Even Describe😘❤️
+                </p>
+                <span class="wish-highlight">
+                    Har kiss tumhare saath ek naye sapne ki shuruwaat hai 💋✨
+                </span>
+                <p class="wish-text">
+                    Tumhare saath bitaye har pal mein, tumhare close hone ka feel, wo duniya ki sabse badi khushi h
+                    jaan🥰
+                    <br>Main har baar tumhare paas aata hu to bas aur thoda aur tumhare kareeb aa jaana chahta hu😩💋
+                    <br>I Really Miss Your Kisses So Much Meri Jaan 🥺💋
+                </p>
+            </div>
+        </div>
+
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">💋</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Photo Gallery -->
+        <section class="gallery-section">
+            <h2 class="gallery-title">Hamare Pyare Lamhe 💏</h2>
+            <p class="gallery-subtitle">In kisses ko hamesha yaad rakhunga...💋💕</p>
+
+            <div class="photo-grid">
+                <!-- Photo 1 - Featured (full width) -->
+                <div class="photo-frame featured" onclick="openLightbox(this)">
+                    <img src="k.jpg" alt="Our kiss moment">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">Ye pal hamesha yaadgar rahega 💋💕</p>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="photo-frame" onclick="openLightbox(this)">
+                    <img src="k1.jpg" alt="Kiss moment">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">Tumhare saath har pal magical h 😘</p>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="photo-frame" onclick="openLightbox(this)">
+                    <img src="k2.jpg" alt="Kiss moment">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">My favourite person 💋💖</p>
+                    </div>
+                </div>
+
+                <!-- Photo 4 - Featured (full width) -->
+                <div class="photo-frame featured" onclick="openLightbox(this)">
+                    <img src="k3.jpg" alt="Our special kiss">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">Forever Yours 💋💕</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">💕</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Video Section (Forceful Kiss) -->
+        <section class="video-section">
+            <h2 class="video-title">Ye Moment yaad h 🎥💋</h2>
+            <p class="video-subtitle">This one always makes me smile...💕</p>
+
+            <div class="video-frame" id="videoFrame">
+                <video id="kissVideo" playsinline webkit-playsinline preload="auto" loop>
+                    <source src="k4.mp4" type="video/mp4">
+                </video>
+                <!-- Play Button Overlay -->
+                <div class="video-play-overlay" id="videoPlayOverlay" onclick="playVideo()">
+                    <div class="play-btn-circle">
+                        <span class="play-icon">▶</span>
+                    </div>
+                    <p class="play-text">Tap to play 💋</p>
+                </div>
+            </div>
+
+            <div class="video-romantic-note">
+                <p>Warna aise zabardasti kiss le lunga main 😤😘💋<br>
+                    Toh acche se de diya karo mujhe kiss jaan 🥰💕<br>
+                    Kyunki tumhare bina reh nhi paata main 😩💋</p>
+            </div>
+        </section>
+
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">♡</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Kiss Message -->
+
+
+        <!-- Kiss Station -->
+        <div class="kiss-station">
+            <h3 class="kiss-station-title">💋 Kiss Station 💋</h3>
+            <p class="kiss-station-subtitle">Tap karke dher saari kisses bhej sakti ho mujhe jaan 😘💕</p>
+
+            <div class="kiss-total-display">
+                <span class="kiss-total-number" id="kissTotalNumber">0</span>
+                <span class="kiss-total-label">baar<br>kiss kiya 💋</span>
+            </div>
+
+            <!-- Love Meter -->
+            <div class="love-meter">
+                <p class="love-meter-label">💕 Love Meter 💕</p>
+                <div class="love-meter-bar">
+                    <div class="love-meter-fill" id="loveMeterFill"></div>
+                </div>
+                <p class="love-meter-milestone" id="loveMeterMilestone"></p>
+            </div>
+
+            <button class="kiss-btn-big" id="kissBtnBig" onclick="sendKiss(event)">
+                💋
+            </button>
+            <p class="kiss-btn-text">Ek aur kiss do na jaan 😘💋<br>Main wait kr rha hu 💕</p>
+
+            <div class="whatsapp-section">
+                <p class="whatsapp-label">Apne hubby ko btao kitni baar kiss kiya 💌💋</p>
+                <a class="whatsapp-btn" id="whatsappBtn" href="#" target="_blank" onclick="sendWhatsApp(event)">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    Send Kisses to Hubby 💋
+                </a>
+            </div>
+
+            <p class="kiss-history" id="kissHistory"></p>
+        </div>
+
+        <div class="kiss-message-card">
+            <h3 class="kiss-message-title">💋 Dher Saara Kisses For You Jaan 💋</h3>
+            <p class="kiss-message-body">
+                Tumhe kitna bhi kiss karu, dil nhi bharta mera jaan😩💋<br>
+                Bas tumhare paas aana chahta hu aur tumhe chummi dena chahta hu💋💕<br><br>
+                Accept karo meri saari kisses jaan 💋😘
+            </p>
+        </div>
+
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">✧</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-message">Tumhara Hamesha, Forever & Always 💋💕 Tumhara Hubby😘 ♡</p>
+            <a href="/index.html" class="back-btn">💕 I Love You My Beautiful Wifey💖😘💕</a>
+        </footer>
+    </div>
+
+    <script>
+        // ===== Video Playback =====
+        function playVideo() {
+            const video = document.getElementById('kissVideo');
+            const overlay = document.getElementById('videoPlayOverlay');
+
+            if (video) {
+                // Show controls now
+                video.setAttribute('controls', '');
+
+                var playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(function () {
+                        // Playing successfully
+                        overlay.classList.add('hidden');
+                    }).catch(function (err) {
+                        // Autoplay blocked — show controls anyway so user can tap native play
+                        overlay.classList.add('hidden');
+                        console.log('Play blocked:', err);
+                    });
+                } else {
+                    overlay.classList.add('hidden');
+                }
+            }
+        }
+
+        // Toggle play/pause by tapping the video
+        document.addEventListener('DOMContentLoaded', function () {
+            var video = document.getElementById('kissVideo');
+            if (video) {
+                video.addEventListener('click', function () {
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+
+                video.addEventListener('error', function (e) {
+                    console.log('Video error:', e);
+                    // If video can't load, hide overlay and show a message
+                    var overlay = document.getElementById('videoPlayOverlay');
+                    if (overlay) {
+                        overlay.innerHTML = '<p class="play-text">Video nhi chal rha 😢<br>Try opening in browser 💋</p>';
+                    }
+                });
+            }
+        });
+
+        // ===== Floating Emojis =====
+        function createFloatingEmojis() {
+            const container = document.getElementById('emojisContainer');
+            const emojis = ['💋', '💏', '💕', '😘', '🥰', '💖', '✨', '💗'];
+
+            for (let i = 0; i < 12; i++) {
+                const emoji = document.createElement('div');
+                emoji.className = 'floating-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = `${Math.random() * 100}%`;
+                emoji.style.animationDuration = `${14 + Math.random() * 12}s`;
+                emoji.style.animationDelay = `${Math.random() * 12}s`;
+                emoji.style.fontSize = `${16 + Math.random() * 14}px`;
+                container.appendChild(emoji);
+            }
+        }
+
+        createFloatingEmojis();
+
+        // ===== Persistent Kiss Counter =====
+        const PHONE_NUMBER = '917970328312';
+        let kissCounter = parseInt(localStorage.getItem('kissDayCount') || '0');
+        let lastKissTime = localStorage.getItem('kissDayLastTime') || null;
+
+        // Love Meter config
+        const LOVE_METER_MAX = 100;
+        const milestones = {
+            10: '💕 Aww... thoda sa pyaar aa gaya!',
+            25: '😘 Ab baat ban rhi h jaan!',
+            50: '💋 Half way there! Kitna pyaar h tumhara!',
+            75: '🥰 Behad pyaar krti ho mujhse baby!',
+            100: '💖 LOVE METER FULL! Unlimited pyaar! 💋💋💋'
+        };
+
+        function updateKissDisplay() {
+            const numEl = document.getElementById('kissTotalNumber');
+            numEl.textContent = kissCounter;
+
+            // Update love meter
+            const fill = document.getElementById('loveMeterFill');
+            const percentage = Math.min((kissCounter / LOVE_METER_MAX) * 100, 100);
+            fill.style.width = percentage + '%';
+
+            // Check for milestones
+            const milestoneEl = document.getElementById('loveMeterMilestone');
+            let currentMilestone = '';
+            for (const [count, msg] of Object.entries(milestones)) {
+                if (kissCounter >= parseInt(count)) {
+                    currentMilestone = msg;
+                }
+            }
+            if (currentMilestone) {
+                milestoneEl.textContent = currentMilestone;
+                milestoneEl.classList.add('show');
+            }
+
+            // Show history
+            const historyEl = document.getElementById('kissHistory');
+            if (kissCounter > 0 && lastKissTime) {
+                const date = new Date(lastKissTime);
+                const timeStr = date.toLocaleString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true, day: 'numeric', month: 'short' });
+                historyEl.textContent = 'Last kiss: ' + timeStr + ' 💋';
+            }
+        }
+
+        updateKissDisplay();
+
+        function sendKiss(e) {
+            kissCounter++;
+            lastKissTime = new Date().toISOString();
+            localStorage.setItem('kissDayCount', kissCounter.toString());
+            localStorage.setItem('kissDayLastTime', lastKissTime);
+
+            // Update display with bump animation
+            const numEl = document.getElementById('kissTotalNumber');
+            numEl.textContent = kissCounter;
+            numEl.classList.remove('bump');
+            void numEl.offsetWidth;
+            numEl.classList.add('bump');
+
+            updateKissDisplay();
+
+            // Lip-print burst effect
+            const burstEmojis = ['💋', '💕', '😘', '💗', '💖', '✨', '💏', '🥰'];
+            for (let i = 0; i < 10; i++) {
+                const burst = document.createElement('div');
+                burst.className = 'lip-burst';
+                burst.textContent = burstEmojis[Math.floor(Math.random() * burstEmojis.length)];
+                const angle = (i / 10) * 360;
+                const distance = 80 + Math.random() * 80;
+                const tx = Math.cos(angle * Math.PI / 180) * distance * 0.6;
+                const ty = Math.sin(angle * Math.PI / 180) * distance * 0.6;
+                const tx2 = Math.cos(angle * Math.PI / 180) * distance;
+                const ty2 = Math.sin(angle * Math.PI / 180) * distance;
+                const rot = (Math.random() - 0.5) * 60;
+                const rot2 = (Math.random() - 0.5) * 120;
+                burst.style.setProperty('--tx', `${tx}px`);
+                burst.style.setProperty('--ty', `${ty}px`);
+                burst.style.setProperty('--tx2', `${tx2}px`);
+                burst.style.setProperty('--ty2', `${ty2}px`);
+                burst.style.setProperty('--rot', `${rot}deg`);
+                burst.style.setProperty('--rot2', `${rot2}deg`);
+                burst.style.left = `${e.clientX}px`;
+                burst.style.top = `${e.clientY}px`;
+                document.body.appendChild(burst);
+                setTimeout(() => burst.remove(), 1200);
+            }
+        }
+
+        function sendWhatsApp(e) {
+            e.preventDefault();
+            var kiss = '💋';
+            var hearts = '💕';
+            var couple = '💏';
+            var redheart = '❤️';
+            var sad = '😔';
+            var sparkheart = '💖';
+            var pinkheart = '💗';
+            var msg = 'Jaaanu mera ' + kiss + hearts + ' Aaj maine ' + kissCounter + ' baar tumhe kiss kiya! ' + couple + redheart + ' Kaash tum abhi mere saamne hote... bahut yaad aa rhi h tumhari ' + sad + ' Happy Kiss Day meri jaan! ' + kiss + hearts + ' I love you so much! ' + sparkheart + ' - Tumhari Wifey ' + pinkheart;
+            var url = 'https://wa.me/' + PHONE_NUMBER + '?text=' + encodeURIComponent(msg);
+            window.open(url, '_blank');
+        }
+
+        // ===== Lightbox =====
+        let currentPhotoIndex = 0;
+        let photoFrames = [];
+
+        function getPhotoFrames() {
+            return Array.from(document.querySelectorAll('.photo-frame')).filter(f => f.querySelector('img'));
+        }
+
+        function openLightbox(frame) {
+            const img = frame.querySelector('img');
+            if (!img) return;
+
+            photoFrames = getPhotoFrames();
+            currentPhotoIndex = photoFrames.indexOf(frame);
+
+            showPhoto(currentPhotoIndex);
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showPhoto(index) {
+            const frame = photoFrames[index];
+            const img = frame.querySelector('img');
+            const caption = frame.querySelector('.photo-caption');
+
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxCounter = document.getElementById('lightboxCounter');
+
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = caption ? caption.textContent : '💋';
+            lightboxCounter.textContent = `${index + 1} / ${photoFrames.length}`;
+
+            lightboxImg.style.animation = 'none';
+            lightboxCaption.style.animation = 'none';
+            requestAnimationFrame(() => {
+                lightboxImg.style.animation = '';
+                lightboxCaption.style.animation = '';
+            });
+        }
+
+        function navigateLightbox(direction) {
+            event.stopPropagation();
+            currentPhotoIndex = (currentPhotoIndex + direction + photoFrames.length) % photoFrames.length;
+            showPhoto(currentPhotoIndex);
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeLightbox();
+        });
+    </script>
+</body>
+
+</html>

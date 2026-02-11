@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💝 Happy Valentine's Day Meri Jaan 💝</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Satisfy&family=Caveat:wght@400;500;600;700&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --rose-pink: #e75480;
+            --soft-lavender: #c3a6d8;
+            --blush: #f8c8dc;
+            --deep-pink: #c2185b;
+            --gold: #d4a574;
+            --warm-gold: #c9a45c;
+            --text-light: #f0e0e5;
+            --bg-dark: #120810;
+            --glow-pink: rgba(231, 84, 128, 0.4);
+            --glow-lavender: rgba(195, 166, 216, 0.3);
+        }
+
+        html,
+        body {
+            scroll-behavior: smooth;
+            overscroll-behavior: none;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            background: linear-gradient(180deg, #120810 0%, #1e0a18 30%, #120810 60%, #1a0c15 100%);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            position: relative;
+        }
+
+        /* ===== Rose Petals Background ===== */
+        .petals-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            opacity: 0;
+            animation: petalFall linear infinite;
+        }
+
+        .petal::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 30% 30%, var(--rose-pink) 0%, var(--deep-pink) 60%, transparent 100%);
+            border-radius: 50% 0 50% 50%;
+            transform: rotate(-45deg);
+            opacity: 0.7;
+        }
+
+        .petal.t2::before {
+            background: radial-gradient(ellipse at 30% 30%, var(--blush) 0%, var(--rose-pink) 60%, transparent 100%);
+        }
+
+        .petal.t3::before {
+            background: radial-gradient(ellipse at 30% 30%, var(--soft-lavender) 0%, #9b7ab8 60%, transparent 100%);
+            opacity: 0.5;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-5vh) translateX(0) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(50vh) translateX(var(--sw)) rotate(180deg) scale(1);
+                opacity: 0.45;
+            }
+
+            100% {
+                transform: translateY(110vh) translateX(calc(var(--sw) * -0.5)) rotate(360deg) scale(0.6);
+                opacity: 0;
+            }
+        }
+
+        /* ===== Ambient Glow ===== */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .ambient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.18;
+            animation: blobF 18s ease-in-out infinite;
+        }
+
+        @keyframes blobF {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            33% {
+                transform: translate(20px, -20px);
+            }
+
+            66% {
+                transform: translate(-15px, 12px);
+            }
+        }
+
+        .b1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(ellipse, var(--rose-pink) 0%, transparent 70%);
+            top: -80px;
+            left: -60px;
+        }
+
+        .b2 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(ellipse, var(--soft-lavender) 0%, transparent 70%);
+            bottom: -40px;
+            right: -40px;
+            animation-delay: 6s;
+        }
+
+        .b3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(ellipse, var(--deep-pink) 0%, transparent 70%);
+            top: 45%;
+            left: 40%;
+            animation-delay: 12s;
+        }
+
+        /* ===== Sparkle Dots ===== */
+        .sparkle-dot {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2;
+            animation: twinkle 2.5s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+
+        /* ===== Valentine Card ===== */
+        .valentine-card {
+            position: relative;
+            z-index: 10;
+            max-width: 400px;
+            width: 100%;
+            background: linear-gradient(175deg, rgba(55, 25, 40, 0.92) 0%, rgba(35, 15, 28, 0.96) 50%, rgba(55, 25, 40, 0.92) 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 50px var(--glow-pink), 0 0 0 1px rgba(231, 84, 128, 0.15);
+            animation: cardIn 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .card-border-top {
+            height: 4px;
+            background: linear-gradient(90deg, var(--rose-pink), var(--gold), var(--soft-lavender), var(--rose-pink));
+            background-size: 200% 100%;
+            animation: borderShimmer 3s linear infinite;
+        }
+
+        @keyframes borderShimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .card-inner {
+            padding: 40px 24px 36px;
+            text-align: center;
+        }
+
+        .v-emoji {
+            font-size: 4rem;
+            display: inline-block;
+            animation: emojiFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(231, 84, 128, 0.5));
+        }
+
+        @keyframes emojiFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-10px) scale(1.06);
+            }
+        }
+
+        .v-title {
+            font-family: 'Satisfy', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--rose-pink) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 12px 0 6px;
+            line-height: 1.3;
+        }
+
+        .v-sub {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: var(--soft-lavender);
+            opacity: 0.85;
+        }
+
+        .v-date {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            opacity: 0.6;
+            margin: 8px 0 20px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--rose-pink), transparent);
+        }
+
+        .divider-icon {
+            font-size: 16px;
+            color: var(--rose-pink);
+            animation: hb 2s ease-in-out infinite;
+        }
+
+        @keyframes hb {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Question */
+        .q-section {
+            margin: 20px 0 24px;
+        }
+
+        .q-text {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.9rem;
+            color: var(--blush);
+            line-height: 1.4;
+            text-shadow: 0 0 25px var(--glow-pink);
+            animation: qPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes qPulse {
+
+            0%,
+            100% {
+                text-shadow: 0 0 15px var(--glow-pink);
+            }
+
+            50% {
+                text-shadow: 0 0 35px var(--glow-pink), 0 0 50px rgba(231, 84, 128, 0.15);
+            }
+        }
+
+        .q-sub {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-top: 14px;
+            line-height: 1.7;
+            opacity: 0.8;
+        }
+
+        /* ===== Buttons ===== */
+        .btns-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+            margin-top: 26px;
+        }
+
+        .btn-v {
+            border-radius: 50px;
+            font-family: 'Caveat', cursive;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .btn-yes {
+            padding: 15px 44px;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, var(--rose-pink) 0%, var(--deep-pink) 50%, var(--gold) 100%);
+            background-size: 200% 200%;
+            color: white;
+            box-shadow: 0 6px 24px rgba(231, 84, 128, 0.35);
+            z-index: 5;
+            animation: yesBgShift 4s ease-in-out infinite;
+        }
+
+        @keyframes yesBgShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95) !important;
+        }
+
+        /* Growing glow intensity */
+        .btn-yes.glow-1 {
+            box-shadow: 0 8px 28px rgba(231, 84, 128, 0.4);
+        }
+
+        .btn-yes.glow-2 {
+            box-shadow: 0 10px 35px rgba(231, 84, 128, 0.5), 0 0 20px rgba(212, 165, 116, 0.15);
+        }
+
+        .btn-yes.glow-3 {
+            box-shadow: 0 12px 40px rgba(231, 84, 128, 0.55), 0 0 30px rgba(212, 165, 116, 0.2);
+            animation: yesGlow 2s ease-in-out infinite;
+        }
+
+        .btn-yes.glow-4 {
+            box-shadow: 0 14px 50px rgba(231, 84, 128, 0.65), 0 0 45px rgba(212, 165, 116, 0.3);
+            animation: yesGlow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes yesGlow {
+
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.15);
+            }
+        }
+
+        .btn-no {
+            padding: 11px 32px;
+            font-size: 1.05rem;
+            background: transparent;
+            color: var(--text-light);
+            border: 1.5px solid rgba(231, 84, 128, 0.35);
+            transition: all 0.5s ease;
+        }
+
+        /* ===== Cute No Popup ===== */
+        .no-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(145deg, rgba(55, 25, 40, 0.97) 0%, rgba(35, 15, 28, 0.99) 100%);
+            border: 2px solid var(--rose-pink);
+            border-radius: 20px;
+            padding: 26px 28px;
+            text-align: center;
+            z-index: 10002;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7), 0 0 40px var(--glow-pink);
+            opacity: 0;
+            transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 85%;
+            width: 310px;
+        }
+
+        .no-popup.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .no-popup-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: noShake 0.7s ease;
+        }
+
+        @keyframes noShake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-6px) rotate(-4deg);
+            }
+
+            40% {
+                transform: translateX(6px) rotate(4deg);
+            }
+
+            60% {
+                transform: translateX(-3px) rotate(-2deg);
+            }
+
+            80% {
+                transform: translateX(3px) rotate(2deg);
+            }
+        }
+
+        .no-popup-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: var(--blush);
+            line-height: 1.5;
+        }
+
+        /* ===== CELEBRATION PAGE (Unique Valentine Design) ===== */
+        .celebration-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at 50% 40%, #2a1020 0%, #120810 60%, #0a0408 100%);
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .celebration-page.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Animated heart background for celebration */
+        .celeb-hearts-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .celeb-heart-ring {
+            position: absolute;
+            border: 2px solid rgba(231, 84, 128, 0.15);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ringExpand 3s ease-out infinite;
+        }
+
+        .celeb-heart-ring:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+
+        .celeb-heart-ring:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            animation-delay: 0.6s;
+        }
+
+        .celeb-heart-ring:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            animation-delay: 1.2s;
+        }
+
+        .celeb-heart-ring:nth-child(4) {
+            width: 80px;
+            height: 80px;
+            animation-delay: 1.8s;
+        }
+
+        @keyframes ringExpand {
+            0% {
+                width: 60px;
+                height: 60px;
+                opacity: 0.6;
+                border-color: rgba(231, 84, 128, 0.4);
+            }
+
+            100% {
+                width: 600px;
+                height: 600px;
+                opacity: 0;
+                border-color: rgba(195, 166, 216, 0.05);
+            }
+        }
+
+        .celeb-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 360px;
+        }
+
+        /* Big animated heart that beats */
+        .celeb-big-heart {
+            font-size: 0;
+            opacity: 0;
+            animation: heartReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+        }
+
+        @keyframes heartReveal {
+            0% {
+                font-size: 0;
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                font-size: 5rem;
+                opacity: 1;
+                transform: scale(1.2);
+            }
+
+            100% {
+                font-size: 4.5rem;
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .celeb-big-heart::after {
+            content: '💝';
+            animation: celebHB 1.2s ease-in-out infinite 1.3s;
+            display: inline-block;
+        }
+
+        @keyframes celebHB {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.15);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.1);
+            }
+        }
+
+        .celeb-title {
+            font-family: 'Satisfy', cursive;
+            font-size: 2.6rem;
+            background: linear-gradient(135deg, var(--blush) 0%, #fff 30%, var(--blush) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: celebTitleIn 0.8s ease 0.8s both, titleShine 3s ease-in-out infinite 1.6s;
+            line-height: 1.3;
+            margin: 16px 0 8px;
+        }
+
+        @keyframes celebTitleIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes titleShine {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .celeb-subtitle {
+            font-family: 'Sacramento', cursive;
+            font-size: 1.4rem;
+            color: var(--soft-lavender);
+            opacity: 0;
+            animation: celebSubIn 0.6s ease 1.4s forwards;
+            margin-bottom: 6px;
+        }
+
+        @keyframes celebSubIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .celeb-message {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            opacity: 0;
+            animation: celebSubIn 0.6s ease 2s forwards;
+            margin-top: 16px;
+        }
+
+        .celeb-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 18px auto;
+            opacity: 0;
+            animation: celebSubIn 0.5s ease 2.4s forwards;
+        }
+
+        .celeb-signature {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.6rem;
+            color: var(--gold);
+            opacity: 0;
+            animation: celebSubIn 0.5s ease 2.8s forwards;
+        }
+
+        /* Celebrate sparkle bursts */
+        .celeb-sparkle {
+            position: absolute;
+            pointer-events: none;
+            animation: sparkBurst 1.5s ease-out forwards;
+        }
+
+        @keyframes sparkBurst {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--sx), var(--sy)) scale(0.3);
+            }
+        }
+
+        /* Continue button in celebration */
+        .celeb-continue {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--rose-pink), var(--gold));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Caveat', cursive;
+            font-size: 1.15rem;
+            cursor: pointer;
+            box-shadow: 0 6px 24px rgba(231, 84, 128, 0.4);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: celebSubIn 0.5s ease 3.2s forwards;
+        }
+
+        .celeb-continue:active {
+            transform: scale(0.95);
+        }
+
+        /* ===== WhatsApp Popup ===== */
+        .wa-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10003;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.92);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 20px;
+        }
+
+        .wa-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .wa-popup {
+            background: linear-gradient(145deg, rgba(55, 25, 40, 0.98), rgba(35, 15, 28, 0.99));
+            border: 2px solid var(--gold);
+            border-radius: 22px;
+            padding: 36px 26px;
+            text-align: center;
+            max-width: 92%;
+            width: 340px;
+            box-shadow: 0 22px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(212, 165, 116, 0.2);
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .wa-popup-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            animation: hb 1s ease-in-out infinite;
+        }
+
+        .wa-popup-title {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.7rem;
+            color: var(--blush);
+            margin-bottom: 12px;
+        }
+
+        .wa-popup-text {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 22px;
+            line-height: 1.6;
+        }
+
+        .wa-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 6px 22px rgba(37, 211, 102, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .wa-btn:active {
+            transform: scale(0.95);
+        }
+
+        .wa-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+
+        .skip-btn {
+            display: block;
+            margin: 16px auto 0;
+            background: transparent;
+            border: none;
+            color: var(--blush);
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            opacity: 0.6;
+        }
+
+        /* ===== Confetti ===== */
+        .confetti {
+            position: fixed;
+            z-index: 10001;
+            animation: confettiDrop 3s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes confettiDrop {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer */
+        .footer-hint {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Sacramento', cursive;
+            font-size: 0.85rem;
+            color: var(--soft-lavender);
+            opacity: 0.3;
+            z-index: 2;
+        }
+
+        /* ===== Mobile-first responsive ===== */
+        @media (max-width: 380px) {
+            .v-title {
+                font-size: 2rem;
+            }
+
+            .q-text {
+                font-size: 1.6rem;
+            }
+
+            .btn-yes {
+                padding: 13px 36px;
+                font-size: 1.15rem;
+            }
+
+            .btn-no {
+                padding: 9px 26px;
+                font-size: 0.95rem;
+            }
+
+            .card-inner {
+                padding: 32px 18px 30px;
+            }
+
+            .celeb-title {
+                font-size: 2.1rem;
+            }
+        }
+
+        @media (min-width: 381px) and (max-width: 480px) {
+            .v-title {
+                font-size: 2.3rem;
+            }
+
+            .q-text {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Larger phones */
+        @media (min-width: 481px) {
+            .valentine-card {
+                max-width: 420px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Ambient -->
+    <div class="ambient-bg">
+        <div class="ambient-blob b1"></div>
+        <div class="ambient-blob b2"></div>
+        <div class="ambient-blob b3"></div>
+    </div>
+
+    <!-- Rose Petals -->
+    <div class="petals-container" id="petals"></div>
+
+    <!-- Valentine Card -->
+    <div class="valentine-card" id="vCard">
+        <div class="card-border-top"></div>
+        <div class="card-inner">
+            <div class="v-emoji">💝</div>
+            <h1 class="v-title">Happy Valentine's Day</h1>
+            <p class="v-sub">For the most beautiful soul in my universe ✨</p>
+            <p class="v-date">💕 14 FEBRUARY 2026 💕</p>
+            <p class="v-date">💕 The Special Day For My Soul😘💕</p>
+            <p class="v-date">💕 I LOVE YOU A LOT MERI😘<br>❤️SAJNIII💕</p>
+
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">💕</span>
+                <span class="divider-line"></span>
+            </div>
+
+            <div class="q-section">
+                <p class="q-sub">Meri jaan, aaj Valentine's Day hai... 💖<br>Aur main bas ye poochna chahta hu... 🥰</p>
+                <br><br>
+                <h2 class="q-text">🤗Can I be your Valentine,<br>My lovely Gorgeous Wifey? ❤️💕🥰</h2>
+            </div>
+
+            <div class="btns-wrap" id="btnsWrap">
+                <button class="btn-v btn-yes" id="yesBtn">Hn Piya jii😘, Kyuu nhi! 💗💝💞</button>
+                <button class="btn-v btn-no" id="noBtn">Umm...Sochna padega🤔😁</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Celebration Page ===== -->
+    <div class="celebration-page" id="celebPage">
+        <div class="celeb-hearts-bg">
+            <div class="celeb-heart-ring"></div>
+            <div class="celeb-heart-ring"></div>
+            <div class="celeb-heart-ring"></div>
+            <div class="celeb-heart-ring"></div>
+        </div>
+
+        <div class="celeb-content">
+            <div class="celeb-big-heart"></div>
+            <h2 class="celeb-message">Ahaaa.....I Love You Mera Bccha😁😘😘🥰</h2>
+            <p class="celeb-subtitle">My Valentine, My Love❤️, My Forever 💕</p>
+            <p class="celeb-message">
+                Meri jaan, Aaj aapne mujhe wo khushi jo mai hamesha yaad rakhunga 🥰<br>
+                Aapke saath har Valentine, Har din, Har pal bhot special hai 💖<br>
+                I love You Jaanu ❤️way more than words can ever say 😘
+            </p>
+            <div class="celeb-divider"></div>
+            <p class="celeb-signature">Forever Yours, Your Hubby 💕</p>
+            <button class="celeb-continue" id="celebContinue">💌</button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Popup -->
+    <div class="wa-overlay" id="waOverlay">
+        <div class="wa-popup">
+            <div class="wa-popup-emoji">💌💕</div>
+            <h3 class="wa-popup-title">Thankyou So Much Meri Jaan❤️😘,<br>Ab Mai aapka valentine ban gya!!!Yaayyy🥳
+            </h3>
+            <p class="wa-popup-text">
+                Wanna Tell Your Patience Hubby about this Best News 🥰<br><br>
+                Then Meri Jaanu❤️😘, All you have to just put your precious finger on that icon and i'll be
+                notified😁😁😁<br><br>
+                Thoda Modify bhi kr dena Jaana😁💕
+            </p>
+            <a href="https://wa.me/917970328312?text=Haan%20jaan%F0%9F%A5%B0%F0%9F%98%98%2C%20You'll%20always%20be%20my%20Valentine%F0%9F%92%96%F0%9F%92%96%F0%9F%92%96%F0%9F%98%98%20Happy%20Valentine's%20Day%20My%20Hubby%E2%9D%A4%EF%B8%8F%E2%9D%A4%EF%B8%8F%E2%9D%A4%EF%B8%8F%F0%9F%92%96%F0%9F%92%96%F0%9F%98%98%F0%9F%98%98"
+                class="wa-btn" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                ⌚Your Hubby is Waiting 💕
+            </a>
+            <button class="skip-btn" onclick="document.getElementById('waOverlay').classList.remove('show')">Kya Piyaa
+                jii❤️, Itni Jaldi Kya h Baad me bhejungi na😉</button>
+        </div>
+    </div>
+
+    <p class="footer-hint">made with love, for my love ♡</p>
+
+    <script>
+        // ===== Rose Petals =====
+        (function () {
+            const c = document.getElementById('petals');
+            const types = ['', 't2', 't3'];
+            for (let i = 0; i < 22; i++) {
+                const p = document.createElement('div');
+                p.className = 'petal ' + types[Math.floor(Math.random() * types.length)];
+                p.style.left = Math.random() * 100 + '%';
+                p.style.setProperty('--sw', (Math.random() - 0.5) * 100 + 'px');
+                p.style.animationDuration = 12 + Math.random() * 14 + 's';
+                p.style.animationDelay = Math.random() * 16 + 's';
+                const s = 8 + Math.random() * 14;
+                p.style.width = s + 'px';
+                p.style.height = s + 'px';
+                c.appendChild(p);
+            }
+        })();
+
+        // ===== Sparkles =====
+        (function () {
+            for (let i = 0; i < 18; i++) {
+                const d = document.createElement('div');
+                d.className = 'sparkle-dot';
+                d.style.left = Math.random() * 100 + '%';
+                d.style.top = Math.random() * 100 + '%';
+                d.style.animationDelay = Math.random() * 4 + 's';
+                d.style.animationDuration = 2 + Math.random() * 2 + 's';
+                document.body.appendChild(d);
+            }
+        })();
+
+        // ===== Audio =====
+        const aC = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playChime() {
+            try {
+                const o = aC.createOscillator(), g = aC.createGain();
+                o.connect(g); g.connect(aC.destination);
+                o.frequency.value = 587.33; o.type = 'sine';
+                g.gain.setValueAtTime(0.1, aC.currentTime);
+                g.gain.exponentialRampToValueAtTime(0.01, aC.currentTime + 0.35);
+                o.start(); o.stop(aC.currentTime + 0.35);
+            } catch (e) { }
+        }
+
+        function playHappy() {
+            try {
+                [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+                    const o = aC.createOscillator(), g = aC.createGain();
+                    o.connect(g); g.connect(aC.destination);
+                    o.frequency.value = f; o.type = 'sine';
+                    const t = aC.currentTime + i * 0.12;
+                    g.gain.setValueAtTime(0.15, t);
+                    g.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
+                    o.start(t); o.stop(t + 0.3);
+                });
+            } catch (e) { }
+        }
+
+        // ===== Button Mechanics =====
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const celebPage = document.getElementById('celebPage');
+        const waOverlay = document.getElementById('waOverlay');
+        const celebContinue = document.getElementById('celebContinue');
+
+        let noCount = 0;
+        let yesScale = 1;
+        let noScale = 1;
+
+        // Popup messages — user can customize these texts
+        const noMsgs = [
+            { emoji: '🥺', text: 'Areee jaan! Sochne ki kya zaroorat hai 💕', ms: 2500 },
+            { emoji: '😢', text: 'Meri jaan... please? 🥺💖', ms: 2500 },
+            { emoji: '😩', text: 'Tumhare bina Valentine kaise hoga 😩💕', ms: 3000 },
+            { emoji: '🥹', text: 'Please man jao na jaan 😭💖', ms: 2500 },
+            { emoji: '😤', text: 'Ek aur No bola to ro dunga 😤💕', ms: 2500 },
+            { emoji: '🫠', text: 'Thik h main nhi maanunga... YES bolo 😏💋', ms: 3000 },
+            { emoji: '😭', text: 'Kitna tadpaogi mujhe jaan 😭💖', ms: 2500 },
+            { emoji: '🥺', text: 'Dekhoo YES button kitna cute lag rha h 👀💕', ms: 2500 },
+            { emoji: '😩', text: 'Ab toh haan bol do please 🥺🥺🥺', ms: 2500 },
+            { emoji: '💔', text: 'Mera dil tod dogi kya jaan 💔😢', ms: 2500 },
+        ];
+
+        function showPopup(emoji, text, ms) {
+            document.querySelectorAll('.no-popup').forEach(p => p.remove());
+            const d = document.createElement('div');
+            d.className = 'no-popup';
+            d.innerHTML = `<div class="no-popup-emoji">${emoji}</div><p class="no-popup-text">${text}</p>`;
+            document.body.appendChild(d);
+            setTimeout(() => d.classList.add('show'), 10);
+            setTimeout(() => { d.classList.remove('show'); setTimeout(() => d.remove(), 350); }, ms);
+        }
+
+        function handleNo() {
+            playChime();
+
+            // Show popup
+            const idx = Math.min(noCount, noMsgs.length - 1);
+            const m = noMsgs[idx];
+            showPopup(m.emoji, m.text, m.ms);
+
+            noCount++;
+
+            // Gradually grow Yes: small increment each time
+            yesScale += 0.12;
+            yesBtn.style.transform = `scale(${yesScale})`;
+
+            // Progressive glow levels
+            yesBtn.classList.remove('glow-1', 'glow-2', 'glow-3', 'glow-4');
+            if (noCount >= 8) yesBtn.classList.add('glow-4');
+            else if (noCount >= 5) yesBtn.classList.add('glow-3');
+            else if (noCount >= 3) yesBtn.classList.add('glow-2');
+            else yesBtn.classList.add('glow-1');
+
+            // Update font size gradually
+            const newFontSize = 1.3 + noCount * 0.06;
+            yesBtn.style.fontSize = Math.min(newFontSize, 2.5) + 'rem';
+
+            // Gradually shrink No button
+            noScale = Math.max(noScale - 0.05, 0.35);
+            noBtn.style.transform = `scale(${noScale})`;
+            noBtn.style.opacity = Math.max(1 - noCount * 0.07, 0.25);
+
+            // After many clicks (15+), finally hide No button
+            if (noCount >= 15) {
+                noBtn.style.transition = 'all 1s ease';
+                noBtn.style.opacity = '0';
+                noBtn.style.transform = 'scale(0)';
+                setTimeout(() => { noBtn.style.display = 'none'; }, 1000);
+            }
+        }
+
+        // Desktop click
+        noBtn.addEventListener('click', handleNo);
+
+        // Mobile touch
+        let lastNoT = 0;
+        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); lastNoT = Date.now(); });
+        noBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            if (Date.now() - lastNoT < 300) handleNo();
+        });
+
+        // ===== Yes Button =====
+        yesBtn.addEventListener('click', () => {
+            playHappy();
+
+            // Create sparkle burst on the card
+            for (let i = 0; i < 16; i++) {
+                const s = document.createElement('div');
+                s.className = 'celeb-sparkle';
+                s.textContent = ['💕', '💖', '✨', '💝', '🌹', '❤️', '💋'][Math.floor(Math.random() * 7)];
+                s.style.fontSize = (14 + Math.random() * 18) + 'px';
+                s.style.position = 'fixed';
+                s.style.left = '50%'; s.style.top = '50%';
+                s.style.zIndex = 10005;
+                const angle = (i / 16) * Math.PI * 2;
+                const dist = 80 + Math.random() * 100;
+                s.style.setProperty('--sx', Math.cos(angle) * dist + 'px');
+                s.style.setProperty('--sy', Math.sin(angle) * dist - 30 + 'px');
+                document.body.appendChild(s);
+                setTimeout(() => s.remove(), 1500);
+            }
+
+            // Show celebration page
+            setTimeout(() => {
+                createConfetti();
+                celebPage.classList.add('show');
+                // Create celebration floating hearts
+                createCelebHearts();
+            }, 400);
+        });
+
+        // Continue to WhatsApp
+        celebContinue.addEventListener('click', () => {
+            celebPage.style.transition = 'opacity 0.5s ease';
+            celebPage.style.opacity = '0';
+            setTimeout(() => {
+                celebPage.classList.remove('show');
+                celebPage.style.opacity = '';
+                celebPage.style.transition = '';
+                waOverlay.classList.add('show');
+                createConfetti();
+            }, 500);
+        });
+
+        // ===== Celebration Floating Hearts =====
+        function createCelebHearts() {
+            const emojis = ['💕', '💖', '💗', '💝', '✨', '🌹', '❤️'];
+            for (let i = 0; i < 15; i++) {
+                const h = document.createElement('div');
+                h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                h.style.cssText = `
+                    position: fixed;
+                    left: ${Math.random() * 100}%;
+                    font-size: ${14 + Math.random() * 16}px;
+                    z-index: 10000;
+                    pointer-events: none;
+                    opacity: 0;
+                    animation: petalFall ${10 + Math.random() * 10}s linear infinite;
+                `;
+                h.style.setProperty('--sw', (Math.random() - 0.5) * 80 + 'px');
+                h.style.animationDelay = Math.random() * 8 + 's';
+                celebPage.querySelector('.celeb-hearts-bg').appendChild(h);
+            }
+        }
+
+        // ===== Confetti =====
+        function createConfetti() {
+            const colors = ['#e75480', '#f8c8dc', '#d4a574', '#c3a6d8', '#c9a45c', '#FFD700', '#c2185b'];
+            const shapes = ['💕', '💖', '✨', '💝', '🌹', '❤️', '💋'];
+            for (let i = 0; i < 80; i++) {
+                const c = document.createElement('div');
+                c.className = 'confetti';
+                c.style.left = Math.random() * 100 + 'vw';
+                c.style.animationDuration = 2 + Math.random() * 2 + 's';
+                c.style.animationDelay = Math.random() * 0.5 + 's';
+                if (Math.random() > 0.45) {
+                    c.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                    c.style.fontSize = (13 + Math.random() * 18) + 'px';
+                } else {
+                    c.style.width = (6 + Math.random() * 8) + 'px';
+                    c.style.height = c.style.width;
+                    c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                }
+                document.body.appendChild(c);
+                setTimeout(() => c.remove(), 3500);
+            }
+        }
+
+        // ===== Prevent double-tap zoom =====
+        let lt = 0;
+        document.addEventListener('touchend', (e) => {
+            const n = Date.now();
+            if (n - lt <= 300) e.preventDefault();
+            lt = n;
+        }, { passive: false });
+    </script>
+</body>
+
+</html>
