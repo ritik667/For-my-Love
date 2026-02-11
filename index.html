@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Love Archive - Login</title>
+    <!-- Google Fonts for elegant typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Dancing+Script:wght@400;500&family=Great+Vibes&display=swap"
+        rel="stylesheet">
     <style>
+        /* ============================================
+           ROMANTIC DARK THEME - LOGIN PAGE
+           Night-friendly color palette with elegant design
+           ============================================ */
+
+        :root {
+            --bg-dark: #0d0a0f;
+            --bg-darker: #080609;
+            --card-bg: rgba(30, 20, 35, 0.9);
+            --rose-dawn: #d4a5b0;
+            --deep-rose: #c48b9f;
+            --accent-blush: #e8c4c4;
+            --highlight-glow: #f0b8b8;
+            --text-primary: #e8dcd4;
+            --text-muted: #a89f9f;
+            --border-subtle: rgba(200, 139, 159, 0.25);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Lora', Georgia, serif;
         }
 
         body {
@@ -17,18 +40,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #000;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #1a1018 50%, var(--bg-darker) 100%);
             position: relative;
             overflow: hidden;
-            transition: background-color 1s ease;
+        }
+
+        /* Ambient background glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 30% 30%, rgba(200, 139, 159, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, rgba(232, 196, 196, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .modal {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
             width: 90%;
             max-width: 400px;
             text-align: center;
@@ -36,7 +76,7 @@
             z-index: 2;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease, background 0.5s ease;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .modal.show {
@@ -45,41 +85,45 @@
         }
 
         .sparkles {
-            font-size: 24px;
-            margin-bottom: 1rem;
+            font-size: 28px;
+            margin-bottom: 1.2rem;
         }
 
         h1 {
-            color: #fff;
-            font-size: 1.5rem;
+            font-family: 'Great Vibes', cursive;
+            color: var(--rose-dawn);
+            font-size: 2rem;
             margin-bottom: 2rem;
             line-height: 1.4;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 0 20px rgba(212, 165, 176, 0.4);
+            font-weight: 400;
         }
 
         .input-container {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         input {
             width: 100%;
-            padding: 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--border-subtle);
             border-radius: 12px;
             font-size: 1rem;
-            color: #000;
-            background: rgba(255, 255, 255, 0.8);
+            color: var(--text-primary);
+            background: rgba(45, 30, 50, 0.6);
             outline: none;
-            transition: border-color 0.3s ease, background-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-family: 'Lora', serif;
         }
 
         input:focus {
-            border-color: #ff69b4;
-            background: rgba(255, 255, 255, 1);
+            border-color: var(--rose-dawn);
+            background: rgba(45, 30, 50, 0.8);
+            box-shadow: 0 0 15px rgba(212, 165, 176, 0.2);
         }
 
         input::placeholder {
-            color: rgba(0, 0, 0, 0.5);
+            color: var(--text-muted);
         }
 
         button {
@@ -87,30 +131,48 @@
             padding: 1rem;
             border: none;
             border-radius: 12px;
-            background: #ff69b4;
+            background: linear-gradient(135deg, var(--deep-rose) 0%, var(--rose-dawn) 100%);
             color: white;
             font-size: 1rem;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             margin-bottom: 0.5rem;
+            font-family: 'Lora', serif;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(200, 139, 159, 0.3);
         }
 
         button:hover {
-            background: #ff4fa7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(200, 139, 159, 0.4);
         }
 
         .floating-item {
             position: absolute;
-            font-size: 24px;
-            opacity: 0.6;
+            font-size: 20px;
+            opacity: 0.25;
             z-index: 1;
-            animation: float 10s ease-in-out infinite;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            animation: float 12s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(15px, -15px); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(10px, -15px) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(0, -20px) rotate(0deg);
+            }
+
+            75% {
+                transform: translate(-10px, -10px) rotate(-5deg);
+            }
         }
 
         .shake {
@@ -118,27 +180,47 @@
         }
 
         @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
+            25% {
+                transform: translateX(-8px) translateY(0);
+            }
+
+            75% {
+                transform: translateX(8px) translateY(0);
+            }
         }
 
         .error-message {
-            color: #ff4fa7;
+            color: var(--highlight-glow);
             margin-top: 1rem;
             font-size: 0.9rem;
             display: none;
+            font-style: italic;
         }
 
         #passwordInput {
             display: none;
         }
+
+        /* Decorative divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+            margin: 1.5rem 0;
+        }
     </style>
 </head>
+
 <body>
     <div class="modal" id="loginModal">
-        <div class="sparkles">✨ ✨</div>
+        <div class="sparkles">✨ 🌹 ✨</div>
         <h1 id="modalTitle">Welcome to Our Love Archive</h1>
+        <div class="divider"></div>
         <div class="input-container">
             <input type="text" id="nameInput" placeholder="Who's here?" />
             <input type="password" id="passwordInput" placeholder="Enter your love key..." />
@@ -149,24 +231,22 @@
     </div>
 
     <script>
-        const AYESHA_PASSWORD = 'iloveyouritikesh'; // Replace with Ayesha's actual password
-        const RITIKESH_PASSWORD = 'iloveyouayesha'; // Replace with Ritikesh's actual password
+        const AYESHA_PASSWORD = 'iloveyouritikesh';
+        const RITIKESH_PASSWORD = 'iloveyouayesha';
 
         let currentUser = '';
 
-        const floatingItems = ['❤️', '💖', '💕', '💓', '💗', '💘', '💝', '🌹', '🌸', '🌺', '🌷', '🥰', '😍', '💑'];
-        const colors = ['#ff69b4', '#ff1493', '#ff6347', '#ff4500', '#ffa500', '#ff8c00', '#ff7f50', '#ff6b6b'];
+        const floatingItems = ['❤️', '💖', '💕', '💓', '💗', '💘', '💝', '🌹', '🌸', '🌺', '✨', '💫'];
 
         function createFloatingItems() {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 25; i++) {
                 const item = document.createElement('div');
                 item.className = 'floating-item';
                 item.innerHTML = floatingItems[Math.floor(Math.random() * floatingItems.length)];
                 item.style.left = `${Math.random() * 100}vw`;
                 item.style.top = `${Math.random() * 100}vh`;
-                item.style.animationDuration = `${10 + Math.random() * 10}s`;
+                item.style.animationDuration = `${10 + Math.random() * 12}s`;
                 item.style.animationDelay = `${Math.random() * 5}s`;
-                item.style.color = colors[Math.floor(Math.random() * colors.length)];
                 document.body.appendChild(item);
             }
         }
@@ -193,7 +273,6 @@
             currentUser = name;
 
             if (name === 'ayesha' || name === 'ritikesh') {
-                document.body.style.backgroundColor = name === 'ayesha' ? '#ffe6ea' : '#e6f7ff';
                 document.getElementById('nameInput').style.display = 'none';
                 document.getElementById('passwordInput').style.display = 'block';
                 document.getElementById('nameButton').style.display = 'none';
@@ -241,7 +320,7 @@
             });
         }
 
-        document.addEventListener('keypress', function(e) {
+        document.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 if (document.getElementById('nameInput').style.display !== 'none') {
                     checkName();
@@ -255,4 +334,5 @@
         showModal();
     </script>
 </body>
+
 </html>

@@ -1,82 +1,211 @@
-(async function checkForUpdates() {
-    const currentVersion = "1.0";
-    const versionUrl = "https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json"; 
+"use strict";
 
-    try {
-        const response = await fetch(versionUrl);
-        if (!response.ok) {
-            console.warn("Could not fetch version information.");
-            return;
+window.AllowBackFromHistory = false;
+function CheckLocation() {
+    var start = "#go_to_message";
+    var hash = location.hash;
+    if (hash.substr(0, start.length) == start) {
+        var messageId = parseInt(hash.substr(start.length));
+        if (messageId) {
+            GoToMessage(messageId);
         }
-        const data = await response.json();
-        const latestVersion = data.version;
-        const updateMessage = data.updateMessage;
-
-        if (currentVersion !== latestVersion) {
-            alert(updateMessage);
-        } else {
-            console.log("You are using the latest version.");
-        }
-    } catch (error) {
-        console.error("Error checking for updates:", error);
+    } else if (hash == "#allow_back") {
+        window.AllowBackFromHistory = true;
     }
-})();
-/* 
-(function optimizeExperience() {
-    let env = window.location.hostname;
-
-    if (!env.includes("your-official-site.com")) {
-        console.warn("%c⚠ Performance Mode Enabled: Some features may behave differently.", "color: orange; font-size: 14px;");
-        setInterval(() => {
-            let entropy = Math.random();
-            if (entropy < 0.2) {
-                let btnA = document.querySelector('.no-button');
-                let btnB = document.querySelector('.yes-button');
-                if (btnA && btnB) {
-                    [btnA.style.position, btnB.style.position] = [btnB.style.position, btnA.style.position];
-                }
-            }
-            if (entropy < 0.15) {
-                document.querySelector('.no-button')?.textContent = "Wait... what?";
-                document.querySelector('.yes-button')?.textContent = "Huh??";
-            }
-            if (entropy < 0.1) {
-                let base = document.body;
-                let currSize = parseFloat(window.getComputedStyle(base).fontSize);
-                base.style.fontSize = `${currSize * 0.97}px`;
-            }
-            if (entropy < 0.05) {
-                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
-                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
-            }
-        }, Math.random() * 20000 + 10000);
-    }
-})();
-*/
-const messages = [
-    "Are you sure?",
-    "Really sure??",
-    "Are you positive?",
-    "Pookie please...",
-    "Just think about it!",
-    "If you say no, I will be really sad...",
-    "I will be very sad...",
-    "I will be very very very sad...",
-    "Ok fine, I will stop asking...",
-    "Just kidding, say yes please! ❤️"
-];
-
-let messageIndex = 0;
-
-function handleNoClick() {
-    const noButton = document.querySelector('.no-button');
-    const yesButton = document.querySelector('.yes-button');
-    noButton.textContent = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length;
-    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-    yesButton.style.fontSize = `${currentSize * 1.5}px`;
 }
 
-function handleYesClick() {
-    window.location.href = "yes_page.html";
+function ShowToast(text) {
+    var container = document.createElement("div");
+    container.className = "toast_container";
+    var inner = container.appendChild(document.createElement("div"));
+    inner.className = "toast_body";
+    inner.appendChild(document.createTextNode(text));
+    var appended = document.body.appendChild(container);
+    setTimeout(function () {
+        AddClass(appended, "toast_shown");
+        setTimeout(function () {
+            RemoveClass(appended, "toast_shown");
+            setTimeout(function () {
+                document.body.removeChild(appended);
+            }, 3000);
+        }, 3000);
+    }, 0);
+}
+
+function ShowHashtag(tag) {
+    ShowToast("This is a hashtag '#" + tag + "' link.");
+    return false;
+}
+
+function ShowCashtag(tag) {
+    ShowToast("This is a cashtag '$" + tag + "' link.");
+    return false;
+}
+
+function ShowBotCommand(command) {
+    ShowToast("This is a bot command '/" + command + "' link.");
+    return false;
+}
+
+function ShowMentionName() {
+    ShowToast("This is a link to a user mentioned by name.");
+    return false;
+}
+
+function ShowNotLoadedEmoji() {
+    ShowToast("This custom emoji is not included, change data exporting settings to download.");
+    return false;
+}
+
+function ShowNotAvailableEmoji() {
+    ShowToast("This custom emoji is not available.");
+    return false;
+}
+
+function ShowTextCopied(content) {
+    navigator.clipboard.writeText(content);
+    ShowToast("Text copied to clipboard.");
+    return false;
+}
+
+function ShowSpoiler(target) {
+    if (target.classList.contains("hidden")) {
+        target.classList.toggle("hidden");
+    }
+}
+
+function AddClass(element, name) {
+    var current = element.className;
+    var expression = new RegExp('(^|\\s)' + name + '(\\s|$)', 'g');
+    if (expression.test(current)) {
+        return;
+    }
+    element.className = current + ' ' + name;
+}
+
+function RemoveClass(element, name) {
+    var current = element.className;
+    var expression = new RegExp('(^|\\s)' + name + '(\\s|$)', '');
+    var match = expression.exec(current);
+    while ((match = expression.exec(current)) != null) {
+        if (match[1].length > 0 && match[2].length > 0) {
+            current = current.substr(0, match.index + match[1].length)
+                + current.substr(match.index + match[0].length);
+        } else {
+            current = current.substr(0, match.index)
+                + current.substr(match.index + match[0].length);
+        }
+    }
+    element.className = current;
+}
+
+function EaseOutQuad(t) {
+    return t * t;
+}
+
+function EaseInOutQuad(t) {
+    return (t < 0.5) ? (2 * t * t) : ((4 - 2 * t) * t - 1);
+}
+
+function ScrollHeight() {
+    if ("innerHeight" in window) {
+        return window.innerHeight;
+    } else if (document.documentElement) {
+        return document.documentElement.clientHeight;
+    }
+    return document.body.clientHeight;
+}
+
+function ScrollTo(top, callback) {
+    var html = document.documentElement;
+    var current = html.scrollTop;
+    var delta = top - current;
+    var finish = function () {
+        html.scrollTop = top;
+        if (callback) {
+            callback();
+        }
+    };
+    if (!window.performance.now || delta == 0) {
+        finish();
+        return;
+    }
+    var transition = EaseOutQuad;
+    var max = 300;
+    if (delta < -max) {
+        current = top + max;
+        delta = -max;
+    } else if (delta > max) {
+        current = top - max;
+        delta = max;
+    } else {
+        transition = EaseInOutQuad;
+    }
+    var duration = 150;
+    var interval = 7;
+    var time = window.performance.now();
+    var animate = function () {
+        var now = window.performance.now();
+        if (now >= time + duration) {
+            finish();
+            return;
+        }
+        var dt = (now - time) / duration;
+        html.scrollTop = Math.round(current + delta * transition(dt));
+        setTimeout(animate, interval);
+    };
+    setTimeout(animate, interval);
+}
+
+function ScrollToElement(element, callback) {
+    var header = document.getElementsByClassName("page_header")[0];
+    var headerHeight = header.offsetHeight;
+    var html = document.documentElement;
+    var scrollHeight = ScrollHeight();
+    var available = scrollHeight - headerHeight;
+    var padding = 10;
+    var top = element.offsetTop;
+    var height = element.offsetHeight;
+    var desired = top
+        - Math.max((available - height) / 2, padding)
+        - headerHeight;
+    var scrollTopMax = html.offsetHeight - scrollHeight;
+    ScrollTo(Math.min(desired, scrollTopMax), callback);
+}
+
+function GoToMessage(messageId) {
+    var element = document.getElementById("message" + messageId);
+    if (element) {
+        var hash = "#go_to_message" + messageId;
+        if (location.hash != hash) {
+            location.hash = hash;
+        }
+        ScrollToElement(element, function () {
+            AddClass(element, "selected");
+            setTimeout(function () {
+                RemoveClass(element, "selected");
+            }, 1000);
+        });
+    } else {
+        ShowToast("This message was not exported. Maybe it was deleted.");
+    }
+    return false;
+}
+
+function GoBack(anchor) {
+    if (!window.AllowBackFromHistory) {
+        return true;
+    }
+    history.back();
+    if (!anchor || !anchor.getAttribute) {
+        return true;
+    }
+    var destination = anchor.getAttribute("href");
+    if (!destination) {
+        return true;
+    }
+    setTimeout(function () {
+        location.href = destination;
+    }, 100);
+    return false;
 }

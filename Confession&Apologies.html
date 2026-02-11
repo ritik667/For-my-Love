@@ -1,213 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Love Archive - A Heartfelt Apology</title>
+    <!-- Google Fonts for elegant typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
     <style>
-        /* Reset styles */
+        /* ============================================
+           ROMANTIC DARK THEME - CONFESSION & APOLOGY PAGE
+           Night-friendly color palette with elegant design
+           ============================================ */
+
+        :root {
+            --bg-dark: #0d0a0f;
+            --bg-darker: #080609;
+            --card-bg: rgba(30, 20, 35, 0.9);
+            --rose-dawn: #d4a5b0;
+            --deep-rose: #c48b9f;
+            --accent-blush: #e8c4c4;
+            --highlight-glow: #f0b8b8;
+            --text-primary: #e8dcd4;
+            --text-muted: #a89f9f;
+            --border-subtle: rgba(200, 139, 159, 0.25);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Global styles */
         body {
-            font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(to bottom right, #FFC0CB, #ADD8E6);
-            background-size: cover;
-            background-repeat: no-repeat;
+            font-family: 'Lora', Georgia, serif;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #1a1018 50%, var(--bg-darker) 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
+            color: var(--text-primary);
+            position: relative;
+            overflow-x: hidden;
         }
 
+        /* Ambient background glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 25% 25%, rgba(200, 139, 159, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 75%, rgba(232, 196, 196, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Main Container */
         .container {
             max-width: 800px;
             width: 100%;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(10px);
             padding: 3rem;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
-        /* Header styles */
+        /* Header Styles */
         .header {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         .header h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            color: #FF69B4;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--rose-dawn);
             margin-bottom: 0.5rem;
+            text-shadow: 0 0 25px rgba(212, 165, 176, 0.4);
+            letter-spacing: 2px;
         }
 
         .header p {
-            font-size: 1.5rem;
-            color: #808080;
+            font-size: 1.1rem;
+            color: var(--text-muted);
         }
 
-        /* Main content styles */
+        /* Section Styles */
         .section {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
         }
 
         .section h2 {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: #FF69B4;
+            font-size: 2rem;
+            color: var(--rose-dawn);
             margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(212, 165, 176, 0.3);
         }
 
         .section p {
-            font-size: 1.2rem;
-            color: #606060;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            line-height: 1.9;
+            margin-bottom: 1rem;
         }
 
-        /* Floating hearts and flowers */
+        /* Special Heart Section */
+        .heart-section {
+            background: rgba(45, 30, 50, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-subtle);
+            margin: 2rem 0;
+        }
+
+        .heart-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .heart-section p {
+            text-align: center;
+            font-style: italic;
+            line-height: 2.2;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        footer p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+            color: var(--rose-dawn);
+        }
+
+        /* Floating Hearts Animation */
         .floating-item {
-            position: absolute;
-            font-size: 30px;
-            opacity: 0.6;
-            animation: float 10s ease-in-out infinite;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            font-size: 25px;
+            opacity: 0.2;
+            animation: float 12s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(20px, -20px); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(15px, -15px) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(0, -25px) rotate(0deg);
+            }
+
+            75% {
+                transform: translate(-15px, -15px) rotate(-5deg);
+            }
         }
 
-        /* Responsive styles */
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .container {
-                padding: 2rem;
+                padding: 2rem 1.5rem;
             }
 
             .header h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .header p {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
             .section h2 {
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
 
             .section p {
                 font-size: 1rem;
             }
+
+            .heart-section {
+                padding: 1.5rem;
+            }
+
+            .floating-item {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header class="header">
-            <h1>Apology Letter and  Confession</h1>
+            <h1>Apology Letter and Confession</h1>
         </header>
-    
+
         <main>
             <!-- Opening Section -->
             <section class="section">
                 <h2>Ayeshu, My Love</h2>
                 <p>
-                    I don’t even know where to begin, but I need to tell you how sorry I am. I know I’ve hurt you, and the weight of not knowing what I did is crushing me. You are my heart, my safe space, and the thought of upsetting you feels unbearable.
+                    I don't even know where to begin, but I need to tell you how sorry I am. I know I've hurt you, and
+                    the weight of not knowing what I did is crushing me. You are my heart, my safe space, and the
+                    thought of upsetting you feels unbearable.
                 </p>
             </section>
-    
+
             <!-- Acknowledging Mistakes -->
             <section class="section">
                 <h2>A Sincere Apology</h2>
                 <p>
-                    I’ve been replaying everything in my mind, trying to uncover where I might have gone wrong, but it feels like searching for a missing piece in the dark. The truth is, I’m lost, babu. I’m not perfect, but my love for you is, and I’d never intentionally do anything to hurt you.
+                    I've been replaying everything in my mind, trying to uncover where I might have gone wrong, but it
+                    feels like searching for a missing piece in the dark. The truth is, I'm lost, babu. I'm not perfect,
+                    but my love for you is, and I'd never intentionally do anything to hurt you.
                 </p>
                 <p>
-                Your happiness matters to me more than anything, and the thought of causing you pain breaks me. I understand that you’re waiting for me to realize my mistake, and I promise I’m trying. But I need your help to truly understand. If you can find it in your heart to talk to me, I’ll listen without interruption. I want to make things right, not just for me, but for us.</p>
+                    Your happiness matters to me more than anything, and the thought of causing you pain breaks me. I
+                    understand that you're waiting for me to realize my mistake, and I promise I'm trying. But I need
+                    your help to truly understand. If you can find it in your heart to talk to me, I'll listen without
+                    interruption. I want to make things right, not just for me, but for us.
+                </p>
             </section>
-    
+
             <!-- Commitment to Change -->
             <section class="section">
                 <h2>A Promise to Do Better</h2>
                 <p>
-                    I know you want me to realize my mistake, and I wish I could see it as clearly as you do. But sometimes, understanding another’s pain requires their voice to guide the way. Please help me, not because I’m giving up on figuring it out, but because I want to make it right in the way that you deserve.                </p>
-                <p>
-                    Until you call i hope you'll hold on to the fact that I LOVE YOU and i'll keep trying because you are worth every effort.
+                    I know you want me to realize my mistake, and I wish I could see it as clearly as you do. But
+                    sometimes, understanding another's pain requires their voice to guide the way. Please help me, not
+                    because I'm giving up on figuring it out, but because I want to make it right in the way that you
+                    deserve.
                 </p>
-                <br><br>
-                <section class="section">
-                    <h2>💖❤️</h2>
-                    <p>
+                <p>
+                    Until you call, I hope you'll hold on to the fact that I LOVE YOU and I'll keep trying because you
+                    are worth every effort.
+                </p>
+            </section>
+
+            <!-- Heart Section -->
+            <div class="heart-section">
+                <h2>💖❤️</h2>
+                <p>
                     In the most Selfish way possible. <br>I want to be the only one who has your heart. <br>
                     I want to be the one who understands it completely. <br> The one who holds it close. <br>
                     I don't want anyone else to feel your touch, or the warmth of you just being close. <br>
-                    I don't want anyone else to kiss your lips. To taste the sweetness that I love.  <br>
+                    I don't want anyone else to kiss your lips. To taste the sweetness that I love. <br>
                     I want to be the one who kisses you goodnight, and wakes up to you each morning. <br>
-                    I want to be the reason you smile.<br> To catch the light in your eyes from the smallest things that make you happy. <br>
+                    I want to be the reason you smile.<br> To catch the light in your eyes from the smallest things that
+                    make you happy. <br>
                     I want to be the one who brings you happiness. <br>Who makes you laugh until you cry. <br>
                     I want us to be in the same book, and to end in the same chapter. <br>
-                    I want to be your last everything. <br> I want to be the one you come home to. The one you can't wait to see.  <br>
+                    I want to be your last everything. <br> I want to be the one you come home to. The one you can't
+                    wait to see. <br>
                     In the most selfish way possible. I want all of you forever.
-                    </p>
-                </section>
-                <br><br>
-            </section>
-         <!--   <section class="section">
+                </p>
+            </div>
+
+            <section class="section">
                 <h2>A Gift for You</h2>
-            </section> -->
+            </section>
         </main>
 
         <footer>
-            <p>I Love You</p>
+            <p>I Love You ❤️</p>
         </footer>
     </div>
 
     <script>
-        const giftBox = document.querySelector('.gift-box');
-        const giftBoxTop = document.querySelector('.gift-box-top');
-        const giftBoxBottom = document.querySelector('.gift-box-bottom');
-        const giftContent = document.querySelector('.gift-box-content');
-        const unwrapButton = document.createElement('button');
-        unwrapButton.textContent = 'Unwrap the Gift';
-        unwrapButton.classList.add('unwrap-button');
-        giftBox.appendChild(unwrapButton);
-
-        let isGiftUnwrapped = false;
-
-        unwrapButton.addEventListener('click', () => {
-            if (!isGiftUnwrapped) {
-                giftBoxTop.style.transform = 'translateY(-100%)';
-                giftBoxBottom.style.transform = 'translateY(0)';
-                giftBoxBottom.style.opacity = '1';
-                giftContent.style.transform = 'translateY(0)';
-                isGiftUnwrapped = true;
-                unwrapButton.style.display = 'none';
-                startWatchAnimation();
-            }
-        });
-
-        function startWatchAnimation() {
-            const watchHands = document.querySelectorAll('.watch-hands, .watch-hour-hand, .watch-minute-hand, .watch-second-hand');
-            watchHands.forEach(hand => {
-                hand.style.animation = 'watch-animation 60s linear infinite';
-            });
-        }
-
         // Floating hearts and flowers
-        for (let i = 0; i < 20; i++) {
+        const emojis = ['❤️', '💖', '💕', '💓', '💗', '💘', '💝', '🌹', '🌸', '🌺', '🌷'];
+        for (let i = 0; i < 15; i++) {
             const item = document.createElement('div');
             item.classList.add('floating-item');
-            item.textContent = ['❤️', '💖', '💕', '💓', '💗', '💘', '💝', '🌹', '🌸', '🌺', '🌷'][Math.floor(Math.random() * 11)];
+            item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             item.style.left = `${Math.random() * 100}vw`;
             item.style.top = `${Math.random() * 100}vh`;
             item.style.animationDuration = `${10 + Math.random() * 10}s`;
@@ -216,4 +312,5 @@
         }
     </script>
 </body>
+
 </html>

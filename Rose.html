@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal Blossom 🌹 | For My Love</title>
+    <!-- Google Fonts for elegant typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Dancing+Script:wght@400;500&family=Great+Vibes&family=Parisienne&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ============================================
+           ROMANTIC DARK THEME - ROSE DAY PAGE
+           Night-friendly color palette with elegant design
+           ============================================ */
+
+        :root {
+            --bg-dark: #0d0a0f;
+            --bg-darker: #080609;
+            --card-bg: rgba(30, 20, 35, 0.85);
+            --rose-dawn: #d4a5b0;
+            --deep-rose: #c48b9f;
+            --rose-gold: #b76e79;
+            --accent-blush: #e8c4c4;
+            --highlight-glow: #f0b8b8;
+            --text-primary: #e8dcd4;
+            --text-muted: #a89f9f;
+            --border-subtle: rgba(200, 139, 159, 0.25);
+            --deep-love: #8b4a5a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+            background: linear-gradient(180deg, #1a0a10 0%, #2d1520 30%, #1a0a10 70%, var(--bg-darker) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-primary);
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="0" y="18" style="font-size:18px">🌹</text></svg>'), auto;
+        }
+
+        /* Ambient background glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(183, 110, 121, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(212, 165, 176, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .font-cursive {
+            font-family: 'Parisienne', cursive;
+        }
+
+        .font-signature {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Bloom Animation */
+        @keyframes bloom {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            80% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .bloom-animation {
+            animation: bloom 1.5s ease-out forwards;
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            box-shadow:
+                0 15px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Rose Petal */
+        .rose-petal {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, var(--deep-love), var(--rose-gold));
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            transform-origin: bottom center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(183, 110, 121, 0.4);
+        }
+
+        .rose-petal:hover {
+            transform: rotate(15deg) scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        /* Heartbeat Animation */
+        .heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite both;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.15);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.1);
+            }
+
+            60% {
+                transform: scale(1);
+            }
+        }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 20px;
+        }
+
+        .hero-section .petals {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .hero-section h1 {
+            font-family: 'Parisienne', cursive;
+            font-size: 3.5em;
+            color: var(--rose-gold);
+            text-shadow: 0 0 30px rgba(183, 110, 121, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .hero-section h1 span {
+            color: var(--accent-blush);
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            color: var(--text-muted);
+        }
+
+        .hero-section .name-input {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2em;
+            color: var(--accent-blush);
+            background: transparent;
+            border: none;
+            border-bottom: 1px dashed var(--border-subtle);
+            padding: 5px 10px;
+            text-align: center;
+            outline: none;
+        }
+
+        /* Interactive Timeline */
+        .timeline-section {
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .timeline-card {
+            padding: 25px;
+            background: rgba(45, 30, 50, 0.5);
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .timeline-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .timeline-card h3 {
+            font-family: 'Parisienne', cursive;
+            font-size: 1.6em;
+            color: var(--rose-dawn);
+            margin-bottom: 12px;
+        }
+
+        .timeline-card input,
+        .timeline-card textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(183, 110, 121, 0.3);
+            width: 100%;
+            color: var(--text-primary);
+            font-family: 'Lora', serif;
+            padding: 8px 0;
+            resize: none;
+        }
+
+        .timeline-card input:focus,
+        .timeline-card textarea:focus {
+            outline: none;
+            border-bottom-color: var(--rose-gold);
+        }
+
+        /* Memory Gallery */
+        .memory-section {
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 50px;
+        }
+
+        .memory-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: var(--rose-dawn);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .memory-item {
+            aspect-ratio: 1;
+            background: rgba(45, 30, 50, 0.6);
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .memory-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .memory-item .label {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        /* Interactive Rose */
+        .rose-garden {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .rose-garden .click-text {
+            color: var(--text-muted);
+            font-size: 1em;
+            margin-top: 15px;
+            opacity: 0.7;
+        }
+
+        #messages {
+            margin-top: 20px;
+        }
+
+        .message-reveal {
+            color: var(--text-primary);
+            font-family: 'Parisienne', cursive;
+            font-size: 1.3em;
+            padding: 10px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Finale Button */
+        .finale-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .finale-button {
+            background: linear-gradient(135deg, var(--rose-gold) 0%, var(--deep-rose) 100%);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.5em;
+            font-family: 'Parisienne', cursive;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(183, 110, 121, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .finale-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(183, 110, 121, 0.5);
+        }
+
+        /* Floating Particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            color: var(--rose-gold);
+            opacity: 0.3;
+            animation: particle-float 12s ease-in-out infinite;
+        }
+
+        @keyframes particle-float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+            }
+        }
+
+        /* Finale Overlay */
+        #finale {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        #finale.show {
+            display: flex;
+        }
+
+        #finale .content {
+            text-align: center;
+        }
+
+        #finale h2 {
+            font-family: 'Parisienne', cursive;
+            font-size: 4em;
+            color: var(--rose-gold);
+            text-shadow: 0 0 40px rgba(183, 110, 121, 0.6);
+            animation: bounce 1s ease infinite;
+            margin-bottom: 20px;
+        }
+
+        #finale p {
+            font-size: 1.5em;
+            color: var(--text-muted);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+
+            .timeline-section,
+            .memory-section {
+                padding: 20px;
+            }
+
+            .finale-button {
+                font-size: 1.2em;
+                padding: 15px 35px;
+            }
+
+            #finale h2 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Particles -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section bloom-animation">
+            <div class="petals">
+                <div class="rose-petal" style="margin: 0 auto;"></div>
+            </div>
+            <h1>My Eternal <span>Rose</span></h1>
+            <p>For <span class="name-input" contenteditable="true">Ayesha</span></p>
+        </section>
+
+        <!-- Interactive Timeline -->
+        <section class="timeline-section glass-card">
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <div class="icon">📅</div>
+                    <h3>Our Beginning</h3>
+                    <input type="date">
+                </div>
+                <div class="timeline-card">
+                    <div class="icon">💞</div>
+                    <h3>Sweet Memories</h3>
+                    <textarea rows="3" placeholder="Write your favorite memory..."></textarea>
+                </div>
+                <div class="timeline-card">
+                    <div class="icon">💍</div>
+                    <h3>Future Promises</h3>
+                    <textarea rows="3" placeholder="Write your promise..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memory Gallery -->
+        <section class="memory-section glass-card">
+            <h2>Our Precious Moments</h2>
+            <div class="memory-grid">
+                <div class="memory-item">
+                    <div class="label">Memory 1</div>
+                </div>
+                <div class="memory-item">
+                    <div class="label">Memory 2</div>
+                </div>
+                <div class="memory-item">
+                    <div class="label">Memory 3</div>
+                </div>
+                <div class="memory-item">
+                    <div class="label">Memory 4</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Rose Garden -->
+        <div class="rose-garden">
+            <div class="rose-petal" style="margin: 0 auto; cursor: pointer;" onclick="revealMessage()"></div>
+            <p class="click-text">Click the rose to reveal a message</p>
+            <div id="messages"></div>
+        </div>
+
+        <!-- Finale Button -->
+        <div class="finale-section">
+            <button class="finale-button heartbeat" onclick="revealFinale()">
+                Forever & Always 🌹
+            </button>
+        </div>
+    </main>
+
+    <!-- Finale Overlay -->
+    <div id="finale">
+        <div class="content">
+            <h2>Happy Rose Day!</h2>
+            <p>My love for you grows with every passing moment</p>
+        </div>
+    </div>
+
+    <script>
+        // Create Floating Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const symbols = ['❁', '✿', '❀', '✾', '🌸'];
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${8 + Math.random() * 8}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Love Messages
+        const loveMessages = [
+            "You're the poetry my heart writes",
+            "Every moment with you is a treasure",
+            "Your love is my greatest blessing",
+            "In your arms is where I belong",
+            "My soul recognizes yours"
+        ];
+
+        function revealMessage() {
+            const message = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+            const messageElement = document.createElement('div');
+            messageElement.className = 'message-reveal';
+            messageElement.textContent = `💌 ${message}`;
+            document.getElementById('messages').prepend(messageElement);
+
+            // Limit to 5 messages
+            const messages = document.getElementById('messages').children;
+            if (messages.length > 5) {
+                messages[messages.length - 1].remove();
+            }
+        }
+
+        // Finale Reveal
+        function revealFinale() {
+            const finale = document.getElementById('finale');
+            finale.classList.add('show');
+            setTimeout(() => {
+                finale.classList.remove('show');
+            }, 5000);
+        }
+
+        // Save User Inputs
+        document.querySelectorAll('input, textarea').forEach(input => {
+            const key = input.previousElementSibling ? input.previousElementSibling.textContent : 'input';
+            const saved = localStorage.getItem(key);
+            if (saved) input.value = saved;
+
+            input.addEventListener('input', () => {
+                localStorage.setItem(key, input.value);
+            });
+        });
+    </script>
+</body>
+
+</html>
