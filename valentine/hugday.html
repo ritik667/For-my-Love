@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🤗 Happy Hug Day Meri Jaan 🤗</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Parisienne&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --rose-gold: #b76e79;
+            --blush-pink: #e8c4c4;
+            --deep-rose: #8b4a5a;
+            --soft-pink: #f0b8b8;
+            --gold: #d4a574;
+            --warm-peach: #e8a889;
+            --text-light: #e8dcd8;
+            --bg-dark: #1a0a10;
+            --card-bg: rgba(30, 20, 35, 0.9);
+            --glow-pink: rgba(232, 196, 196, 0.4);
+            --hug-warm: #c97b84;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(180deg, #1a0a10 0%, #2d1520 25%, #1a0a10 50%, #2d1520 75%, #0d0609 100%);
+            color: var(--text-light);
+            padding: 20px;
+        }
+
+        /* Ambient Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .ambient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+            animation: blobFloat 15s ease-in-out infinite;
+        }
+
+        @keyframes blobFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            33% {
+                transform: translate(30px, -30px);
+            }
+
+            66% {
+                transform: translate(-20px, 20px);
+            }
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(ellipse, var(--deep-rose) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+        }
+
+        .blob-2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(ellipse, var(--hug-warm) 0%, transparent 70%);
+            top: 40%;
+            right: -80px;
+            animation-delay: 5s;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(ellipse, var(--rose-gold) 0%, transparent 70%);
+            bottom: -50px;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        /* Main Container */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 20px 10px 60px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 35px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hug-emoji-big {
+            font-size: 5rem;
+            display: inline-block;
+            animation: hugPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(232, 196, 196, 0.5));
+        }
+
+        @keyframes hugPulse {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            25% {
+                transform: scale(1.1) rotate(-5deg);
+            }
+
+            50% {
+                transform: scale(1.15) rotate(0deg);
+            }
+
+            75% {
+                transform: scale(1.1) rotate(5deg);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--blush-pink) 0%, var(--rose-gold) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 15px 0 10px;
+            line-height: 1.3;
+            text-shadow: none;
+        }
+
+        .hero-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: var(--warm-peach);
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* Wish Card */
+        .wish-card {
+            background: linear-gradient(175deg, rgba(58, 42, 48, 0.95) 0%, rgba(45, 30, 40, 0.98) 50%, rgba(58, 42, 48, 0.95) 100%);
+            border-radius: 24px;
+            padding: 35px 25px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 60px var(--glow-pink), 0 0 0 1px rgba(183, 110, 121, 0.25);
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease 0.3s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wish-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--rose-gold), var(--gold), var(--rose-gold), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: translateX(-30%);
+            }
+
+            50% {
+                transform: translateX(30%);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wish-content {
+            text-align: center;
+        }
+
+        .wish-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .wish-highlight {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: var(--gold);
+            display: block;
+            margin: 15px 0;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 15px;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
+        }
+
+        .divider-icon {
+            font-size: 20px;
+            color: var(--rose-gold);
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Photo Gallery Section */
+        .gallery-section {
+            margin-bottom: 35px;
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        .gallery-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--blush-pink) 0%, var(--rose-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .gallery-subtitle {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            color: var(--blush-pink);
+            font-style: italic;
+            opacity: 0.7;
+            margin-bottom: 25px;
+        }
+
+        /* Photo Grid - Artistic Layout */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .photo-frame {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(145deg, rgba(139, 74, 90, 0.3) 0%, rgba(45, 21, 32, 0.5) 100%);
+            border: 2px solid rgba(183, 110, 121, 0.25);
+            aspect-ratio: 9/16;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            animation: photoReveal 0.8s ease both;
+        }
+
+        .photo-frame:nth-child(1) {
+            animation-delay: 0.8s;
+        }
+
+        .photo-frame:nth-child(2) {
+            animation-delay: 1.0s;
+        }
+
+        .photo-frame:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+
+        .photo-frame:nth-child(4) {
+            animation-delay: 1.4s;
+        }
+
+        .photo-frame:nth-child(5) {
+            animation-delay: 1.6s;
+        }
+
+        .photo-frame:nth-child(6) {
+            animation-delay: 1.8s;
+        }
+
+        @keyframes photoReveal {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotate(-3deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        /* Featured photo spans full width */
+        .photo-frame.featured {
+            grid-column: 1 / -1;
+            aspect-ratio: 9/12;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--rose-gold);
+            box-shadow: 0 15px 40px rgba(183, 110, 121, 0.3), 0 0 30px var(--glow-pink);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-frame:hover img {
+            transform: scale(1.08);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 12px 12px;
+            background: linear-gradient(to top, rgba(26, 10, 16, 0.9) 0%, rgba(26, 10, 16, 0.4) 60%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .photo-frame:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-caption {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1rem;
+            color: var(--blush-pink);
+            text-align: center;
+        }
+
+        /* Placeholder for empty photo slots */
+        .photo-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--rose-gold);
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        /* Auto-hide placeholder when a real image exists */
+        .photo-frame img~.photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-frame img+.photo-overlay .photo-caption {
+            opacity: 1;
+        }
+
+        .photo-frame:has(img) .photo-placeholder {
+            display: none;
+        }
+
+        .photo-placeholder-icon {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .photo-placeholder-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 0.9rem;
+        }
+
+        /* Hug Message Section */
+        .hug-message-card {
+            background: linear-gradient(145deg, rgba(139, 74, 90, 0.3) 0%, rgba(45, 21, 32, 0.5) 100%);
+            border-radius: 20px;
+            padding: 30px 22px;
+            margin: 30px 0;
+            border: 1px solid rgba(232, 196, 196, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease 1s both;
+        }
+
+        .hug-message-card::after {
+            content: '🤗';
+            position: absolute;
+            top: -5px;
+            right: 10px;
+            font-size: 2rem;
+            opacity: 0.15;
+            animation: hugPulse 3s ease-in-out infinite;
+        }
+
+        .hug-message-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: var(--warm-peach);
+            margin-bottom: 15px;
+        }
+
+        .hug-message-body {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .hug-message-body .em {
+            color: var(--blush-pink);
+            font-style: italic;
+        }
+
+        /* Hug Counter */
+        .hug-counter {
+            text-align: center;
+            margin: 30px 0;
+            animation: fadeIn 1s ease 1.2s both;
+        }
+
+        .counter-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            color: var(--blush-pink);
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .hug-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--deep-rose) 0%, var(--rose-gold) 50%, var(--gold) 100%);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(183, 110, 121, 0.4);
+        }
+
+        .hug-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(183, 110, 121, 0.6);
+        }
+
+        .hug-btn:active {
+            transform: scale(0.95);
+        }
+
+        .hug-count {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 600;
+            display: block;
+            margin-top: 10px;
+            min-height: 40px;
+        }
+
+        /* Burst animation for hug */
+        .hug-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 2rem;
+            animation: burstOut 1s ease-out forwards;
+        }
+
+        @keyframes burstOut {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0.3);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            animation: fadeIn 1s ease 1.5s both;
+        }
+
+        .footer-message {
+            font-family: 'Parisienne', cursive;
+            font-size: 1.4rem;
+            color: var(--blush-pink);
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--rose-gold) 0%, var(--gold) 100%);
+            border-radius: 50px;
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(183, 110, 121, 0.5);
+        }
+
+        /* Floating Emojis */
+        .emojis-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            opacity: 0;
+            animation: emojiFloat linear infinite;
+        }
+
+        @keyframes emojiFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-20px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== Beautiful Lightbox Photo Viewer ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 6, 9, 0.85);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* ===== Hug Station Card ===== */
+        .hug-station {
+            background: linear-gradient(175deg, rgba(58, 42, 48, 0.95) 0%, rgba(45, 30, 40, 0.98) 50%, rgba(58, 42, 48, 0.95) 100%);
+            border-radius: 24px;
+            padding: 35px 22px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 50px var(--glow-pink), 0 0 0 1px rgba(183, 110, 121, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease 1s both;
+        }
+
+        .hug-station::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--rose-gold), var(--gold), var(--rose-gold), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .hug-station-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--blush-pink) 0%, var(--rose-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .hug-station-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--blush-pink);
+            opacity: 0.7;
+            font-style: italic;
+            margin-bottom: 22px;
+        }
+
+        .hug-total-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .hug-total-number {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--warm-peach) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            min-width: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .hug-total-number.bump {
+            animation: numberBump 0.4s ease;
+        }
+
+        @keyframes numberBump {
+            0% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(1.4);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .hug-total-label {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.1rem;
+            color: var(--blush-pink);
+            text-align: left;
+            line-height: 1.3;
+        }
+
+        /* Big Hug Button */
+        .hug-btn-big {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--deep-rose) 0%, var(--rose-gold) 50%, var(--gold) 100%);
+            border: 3px solid rgba(232, 196, 196, 0.3);
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(183, 110, 121, 0.5), 0 0 20px rgba(232, 196, 196, 0.15);
+            margin-bottom: 12px;
+            animation: hugBtnGlow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes hugBtnGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 30px rgba(183, 110, 121, 0.5), 0 0 20px rgba(232, 196, 196, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 8px 40px rgba(183, 110, 121, 0.7), 0 0 35px rgba(232, 196, 196, 0.3);
+            }
+        }
+
+        .hug-btn-big:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(183, 110, 121, 0.7), 0 0 40px rgba(232, 196, 196, 0.3);
+        }
+
+        .hug-btn-big:active {
+            transform: scale(0.9);
+        }
+
+        .hug-btn-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 0.95rem;
+            color: var(--blush-pink);
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-section {
+            margin-top: 5px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(183, 110, 121, 0.15);
+        }
+
+        .whatsapp-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: var(--blush-pink);
+            opacity: 0.6;
+            margin-bottom: 12px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.15rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .hug-history {
+            margin-top: 15px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            color: var(--blush-pink);
+            opacity: 0.5;
+        }
+
+        /* Decorative frame wrapper */
+        .lightbox-frame {
+            position: relative;
+            padding: 8px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--rose-gold), var(--gold), var(--blush-pink), var(--deep-rose));
+            background-size: 300% 300%;
+            animation: frameBorderShift 5s ease-in-out infinite;
+            box-shadow:
+                0 0 40px rgba(183, 110, 121, 0.4),
+                0 0 80px rgba(183, 110, 121, 0.15),
+                0 25px 60px rgba(0, 0, 0, 0.6);
+            max-width: 90vw;
+            max-height: 78vh;
+        }
+
+        @keyframes frameBorderShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .lightbox-inner {
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--bg-dark);
+            position: relative;
+        }
+
+        .lightbox-inner img {
+            display: block;
+            max-width: 85vw;
+            max-height: 72vh;
+            object-fit: contain;
+            border-radius: 14px;
+            animation: lightboxZoomIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes lightboxZoomIn {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Corner heart decorations */
+        .lightbox-frame::before,
+        .lightbox-frame::after {
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0.6;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .lightbox-frame::before {
+            content: '💕';
+            top: -18px;
+            left: -10px;
+            animation: hugPulse 2.5s ease-in-out infinite;
+        }
+
+        .lightbox-frame::after {
+            content: '🤗';
+            bottom: -18px;
+            right: -10px;
+            animation: hugPulse 2.5s ease-in-out infinite 1s;
+        }
+
+        /* Caption below photo */
+        .lightbox-caption {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.25rem;
+            color: var(--blush-pink);
+            text-align: center;
+            margin-top: 16px;
+            opacity: 0;
+            animation: captionFadeUp 0.5s ease 0.3s forwards;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes captionFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Close button */
+        .lightbox-close {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(139, 74, 90, 0.5);
+            border: 1px solid rgba(232, 196, 196, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--blush-pink);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox-close:hover {
+            background: rgba(183, 110, 121, 0.7);
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 0 20px rgba(232, 196, 196, 0.4);
+        }
+
+        /* Navigation arrows */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(139, 74, 90, 0.4);
+            border: 1px solid rgba(232, 196, 196, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--blush-pink);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(183, 110, 121, 0.6);
+            box-shadow: 0 0 15px rgba(232, 196, 196, 0.3);
+        }
+
+        .lightbox-prev {
+            left: 12px;
+        }
+
+        .lightbox-next {
+            right: 12px;
+        }
+
+        /* Photo counter */
+        .lightbox-counter {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: var(--blush-pink);
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .wish-card {
+                padding: 25px 18px;
+            }
+
+            .photo-grid {
+                gap: 10px;
+            }
+
+            .gallery-title {
+                font-size: 1.8rem;
+            }
+
+            .hug-emoji-big {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+        <div class="ambient-blob blob-3"></div>
+    </div>
+
+    <!-- Floating Emojis -->
+    <div class="emojis-container" id="emojisContainer"></div>
+
+    <!-- Beautiful Lightbox Photo Viewer -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+        <div class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</div>
+        <div class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</div>
+        <div class="lightbox-frame">
+            <div class="lightbox-inner">
+                <img id="lightboxImg" src="" alt="Photo">
+            </div>
+        </div>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+        <span class="lightbox-counter" id="lightboxCounter"></span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hug-emoji-big">🤗</div>
+            <h1 class="hero-title">Wishing you a Very Happy Hug Day✨💖<br>❤️Meri Jaan 💕</h1>
+            <p class="hero-subtitle">I love you so much 😘😘💖<br>❤️My Better Half 😘💖<br>❤️My Love💖</p>
+        </div>
+
+        <!-- Wish Card -->
+        <div class="wish-card">
+            <div class="wish-content">
+                <p class="wish-text">
+                    Meri Jaan, aaj Hug Day hai aur kaash main abhi tumhe apni baahon mein le leta 🤗💕
+                </p>
+                <span class="wish-highlight">
+                    I hope ham hamesha ek dusre ki baahon mein aise hi rahe🤗✨
+                </span>
+                <p class="wish-text">
+                    Hugs jyada nhi kiye par abhi dil machal rha h jaan aapko apni baaho me rakhne ke liye😩<br>World
+                    ki saari sukoon ek taraf or aapke gale lagne ki sukoon ek taraf🥰🥰🥰❤️ <br> I Really Miss You A
+                    Lot, Very Much, So Much Meri Jaan 🥺 <br> I Really, Really Wish I Could Hug You Right Now 🫂
+                </p>
+            </div>
+        </div>
+
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">🤗</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Photo Gallery -->
+        <section class="gallery-section">
+            <h2 class="gallery-title">Apne kuch Pyare pal 💑</h2>
+            <p class="gallery-subtitle">In palon ko main hamesha yaad rakhunga...🤗🤗🫂</p>
+
+            <div class="photo-grid">
+                <!-- Photo 1 - Featured (full width) -->
+                <div class="photo-frame featured" onclick="openLightbox(this)">
+                    <!-- Replace src with your photo path -->
+                    <div class="photo-placeholder">
+                        <span class="photo-placeholder-icon">🤗</span>
+                        <span class="photo-placeholder-text">Place photo here</span>
+                    </div>
+                    <img src="h4.jpg" alt="Our hug moment">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">The favourite hug 💕</p>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="photo-frame" onclick="openLightbox(this)">
+                    <div class="photo-placeholder">
+                        <span class="photo-placeholder-icon">💑</span>
+                        <span class="photo-placeholder-text">Place photo here</span>
+                    </div>
+                    <img src="h6.png" alt="Hug moment">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">Ye bhi ek achha pal tha🥰</p>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="photo-frame" onclick="openLightbox(this)">
+                    <div class="photo-placeholder">
+                        <span class="photo-placeholder-icon">🫂</span>
+                        <span class="photo-placeholder-text">Place photo here</span>
+                    </div>
+                    <img src="h1.jpg" alt="Hug moment">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">Tight hug 💓</p>
+                    </div>
+                </div>
+
+                <!-- Photo 4 - Featured (full width) -->
+                <div class="photo-frame featured" onclick="openLightbox(this)">
+                    <div class="photo-placeholder">
+                        <span class="photo-placeholder-icon">🤗</span>
+                        <span class="photo-placeholder-text">Place photo here</span>
+                    </div>
+                    <img src="h7.png" alt="Our special hug">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">Is pal ko hamesha yaad rakhunga 🤗💕</p>
+                    </div>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="photo-frame" onclick="openLightbox(this)">
+                    <div class="photo-placeholder">
+                        <span class="photo-placeholder-icon">💕</span>
+                        <span class="photo-placeholder-text">Place photo here</span>
+                    </div>
+                    <img src="h3.jpg" alt="Hug moment">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">You're My safe place jaan💖 🏠</p>
+                    </div>
+                </div>
+
+                <!-- Photo 5 -->
+                <div class="photo-frame" onclick="openLightbox(this)">
+                    <div class="photo-placeholder">
+                        <span class="photo-placeholder-icon">🤗</span>
+                        <span class="photo-placeholder-text">Place photo here</span>
+                    </div>
+                    <img src="h5.jpg" alt="Hug moment">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">Sabse Best feeling ever 💗</p>
+                    </div>
+                </div>
+
+                <!-- Photo 6 - Featured (full width) -->
+                <div class="photo-frame featured" onclick="openLightbox(this)">
+                    <div class="photo-placeholder">
+                        <span class="photo-placeholder-icon">💑</span>
+                        <span class="photo-placeholder-text">Place photo here</span>
+                    </div>
+                    <img src="h6.png" alt="Our special hug">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">I'll be Forever in your arms my love💕</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">♡</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Hug Message -->
+        <div class="hug-message-card">
+            <h3 class="hug-message-title">🤗 Filhal ke liye dher sara Virtual Hug for You, Jaan 🤗</h3>
+            <p class="hug-message-body">
+                Jab tak main tumhe physically hug nahi kar sakta,
+                ye virtual hug accept karo meri jaan 🤗💕<br><br>
+            </p>
+        </div>
+
+        <!-- Hug Station -->
+        <div class="hug-station">
+            <h3 class="hug-station-title">❤️❤️❤️</h3>
+            <p class="hug-station-subtitle">Tap karke dher saara hugs bhej sakti ho mujhe jaan 🤗💕</p>
+
+            <div class="hug-total-display">
+                <span class="hug-total-number" id="hugTotalNumber">0</span>
+                <span class="hug-total-label">baar gale<br>lage 💕</span>
+            </div>
+
+            <button class="hug-btn-big" id="hugBtnBig" onclick="sendHug(event)">
+                🤗
+            </button>
+            <p class="hug-btn-text">Bkk....Bas itna hi....Thak gyi jaan💖??<br>Ek baar aur gale lagao na🤗🤗💕</p>
+
+            <div class="whatsapp-section">
+                <p class="whatsapp-label">Let me know how many times you hugged me🤔🤨💌</p>
+                <a class="whatsapp-btn" id="whatsappBtn" href="#" target="_blank" onclick="sendWhatsApp(event)">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    Send Hugs to Hubby 💕
+                </a>
+            </div>
+
+            <p class="hug-history" id="hugHistory"></p>
+        </div>
+
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">✧</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-message">Tumhara Hamesha, Forever & Always 🤗💕 Tumhara Hubby🤗😘 ♡</p>
+            <a href="/index.html" class="back-btn">💕 I Love You My dear Wifey💖😘💕</a>
+        </footer>
+    </div>
+
+    <script>
+        // ===== Floating Emojis =====
+        function createFloatingEmojis() {
+            const container = document.getElementById('emojisContainer');
+            const emojis = [String.fromCodePoint(0x1F917), String.fromCodePoint(0x1F495), String.fromCodePoint(0x1F491), String.fromCodePoint(0x1F493), String.fromCodePoint(0x1F970), String.fromCodePoint(0x1F497), String.fromCodePoint(0x2728)];
+
+            for (let i = 0; i < 12; i++) {
+                const emoji = document.createElement('div');
+                emoji.className = 'floating-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = `${Math.random() * 100}%`;
+                emoji.style.animationDuration = `${14 + Math.random() * 12}s`;
+                emoji.style.animationDelay = `${Math.random() * 12}s`;
+                emoji.style.fontSize = `${16 + Math.random() * 14}px`;
+                container.appendChild(emoji);
+            }
+        }
+
+        createFloatingEmojis();
+
+        // ===== Persistent Hug Counter =====
+        const PHONE_NUMBER = '917970328312';
+        let hugCounter = parseInt(localStorage.getItem('hugDayCount') || '0');
+        let lastHugTime = localStorage.getItem('hugDayLastTime') || null;
+
+        // Initialize display
+        function updateHugDisplay() {
+            const numEl = document.getElementById('hugTotalNumber');
+            numEl.textContent = hugCounter;
+
+            // Show history
+            const historyEl = document.getElementById('hugHistory');
+            if (hugCounter > 0 && lastHugTime) {
+                const date = new Date(lastHugTime);
+                const timeStr = date.toLocaleString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true, day: 'numeric', month: 'short' });
+                historyEl.textContent = 'Last hug: ' + timeStr + ' ' + String.fromCodePoint(0x1F495);
+            }
+        }
+
+        updateHugDisplay();
+
+        function sendHug(e) {
+            hugCounter++;
+            lastHugTime = new Date().toISOString();
+            localStorage.setItem('hugDayCount', hugCounter.toString());
+            localStorage.setItem('hugDayLastTime', lastHugTime);
+
+            // Update display with bump animation
+            const numEl = document.getElementById('hugTotalNumber');
+            numEl.textContent = hugCounter;
+            numEl.classList.remove('bump');
+            void numEl.offsetWidth; // Force reflow
+            numEl.classList.add('bump');
+
+            updateHugDisplay();
+
+            // Burst effect
+            const burstEmojis = [String.fromCodePoint(0x1F917), String.fromCodePoint(0x1F495), String.fromCodePoint(0x1F493), String.fromCodePoint(0x1F970), String.fromCodePoint(0x2728), String.fromCodePoint(0x1F497), String.fromCodePoint(0x1F491), String.fromCodePoint(0x1F496)];
+            for (let i = 0; i < 10; i++) {
+                const burst = document.createElement('div');
+                burst.className = 'hug-burst';
+                burst.textContent = burstEmojis[Math.floor(Math.random() * burstEmojis.length)];
+                const angle = (i / 10) * 360;
+                const distance = 80 + Math.random() * 80;
+                const tx = Math.cos(angle * Math.PI / 180) * distance;
+                const ty = Math.sin(angle * Math.PI / 180) * distance;
+                burst.style.setProperty('--tx', `${tx}px`);
+                burst.style.setProperty('--ty', `${ty}px`);
+                burst.style.left = `${e.clientX}px`;
+                burst.style.top = `${e.clientY}px`;
+                document.body.appendChild(burst);
+                setTimeout(() => burst.remove(), 1000);
+            }
+        }
+
+        function sendWhatsApp(e) {
+            e.preventDefault();
+            // Using String.fromCodePoint to avoid emoji encoding issues
+            var hug = String.fromCodePoint(0x1F917);
+            var hearts = String.fromCodePoint(0x1F495);
+            var couple = String.fromCodePoint(0x1F491);
+            var redheart = String.fromCodePoint(0x2764, 0xFE0F);
+            var sad = String.fromCodePoint(0x1F614);
+            var sparkheart = String.fromCodePoint(0x1F497);
+            var pinkheart = String.fromCodePoint(0x1F496);
+            var msg = 'Jaaanu mera ' + hug + hearts + ' Aaj maine ' + hugCounter + ' baar tumhe gale lagaya! ' + couple + redheart + ' Kaash tum abhi mere saamne hote... bahut yaad aa rhi h tumhari ' + sad + ' Happy Hug Day meri jaan! ' + hug + hearts + ' I love you so much! ' + sparkheart + ' - Tumhari Wifey ' + pinkheart;
+            var url = 'https://wa.me/' + PHONE_NUMBER + '?text=' + encodeURIComponent(msg);
+            window.open(url, '_blank');
+        }
+
+        // ===== Beautiful Lightbox =====
+        let currentPhotoIndex = 0;
+        let photoFrames = [];
+
+        function getPhotoFrames() {
+            return Array.from(document.querySelectorAll('.photo-frame')).filter(f => f.querySelector('img'));
+        }
+
+        function openLightbox(frame) {
+            const img = frame.querySelector('img');
+            if (!img) return;
+
+            photoFrames = getPhotoFrames();
+            currentPhotoIndex = photoFrames.indexOf(frame);
+
+            showPhoto(currentPhotoIndex);
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showPhoto(index) {
+            const frame = photoFrames[index];
+            const img = frame.querySelector('img');
+            const caption = frame.querySelector('.photo-caption');
+
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxCounter = document.getElementById('lightboxCounter');
+
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = caption ? caption.textContent : '💕';
+            lightboxCounter.textContent = `${index + 1} / ${photoFrames.length}`;
+
+            // Re-trigger animations
+            lightboxImg.style.animation = 'none';
+            lightboxCaption.style.animation = 'none';
+            requestAnimationFrame(() => {
+                lightboxImg.style.animation = '';
+                lightboxCaption.style.animation = '';
+            });
+        }
+
+        function navigateLightbox(direction) {
+            event.stopPropagation();
+            currentPhotoIndex = (currentPhotoIndex + direction + photoFrames.length) % photoFrames.length;
+            showPhoto(currentPhotoIndex);
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // Close lightbox when clicking the backdrop (not the photo)
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeLightbox();
+        });
+    </script>
+</body>
+
+</html>
