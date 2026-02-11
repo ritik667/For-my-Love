@@ -1,0 +1,645 @@
+/*
+ * ============================================
+ * ROMANTIC DARK THEME - Love Archive
+ * Beautiful, uniform design with clear color distinction
+ * ============================================
+ */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+/* ============================================
+   COLOR VARIABLES - Clear distinction between users
+   ============================================ */
+:root {
+    /* Background Colors - Dark romantic night theme */
+    --bg-dark: #0d0a0f;
+    --bg-darker: #080609;
+    --bg-gradient: linear-gradient(180deg, #0d0a0f 0%, #1a1018 50%, #080609 100%);
+
+    /* Card/Container Colors */
+    --card-bg: rgba(30, 20, 35, 0.9);
+    --card-bg-light: rgba(45, 30, 50, 0.7);
+
+    /* ========== YOUR MESSAGES (userpic2) - Rose/Pink Theme ========== */
+    --your-msg-bg: rgba(70, 35, 50, 0.95);
+    --your-msg-border: #e88a9a;
+    --your-msg-glow: rgba(232, 138, 154, 0.15);
+    --your-avatar-gradient: linear-gradient(135deg, #e88a9a 0%, #c76b7e 100%);
+    --your-name-color: #f5a5b5;
+
+    /* ========== HER MESSAGES (userpic6) - Lavender/Purple Theme ========== */
+    --her-msg-bg: rgba(45, 35, 65, 0.95);
+    --her-msg-border: #a89cd4;
+    --her-msg-glow: rgba(168, 156, 212, 0.15);
+    --her-avatar-gradient: linear-gradient(135deg, #b8a8e8 0%, #9284c8 100%);
+    --her-name-color: #c8b8f8;
+
+    /* Accent Colors */
+    --rose-dawn: #d4a5b0;
+    --deep-rose: #c48b9f;
+    --accent-blush: #e8c4c4;
+    --highlight-glow: #f0b8b8;
+    --highlight-text: #ffb8b8;
+
+    /* Text Colors */
+    --text-primary: #e8ddd8;
+    --text-muted: #a8a0a0;
+    --text-secondary: #c0b8b8;
+
+    /* Border/Subtle Colors */
+    --border-subtle: rgba(200, 139, 159, 0.25);
+}
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lora', Georgia, serif;
+    min-height: 100vh;
+    background: var(--bg-gradient) !important;
+    background-attachment: fixed !important;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Ambient background glow effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(200, 139, 159, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(168, 156, 212, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+a {
+    color: var(--rose-dawn);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--highlight-text);
+    text-shadow: 0 0 8px rgba(255, 184, 184, 0.4);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1,
+h2,
+h3 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--text-primary);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+.title-fancy {
+    font-family: 'Great Vibes', cursive;
+    background: linear-gradient(135deg, #ffb8b8 0%, #c9989e 50%, #e8a0a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
+   PAGE LAYOUT - Telegram Chat Override
+   ============================================ */
+.page_wrap {
+    background: var(--bg-gradient) !important;
+    color: var(--text-primary) !important;
+    min-height: 100vh;
+    position: relative;
+}
+
+.page_header {
+    position: fixed;
+    z-index: 100;
+    background: linear-gradient(180deg, rgba(13, 10, 15, 0.98) 0%, rgba(30, 20, 35, 0.95) 100%) !important;
+    width: 100%;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.page_header .content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.page_header .text.bold {
+    color: var(--rose-dawn) !important;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.6rem !important;
+    text-shadow: 0 0 15px rgba(212, 165, 176, 0.3);
+}
+
+.page_body {
+    padding-top: 80px;
+    max-width: 650px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    position: relative;
+}
+
+/* ============================================
+   CHAT MESSAGES - Core Styling
+   ============================================ */
+.history {
+    padding: 16px 12px;
+}
+
+/* Date Separators - Beautiful styling */
+.message.service {
+    padding: 25px 20px;
+}
+
+.message.service .body {
+    text-align: center;
+    color: var(--text-muted);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    position: relative;
+}
+
+.message.service .body::before,
+.message.service .body::after {
+    content: '♡';
+    margin: 0 12px;
+    color: var(--accent-blush);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ============================================
+   MESSAGE BUBBLES - Clear distinction
+   ============================================ */
+.message.default {
+    padding: 6px 12px;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+/* ========== YOUR MESSAGES (Ritikesh - userpic2) - Rose Pink ========== */
+.message.default .body {
+    margin-left: 55px;
+    background: var(--your-msg-bg);
+    padding: 14px 18px;
+    border-radius: 18px 18px 18px 6px;
+    border-left: 4px solid var(--your-msg-border);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 0 20px var(--your-msg-glow);
+}
+
+/* ========== HER MESSAGES (Love - userpic6) - Lavender Purple ========== */
+.message.default:has(.userpic6) .body {
+    background: var(--her-msg-bg);
+    border-left: none;
+    border-right: 4px solid var(--her-msg-border);
+    border-radius: 18px 18px 6px 18px;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 0 20px var(--her-msg-glow);
+}
+
+/* Joined/Continuous messages */
+.message.default.joined .body {
+    margin-top: -1px;
+    border-radius: 8px 18px 18px 8px;
+}
+
+.message.default.joined:has(.userpic6) .body,
+.message.default:has(.userpic6)+.message.default.joined .body {
+    border-radius: 18px 8px 8px 18px;
+    background: var(--her-msg-bg);
+    border-left: none;
+    border-right: 4px solid var(--her-msg-border);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 0 20px var(--her-msg-glow);
+}
+
+/* ============================================
+   USER AVATARS - Beautiful gradient circles
+   ============================================ */
+.userpic {
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.userpic .initials {
+    color: rgba(0, 0, 0, 0.7) !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Your Avatar - Rose Pink */
+.userpic2 {
+    background: var(--your-avatar-gradient) !important;
+}
+
+/* Her Avatar - Lavender Purple */
+.userpic6 {
+    background: var(--her-avatar-gradient) !important;
+}
+
+/* ============================================
+   FROM NAME - Color coded
+   ============================================ */
+.default .from_name {
+    color: var(--your-name-color) !important;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.15rem;
+    font-weight: 600 !important;
+    padding-bottom: 8px;
+    text-shadow: 0 0 8px rgba(245, 165, 181, 0.3);
+}
+
+/* Her name color */
+.message.default:has(.userpic6) .from_name {
+    color: var(--her-name-color) !important;
+    text-shadow: 0 0 8px rgba(200, 184, 248, 0.3);
+}
+
+/* ============================================
+   MESSAGE TEXT & DETAILS
+   ============================================ */
+.default .text {
+    color: var(--text-primary);
+    line-height: 1.8;
+    word-wrap: break-word;
+    font-size: 1rem;
+}
+
+/* Date/Time */
+.default .date.details {
+    color: var(--text-muted) !important;
+    font-size: 0.75rem;
+    opacity: 0.75;
+}
+
+/* Reply To */
+.default .reply_to {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border-left: 3px solid var(--accent-blush);
+    font-size: 0.9rem;
+}
+
+.default .reply_to a {
+    color: var(--rose-dawn);
+}
+
+/* ============================================
+   MEDIA IN MESSAGES
+   ============================================ */
+.media_wrap {
+    padding-top: 10px;
+}
+
+.media_wrap img,
+.media_wrap video {
+    border-radius: 14px;
+    max-width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.photo,
+.video_file,
+.animated,
+.sticker {
+    border-radius: 14px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.video_play_bg {
+    background: rgba(200, 139, 159, 0.8) !important;
+}
+
+.gif_play {
+    color: var(--text-primary) !important;
+}
+
+/* ============================================
+   PAGINATION - Beautiful navigation
+   ============================================ */
+.pagination {
+    text-align: center;
+    padding: 30px 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+}
+
+.pagination a,
+a.pagination {
+    display: inline-block;
+    padding: 14px 28px;
+    margin: 8px;
+    background: linear-gradient(135deg, rgba(70, 35, 50, 0.9) 0%, rgba(45, 35, 65, 0.9) 100%);
+    border-radius: 30px;
+    border: 2px solid var(--border-subtle);
+    color: var(--text-primary) !important;
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pagination a:hover,
+a.pagination:hover {
+    background: linear-gradient(135deg, var(--deep-rose) 0%, var(--rose-dawn) 100%);
+    color: #fff !important;
+    transform: translateY(-3px);
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(212, 165, 176, 0.3);
+    border-color: var(--rose-dawn);
+}
+
+/* ============================================
+   BUTTONS - Beautiful, cute styling
+   ============================================ */
+button,
+.btn,
+input[type="submit"],
+input[type="button"] {
+    background: linear-gradient(135deg, var(--deep-rose) 0%, var(--rose-dawn) 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 4px 15px rgba(196, 139, 159, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+button:hover,
+.btn:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 8px 25px rgba(196, 139, 159, 0.45),
+        0 0 30px rgba(212, 165, 176, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #d8a0b0 0%, #e8c0c8 100%);
+}
+
+button:active,
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* Secondary button style */
+.btn-secondary {
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--card-bg-light) 100%);
+    border: 2px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, var(--card-bg-light) 0%, var(--card-bg) 100%);
+    border-color: var(--rose-dawn);
+}
+
+/* ============================================
+   CARDS & CONTAINERS
+   ============================================ */
+.card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 28px;
+    margin: 20px 0;
+    border: 1px solid var(--border-subtle);
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+/* ============================================
+   INPUT FIELDS - Elegant styling
+   ============================================ */
+input,
+textarea {
+    background: rgba(30, 20, 35, 0.8);
+    border: 2px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 14px 18px;
+    color: var(--text-primary);
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--rose-dawn);
+    box-shadow: 0 0 15px rgba(212, 165, 176, 0.2);
+    background: rgba(40, 28, 45, 0.9);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* ============================================
+   SCROLLBAR - Beautiful custom styling
+   ============================================ */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--deep-rose) 0%, var(--rose-dawn) 100%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--rose-dawn) 0%, var(--accent-blush) 100%);
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+    .page_body {
+        width: 100%;
+        padding: 70px 8px 20px;
+    }
+
+    .page_header .content {
+        width: 100%;
+    }
+
+    .message.default .body {
+        margin-left: 50px;
+        padding: 12px 14px;
+        border-radius: 14px 14px 14px 4px;
+    }
+
+    .message.default:has(.userpic6) .body {
+        border-radius: 14px 14px 4px 14px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    button,
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+}
+
+/* ============================================
+   DECORATIVE ELEMENTS
+   ============================================ */
+.romantic-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 40px 0;
+}
+
+.romantic-divider::before,
+.romantic-divider::after {
+    content: '';
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(90deg, transparent, var(--deep-rose), transparent);
+}
+
+.romantic-divider span {
+    color: var(--accent-blush);
+    font-size: 1.3rem;
+}
+
+/* ============================================
+   SMOOTH PAGE TRANSITIONS
+   ============================================ */
+
+/* Page fade-in animation on load */
+body {
+    animation: pageLoad 0.5s ease-out;
+}
+
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Transition overlay for smooth navigation */
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0d0a0f 0%, #1a1018 100%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.page-transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.page-transition-overlay .heart {
+    font-size: 2.5em;
+    animation: heartBeat 0.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    body {
+        background: white;
+        color: #333;
+    }
+
+    .page_header {
+        position: static;
+    }
+}
